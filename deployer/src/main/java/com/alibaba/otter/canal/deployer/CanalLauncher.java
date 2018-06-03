@@ -39,6 +39,7 @@ public class CanalLauncher {
             logger.info("## the canal server is running now ......");
             Runtime.getRuntime().addShutdownHook(new Thread() {
 
+                @Override
                 public void run() {
                     try {
                         logger.info("## stop the canal server");
