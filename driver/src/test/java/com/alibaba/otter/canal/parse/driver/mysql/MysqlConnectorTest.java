@@ -13,13 +13,13 @@ public class MysqlConnectorTest {
     @Test
     public void testQuery() {
 
-        MysqlConnector connector = new MysqlConnector(new InetSocketAddress("127.0.0.1", 3306), "xxxxx", "xxxxx");
+        MysqlConnector connector = new MysqlConnector(new InetSocketAddress("122.114.90.68", 3306), "root", "123456");
         try {
             connector.connect();
             MysqlQueryExecutor executor = new MysqlQueryExecutor(connector);
             ResultSetPacket result = executor.query("show variables like '%char%';");
             System.out.println(result);
-            result = executor.query("select * from test.test1");
+            result = executor.query("select * from zyouke.canal_test");
             System.out.println(result);
         } catch (IOException e) {
             Assert.fail(e.getMessage());
@@ -32,14 +32,14 @@ public class MysqlConnectorTest {
         }
     }
 
-    // @Test
+    @Test
     public void testUpdate() {
 
-        MysqlConnector connector = new MysqlConnector(new InetSocketAddress("127.0.0.1", 3306), "xxxxx", "xxxxx");
+        MysqlConnector connector = new MysqlConnector(new InetSocketAddress("122.114.90.68", 3306), "root", "123456");
         try {
             connector.connect();
             MysqlUpdateExecutor executor = new MysqlUpdateExecutor(connector);
-            executor.update("insert into test.test2(id,name,score,text_value) values(null,'中文1',10,'中文2')");
+            executor.update("insert into zyouke.canal_test(name) values('aaaa')");
         } catch (IOException e) {
             Assert.fail(e.getMessage());
         } finally {
