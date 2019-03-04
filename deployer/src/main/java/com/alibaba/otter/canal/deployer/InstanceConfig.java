@@ -85,7 +85,7 @@ public class InstanceConfig {
     public void setSpringXml(String springXml) {
         this.springXml = springXml;
     }
-
+    @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, CanalToStringStyle.DEFAULT_STYLE);
     }

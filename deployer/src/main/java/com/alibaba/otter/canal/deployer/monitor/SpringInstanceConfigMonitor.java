@@ -40,7 +40,7 @@ public class SpringInstanceConfigMonitor extends AbstractCanalLifeCycle implemen
     private InstanceAction                   defaultAction        = null;
     private Map<String, InstanceAction>      actions              = new MapMaker().makeMap();
     private Map<String, InstanceConfigFiles> lastFiles            = MigrateMap.makeComputingMap(new Function<String, InstanceConfigFiles>() {
-
+                                                                      @Override
                                                                       public InstanceConfigFiles apply(String destination) {
                                                                           return new InstanceConfigFiles(destination);
                                                                       }
@@ -50,12 +50,14 @@ public class SpringInstanceConfigMonitor extends AbstractCanalLifeCycle implemen
 
     private volatile boolean                 isFirst              = true;
 
+    @Override
     public void start() {
         super.start();
         Assert.notNull(rootConf, "root conf dir is null!");
 
         executor.scheduleWithFixedDelay(new Runnable() {
 
+            @Override
             public void run() {
                 try {
                     scan();
@@ -70,6 +72,7 @@ public class SpringInstanceConfigMonitor extends AbstractCanalLifeCycle implemen
         }, 0, scanIntervalInSecond, TimeUnit.SECONDS);
     }
 
+    @Override
     public void stop() {
         super.stop();
         executor.shutdownNow();
@@ -77,6 +80,7 @@ public class SpringInstanceConfigMonitor extends AbstractCanalLifeCycle implemen
         lastFiles.clear();
     }
 
+    @Override
     public void register(String destination, InstanceAction action) {
         if (action != null) {
             actions.put(destination, action);
@@ -85,6 +89,7 @@ public class SpringInstanceConfigMonitor extends AbstractCanalLifeCycle implemen
         }
     }
 
+    @Override
     public void unregister(String destination) {
         actions.remove(destination);
     }

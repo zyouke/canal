@@ -3,6 +3,7 @@ package com.alibaba.otter.canal.parse.driver.mysql;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -39,7 +40,8 @@ public class MysqlConnectorTest {
         try {
             connector.connect();
             MysqlUpdateExecutor executor = new MysqlUpdateExecutor(connector);
-            executor.update("insert into zyouke.canal_test(name) values('aaaa')");
+            String randomName = RandomStringUtils.randomAlphabetic(20);
+            executor.update("insert into zyouke.canal_test(name) values('"+randomName+"')");
         } catch (IOException e) {
             Assert.fail(e.getMessage());
         } finally {

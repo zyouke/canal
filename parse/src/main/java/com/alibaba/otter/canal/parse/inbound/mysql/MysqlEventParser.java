@@ -73,10 +73,12 @@ public class MysqlEventParser extends AbstractMysqlEventParser implements CanalE
     private int                dumpErrorCount                    = 0;        // binlogDump失败异常计数
     private int                dumpErrorCountThreshold           = 2;        // binlogDump失败异常计数阀值
 
+    @Override
     protected ErosaConnection buildErosaConnection() {
         return buildMysqlConnection(this.runningInfo);
     }
 
+    @Override
     protected void preDump(ErosaConnection connection) {
         if (!(connection instanceof MysqlConnection)) {
             throw new CanalParseException("Unsupported connection type : " + connection.getClass().getSimpleName());

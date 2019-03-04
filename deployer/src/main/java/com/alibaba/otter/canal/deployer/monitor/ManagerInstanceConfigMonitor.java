@@ -9,10 +9,12 @@ import com.alibaba.otter.canal.common.CanalLifeCycle;
  */
 public class ManagerInstanceConfigMonitor extends AbstractCanalLifeCycle implements InstanceConfigMonitor, CanalLifeCycle {
 
+    @Override
     public void register(String destination, InstanceAction action) {
 
     }
 
+    @Override
     public void unregister(String destination) {
 
     }
