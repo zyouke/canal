@@ -1,5 +1,7 @@
 package com.alibaba.otter.canal.server.netty.handler;
 
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelHandlerContext;
@@ -14,8 +16,7 @@ import org.jboss.netty.handler.codec.replay.VoidEnum;
  */
 public class FixedHeaderFrameDecoder extends ReplayingDecoder<VoidEnum> {
 
-    protected Object decode(ChannelHandlerContext ctx, Channel channel, ChannelBuffer buffer, VoidEnum state)
-                                                                                                             throws Exception {
+    protected Object decode(ChannelHandlerContext ctx, Channel channel, ChannelBuffer buffer, VoidEnum state)throws Exception {
         return buffer.readBytes(buffer.readInt());
     }
 }

@@ -1,5 +1,7 @@
 package com.alibaba.otter.canal.server.netty.handler;
 
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.group.ChannelGroup;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.ChannelStateEvent;
 import org.jboss.netty.channel.SimpleChannelHandler;

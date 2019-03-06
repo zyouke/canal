@@ -1,25 +1,21 @@
 package com.alibaba.otter.canal.server.netty;
 
-import java.net.InetSocketAddress;
-import java.util.concurrent.Executors;
-
-import org.apache.commons.lang.StringUtils;
-import org.jboss.netty.bootstrap.ServerBootstrap;
-import org.jboss.netty.channel.Channel;
-import org.jboss.netty.channel.ChannelPipeline;
-import org.jboss.netty.channel.ChannelPipelineFactory;
-import org.jboss.netty.channel.Channels;
-import org.jboss.netty.channel.group.ChannelGroup;
-import org.jboss.netty.channel.group.DefaultChannelGroup;
-import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
-
 import com.alibaba.otter.canal.common.AbstractCanalLifeCycle;
 import com.alibaba.otter.canal.server.CanalServer;
 import com.alibaba.otter.canal.server.embedded.CanalServerWithEmbedded;
-import com.alibaba.otter.canal.server.netty.handler.ClientAuthenticationHandler;
-import com.alibaba.otter.canal.server.netty.handler.FixedHeaderFrameDecoder;
 import com.alibaba.otter.canal.server.netty.handler.HandshakeInitializationHandler;
-import com.alibaba.otter.canal.server.netty.handler.SessionHandler;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelPipeline;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.group.ChannelGroup;
+import io.netty.channel.group.DefaultChannelGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import org.apache.commons.lang.StringUtils;
+
+import java.net.InetSocketAddress;
 
 /**
  * 基于netty网络服务的server实现
@@ -32,9 +28,9 @@ public class CanalServerWithNetty extends AbstractCanalLifeCycle implements Cana
     private CanalServerWithEmbedded embeddedServer;      // 嵌入式server
     private String                  ip;
     private int                     port;
-    private Channel                 serverChannel = null;
-    private ServerBootstrap         bootstrap     = null;
-    private ChannelGroup            childGroups   = null; // socket channel
+    private Channel serverChannel = null;
+    private ServerBootstrap bootstrap     = null;
+    private ChannelGroup childGroups   = null; // socket channel
                                                           // container, used to
                                                           // close sockets
                                                           // explicitly.
@@ -59,44 +55,46 @@ public class CanalServerWithNetty extends AbstractCanalLifeCycle implements Cana
         if (!embeddedServer.isStart()) {
             embeddedServer.start();
         }
-
-        this.bootstrap = new ServerBootstrap(new NioServerSocketChannelFactory(Executors.newCachedThreadPool(),
-            Executors.newCachedThreadPool()));
+        EventLoopGroup boss = new NioEventLoopGroup();
+        EventLoopGroup worker = new NioEventLoopGroup();
+        this.bootstrap = new ServerBootstrap();
+        bootstrap.group(boss,worker);
         /*
          * enable keep-alive mechanism, handle abnormal network connection
          * scenarios on OS level. the threshold parameters are depended on OS.
          * e.g. On Linux: net.ipv4.tcp_keepalive_time = 300
          * net.ipv4.tcp_keepalive_probes = 2 net.ipv4.tcp_keepalive_intvl = 30
          */
-        bootstrap.setOption("child.keepAlive", true);
+        // 不知意图，先注释
+        //bootstrap.setOption("child.keepAlive", true);
         /*
          * optional parameter.
          */
-        bootstrap.setOption("child.tcpNoDelay", true);
+        // 不知意图，先注释
+        //bootstrap.setOption("child.tcpNoDelay", true);
 
         // 构造对应的pipeline
-        bootstrap.setPipelineFactory(new ChannelPipelineFactory() {
+        bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
 
-            public ChannelPipeline getPipeline() throws Exception {
-                ChannelPipeline pipelines = Channels.pipeline();
+            @Override
+            protected void initChannel(SocketChannel socketChannel) throws Exception {
+                ChannelPipeline pipelines = socketChannel.pipeline();
                 pipelines.addLast(FixedHeaderFrameDecoder.class.getName(), new FixedHeaderFrameDecoder());
                 // support to maintain child socket channel.
                 pipelines.addLast(HandshakeInitializationHandler.class.getName(),
-                    new HandshakeInitializationHandler(childGroups));
+                        new HandshakeInitializationHandler(childGroups));
                 pipelines.addLast(ClientAuthenticationHandler.class.getName(),
-                    new ClientAuthenticationHandler(embeddedServer));
+                        new ClientAuthenticationHandler(embeddedServer));
 
                 SessionHandler sessionHandler = new SessionHandler(embeddedServer);
                 pipelines.addLast(SessionHandler.class.getName(), sessionHandler);
-                return pipelines;
             }
         });
-
         // 启动
         if (StringUtils.isNotEmpty(ip)) {
-            this.serverChannel = bootstrap.bind(new InetSocketAddress(this.ip, this.port));
+            this.serverChannel = bootstrap.bind(new InetSocketAddress(this.ip, this.port)).channel();
         } else {
-            this.serverChannel = bootstrap.bind(new InetSocketAddress(this.port));
+            this.serverChannel = bootstrap.bind(new InetSocketAddress(this.port)).channel();
         }
     }
 
