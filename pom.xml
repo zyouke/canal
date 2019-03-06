@@ -39,36 +39,14 @@
         </license>
     </licenses>
 
-    <scm>
-        <url>git@github.com:alibaba/canal.git</url>
-        <connection>scm:git:git@github.com:alibaba/canal.git</connection>
-        <developerConnection>scm:git:git@github.com:alibaba/canal.git</developerConnection>
-    </scm>
-
     <repositories>
+        <repository>
+            <id>aliyunmaven</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
         <repository>
             <id>central</id>
             <url>http://repo1.maven.org/maven2</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>java.net</id>
-            <url>http://download.java.net/maven/2/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>alibaba</id>
-            <url>http://code.alibabatech.com/mvn/releases/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
