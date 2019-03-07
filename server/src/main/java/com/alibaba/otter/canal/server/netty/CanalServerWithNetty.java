@@ -3,7 +3,10 @@ package com.alibaba.otter.canal.server.netty;
 import com.alibaba.otter.canal.common.AbstractCanalLifeCycle;
 import com.alibaba.otter.canal.server.CanalServer;
 import com.alibaba.otter.canal.server.embedded.CanalServerWithEmbedded;
+import com.alibaba.otter.canal.server.netty.handler.ClientAuthenticationHandler;
+import com.alibaba.otter.canal.server.netty.handler.FixedHeaderFrameDecoder;
 import com.alibaba.otter.canal.server.netty.handler.HandshakeInitializationHandler;
+import com.alibaba.otter.canal.server.netty.handler.SessionHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -79,12 +82,12 @@ public class CanalServerWithNetty extends AbstractCanalLifeCycle implements Cana
             @Override
             protected void initChannel(SocketChannel socketChannel) throws Exception {
                 ChannelPipeline pipelines = socketChannel.pipeline();
-                pipelines.addLast(FixedHeaderFrameDecoder.class.getName(), new FixedHeaderFrameDecoder());
+                /*pipelines.addLast(FixedHeaderFrameDecoder.class.getName(), new FixedHeaderFrameDecoder());
                 // support to maintain child socket channel.
                 pipelines.addLast(HandshakeInitializationHandler.class.getName(),
                         new HandshakeInitializationHandler(childGroups));
                 pipelines.addLast(ClientAuthenticationHandler.class.getName(),
-                        new ClientAuthenticationHandler(embeddedServer));
+                        new ClientAuthenticationHandler(embeddedServer));*/
 
                 SessionHandler sessionHandler = new SessionHandler(embeddedServer);
                 pipelines.addLast(SessionHandler.class.getName(), sessionHandler);
@@ -98,6 +101,7 @@ public class CanalServerWithNetty extends AbstractCanalLifeCycle implements Cana
         }
     }
 
+    @Override
     public void stop() {
         super.stop();
 

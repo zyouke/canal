@@ -105,6 +105,7 @@
         <module>client</module>
         <module>deployer</module>
         <module>example</module>
+        <module>canal_netty</module>
     </modules>
 
     <dependencyManagement>
