@@ -30,6 +30,7 @@ public class PropertyPlaceholderConfigurer extends org.springframework.beans.fac
         setIgnoreUnresolvablePlaceholders(true);
     }
 
+    @Override
     public void setResourceLoader(ResourceLoader loader) {
         this.loader = loader;
     }
@@ -38,6 +39,7 @@ public class PropertyPlaceholderConfigurer extends org.springframework.beans.fac
         this.locationNames = locations;
     }
 
+    @Override
     public void afterPropertiesSet() throws Exception {
         Assert.notNull(loader, "no resourceLoader");
 

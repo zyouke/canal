@@ -1,13 +1,12 @@
 package com.alibaba.otter.canal.parse.driver.mysql.utils;
 
-import java.io.IOException;
-
-import org.apache.commons.lang.StringUtils;
-import org.jboss.netty.buffer.ChannelBuffer;
-import org.jboss.netty.buffer.ChannelBuffers;
-
 import com.alibaba.otter.canal.parse.driver.mysql.packets.HeaderPacket;
 import com.alibaba.otter.canal.parse.driver.mysql.packets.client.BinlogDumpCommandPacket;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import org.apache.commons.lang.StringUtils;
+
+import java.io.IOException;
 
 public class BinlogDumpCommandBuilder {
 
@@ -22,11 +21,11 @@ public class BinlogDumpCommandBuilder {
         return command;
     }
 
-    public ChannelBuffer toChannelBuffer(BinlogDumpCommandPacket command) throws IOException {
+    public ByteBuf toChannelBuffer(BinlogDumpCommandPacket command) throws IOException {
         byte[] commandBytes = command.toBytes();
         byte[] headerBytes = assembleHeaderBytes(commandBytes.length);
-        ChannelBuffer buffer = ChannelBuffers.wrappedBuffer(headerBytes, commandBytes);
-        return buffer;
+        ByteBuf byteBuf = Unpooled.wrappedBuffer(headerBytes, commandBytes);
+        return byteBuf;
     }
 
     private byte[] assembleHeaderBytes(int length) {

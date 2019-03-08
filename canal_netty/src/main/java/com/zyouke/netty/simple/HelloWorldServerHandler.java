@@ -8,6 +8,7 @@ import java.net.SocketAddress;
 
 public class HelloWorldServerHandler extends SimpleChannelInboundHandler<String> {
 
+    @Override
     protected void channelRead0(ChannelHandlerContext ctx, String message) throws Exception {
         System.out.println("接受客户端" + ctx.channel().remoteAddress() + "的请求：" + message);
         ctx.channel().writeAndFlush("200 \r\n");

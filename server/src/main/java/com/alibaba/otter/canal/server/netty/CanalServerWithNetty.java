@@ -16,6 +16,7 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.apache.commons.lang.StringUtils;
 
 import java.net.InetSocketAddress;
@@ -45,13 +46,14 @@ public class CanalServerWithNetty extends AbstractCanalLifeCycle implements Cana
 
     private CanalServerWithNetty(){
         this.embeddedServer = CanalServerWithEmbedded.instance();
-        this.childGroups = new DefaultChannelGroup();
+        //this.childGroups = new DefaultChannelGroup();
     }
 
     public static CanalServerWithNetty instance() {
         return SingletonHolder.CANAL_SERVER_WITH_NETTY;
     }
 
+    @Override
     public void start() {
         super.start();
 
@@ -62,6 +64,7 @@ public class CanalServerWithNetty extends AbstractCanalLifeCycle implements Cana
         EventLoopGroup worker = new NioEventLoopGroup();
         this.bootstrap = new ServerBootstrap();
         bootstrap.group(boss,worker);
+        bootstrap.channel(NioServerSocketChannel.class).
         /*
          * enable keep-alive mechanism, handle abnormal network connection
          * scenarios on OS level. the threshold parameters are depended on OS.
@@ -77,17 +80,17 @@ public class CanalServerWithNetty extends AbstractCanalLifeCycle implements Cana
         //bootstrap.setOption("child.tcpNoDelay", true);
 
         // 构造对应的pipeline
-        bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
+        childHandler(new ChannelInitializer<SocketChannel>() {
 
             @Override
             protected void initChannel(SocketChannel socketChannel) throws Exception {
                 ChannelPipeline pipelines = socketChannel.pipeline();
-                /*pipelines.addLast(FixedHeaderFrameDecoder.class.getName(), new FixedHeaderFrameDecoder());
+                pipelines.addLast(FixedHeaderFrameDecoder.class.getName(), new FixedHeaderFrameDecoder());
                 // support to maintain child socket channel.
                 pipelines.addLast(HandshakeInitializationHandler.class.getName(),
                         new HandshakeInitializationHandler(childGroups));
                 pipelines.addLast(ClientAuthenticationHandler.class.getName(),
-                        new ClientAuthenticationHandler(embeddedServer));*/
+                        new ClientAuthenticationHandler(embeddedServer));
 
                 SessionHandler sessionHandler = new SessionHandler(embeddedServer);
                 pipelines.addLast(SessionHandler.class.getName(), sessionHandler);
@@ -115,9 +118,9 @@ public class CanalServerWithNetty extends AbstractCanalLifeCycle implements Cana
             this.childGroups.close().awaitUninterruptibly(5000);
         }
 
-        if (this.bootstrap != null) {
+        /*if (this.bootstrap != null) {
             this.bootstrap.releaseExternalResources();
-        }
+        }*/
 
         if (embeddedServer.isStart()) {
             embeddedServer.stop();
