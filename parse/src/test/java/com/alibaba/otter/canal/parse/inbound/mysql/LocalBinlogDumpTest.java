@@ -35,9 +35,7 @@ public class LocalBinlogDumpTest {
         controller.setMasterPosition(startPosition);
         controller.setEventSink(new AbstractCanalEventSinkTest<List<Entry>>() {
 
-            public boolean sink(List<Entry> entrys, InetSocketAddress remoteAddress, String destination)
-                                                                                                        throws CanalSinkException,
-                                                                                                        InterruptedException {
+            public boolean sink(List<Entry> entrys, InetSocketAddress remoteAddress, String destination) throws CanalSinkException,InterruptedException {
 
                 for (Entry entry : entrys) {
                     if (entry.getEntryType() == EntryType.TRANSACTIONBEGIN
@@ -50,8 +48,7 @@ public class LocalBinlogDumpTest {
                         try {
                             rowChage = RowChange.parseFrom(entry.getStoreValue());
                         } catch (Exception e) {
-                            throw new RuntimeException("ERROR ## parser of eromanga-event has an error , data:"
-                                                       + entry.toString(), e);
+                            throw new RuntimeException("ERROR ## parser of eromanga-event has an error , data:" + entry.toString(), e);
                         }
 
                         EventType eventType = rowChage.getEventType();

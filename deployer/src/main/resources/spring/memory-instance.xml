@@ -158,7 +158,7 @@
 		<property name="supportBinlogImages" value="${canal.instance.binlog.image}" />
 		
 		<!--表结构相关-->
-		<property name="enableTsdb" value="${canal.instance.tsdb.enable:false}"/>
-		<property name="tsdbSpringXml" value="${canal.instance.tsdb.spring.xml:}"/>
+		<!--<property name="enableTsdb" value="${canal.instance.tsdb.enable:false}"/>
+		<property name="tsdbSpringXml" value="${canal.instance.tsdb.spring.xml:}"/>-->
 	</bean>
 </beans>

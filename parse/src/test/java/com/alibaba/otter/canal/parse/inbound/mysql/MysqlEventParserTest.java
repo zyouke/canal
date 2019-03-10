@@ -44,8 +44,7 @@ public class MysqlEventParserTest {
         controller.setEventSink(new AbstractCanalEventSinkTest<List<Entry>>() {
 
             @Override
-            public boolean sink(List<Entry> entrys, InetSocketAddress remoteAddress, String destination)
-                                                                                                        throws CanalSinkException {
+            public boolean sink(List<Entry> entrys, InetSocketAddress remoteAddress, String destination)throws CanalSinkException {
                 for (Entry entry : entrys) {
                     if (entry.getEntryType() != EntryType.HEARTBEAT) {
                         entryCount.incrementAndGet();

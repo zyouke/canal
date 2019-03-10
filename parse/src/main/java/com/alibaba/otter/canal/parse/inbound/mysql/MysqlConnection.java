@@ -187,8 +187,7 @@ public class MysqlConnection implements ErosaConnection {
      * <li>net_write_timeout</li>
      * <li>net_read_timeout</li>
      * </ol>
-     * 
-     * @param channel
+     *
      * @throws IOException
      */
     private void updateSettings() throws IOException {

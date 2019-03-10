@@ -32,23 +32,20 @@ public class MysqlDumpTest {
         controller.setConnectionCharset(Charset.forName("UTF-8"));
         controller.setSlaveId(3344L);
         controller.setDetectingEnable(false);
-        controller.setMasterInfo(new AuthenticationInfo(new InetSocketAddress("127.0.0.1", 3306), "canal", "canal"));
+        controller.setMasterInfo(new AuthenticationInfo(new InetSocketAddress("122.114.90.68", 3306), "canal", "123456"));
         controller.setMasterPosition(startPosition);
-        controller.setEnableTsdb(true);
-        controller.setDestination("example");
-        controller.setTsdbSpringXml("classpath:tsdb/h2-tsdb.xml");
-        controller.setEventFilter(new AviaterRegexFilter("test\\..*"));
-        controller.setEventBlackFilter(new AviaterRegexFilter("canal_tsdb\\..*"));
+        controller.setEnableTsdb(false);
+        controller.setDestination("zyouke");
+        controller.setTsdbSpringXml("");
+        controller.setEventFilter(new AviaterRegexFilter("zyouke\\..*"));
+        controller.setEventBlackFilter(new AviaterRegexFilter(""));
         controller.setEventSink(new AbstractCanalEventSinkTest<List<Entry>>() {
 
-            public boolean sink(List<Entry> entrys, InetSocketAddress remoteAddress, String destination)
-                                                                                                        throws CanalSinkException,
-                                                                                                        InterruptedException {
-
+            public boolean sink(List<Entry> entrys, InetSocketAddress remoteAddress, String destination)throws CanalSinkException, InterruptedException {
                 for (Entry entry : entrys) {
                     if (entry.getEntryType() == EntryType.TRANSACTIONBEGIN
-                        || entry.getEntryType() == EntryType.TRANSACTIONEND
-                        || entry.getEntryType() == EntryType.HEARTBEAT) {
+                            || entry.getEntryType() == EntryType.TRANSACTIONEND
+                            || entry.getEntryType() == EntryType.HEARTBEAT) {
                         continue;
                     }
 
@@ -56,17 +53,16 @@ public class MysqlDumpTest {
                     try {
                         rowChage = RowChange.parseFrom(entry.getStoreValue());
                     } catch (Exception e) {
-                        throw new RuntimeException("ERROR ## parser of eromanga-event has an error , data:"
-                                                   + entry.toString(), e);
+                        throw new RuntimeException("ERROR ## parser of eromanga-event has an error , data:" + entry.toString(), e);
                     }
 
                     EventType eventType = rowChage.getEventType();
                     System.out.println(String.format("================> binlog[%s:%s] , name[%s,%s] , eventType : %s",
-                        entry.getHeader().getLogfileName(),
-                        entry.getHeader().getLogfileOffset(),
-                        entry.getHeader().getSchemaName(),
-                        entry.getHeader().getTableName(),
-                        eventType));
+                            entry.getHeader().getLogfileName(),
+                            entry.getHeader().getLogfileOffset(),
+                            entry.getHeader().getSchemaName(),
+                            entry.getHeader().getTableName(),
+                            eventType));
 
                     if (eventType == EventType.QUERY || rowChage.getIsDdl()) {
                         System.out.println(" sql ----> " + rowChage.getSql());

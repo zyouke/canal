@@ -188,9 +188,7 @@ public class SessionHandler extends SimpleChannelInboundHandler<Packet> {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx,Throwable cause) throws Exception {
-        logger.error("something goes wrong with channel:{}, exception={}",
-            ctx.channel(),
-            ExceptionUtils.getStackTrace(cause.getCause()));
+        logger.error("something goes wrong with channel:{}, exception={}",ctx.channel(),ExceptionUtils.getStackTrace(cause.getCause()));
         ctx.channel().close();
     }
 

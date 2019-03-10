@@ -343,8 +343,7 @@ public class CanalController {
             InstanceConfig oldConfig = instanceConfigs.put(destination, config);
 
             if (oldConfig != null) {
-                logger.warn("destination:{} old config:{} has replace by new config:{}", new Object[] { destination,
-                        oldConfig, config });
+                logger.warn("destination:{} old config:{} has replace by new config:{}", new Object[] { destination,oldConfig, config });
             }
         }
     }

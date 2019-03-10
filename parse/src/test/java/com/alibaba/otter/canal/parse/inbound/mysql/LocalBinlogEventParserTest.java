@@ -22,9 +22,9 @@ import com.alibaba.otter.canal.sink.exception.CanalSinkException;
 
 public class LocalBinlogEventParserTest {
 
-    private static final String MYSQL_ADDRESS = "127.0.0.1";
+    private static final String MYSQL_ADDRESS = "122.114.90.68";
     private static final String USERNAME      = "canal";
-    private static final String PASSWORD      = "canal";
+    private static final String PASSWORD      = "123456";
     private String              directory;
 
     @Before
@@ -47,8 +47,7 @@ public class LocalBinlogEventParserTest {
         controller.setDirectory(directory);
         controller.setEventSink(new AbstractCanalEventSinkTest<List<Entry>>() {
 
-            public boolean sink(List<Entry> entrys, InetSocketAddress remoteAddress, String destination)
-                                                                                                        throws CanalSinkException {
+            public boolean sink(List<Entry> entrys, InetSocketAddress remoteAddress, String destination)throws CanalSinkException {
                 entryCount.incrementAndGet();
 
                 for (Entry entry : entrys) {
@@ -111,8 +110,7 @@ public class LocalBinlogEventParserTest {
         controller.setEventSink(new AbstractCanalEventSinkTest<List<Entry>>() {
 
             @Override
-            public boolean sink(List<Entry> entrys, InetSocketAddress remoteAddress, String destination)
-                                                                                                        throws CanalSinkException {
+            public boolean sink(List<Entry> entrys, InetSocketAddress remoteAddress, String destination)throws CanalSinkException {
                 for (Entry entry : entrys) {
                     entryCount.incrementAndGet();
 

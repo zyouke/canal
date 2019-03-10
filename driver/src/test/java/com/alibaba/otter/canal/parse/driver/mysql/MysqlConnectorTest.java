@@ -11,16 +11,19 @@ import com.alibaba.otter.canal.parse.driver.mysql.packets.server.ResultSetPacket
 
 public class MysqlConnectorTest {
 
-    @Test
-    public void testQuery() {
-
-        MysqlConnector connector = new MysqlConnector(new InetSocketAddress("122.114.90.68", 3306), "root", "123456");
+    MysqlConnector connector = new MysqlConnector(new InetSocketAddress("122.114.90.68", 3306), "root", "123456");
+    {
         try {
             connector.connect();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void testQuery() {
+        try {
             MysqlQueryExecutor executor = new MysqlQueryExecutor(connector);
-            ResultSetPacket result = executor.query("show variables like '%char%';");
-            System.out.println(result);
-            result = executor.query("select * from zyouke.canal_test");
+            ResultSetPacket result =  executor.query("select * from zyouke.canal_test where id = 30");
             System.out.println(result);
         } catch (IOException e) {
             Assert.fail(e.getMessage());
@@ -35,12 +38,9 @@ public class MysqlConnectorTest {
 
     @Test
     public void testUpdate() {
-
-        MysqlConnector connector = new MysqlConnector(new InetSocketAddress("122.114.90.68", 3306), "root", "123456");
         try {
-            connector.connect();
             MysqlUpdateExecutor executor = new MysqlUpdateExecutor(connector);
-            String randomName = RandomStringUtils.randomAlphabetic(20);
+            String randomName = /*RandomStringUtils.randomAlphabetic(20)*/"测试";
             executor.update("insert into zyouke.canal_test(name) values('"+randomName+"')");
         } catch (IOException e) {
             Assert.fail(e.getMessage());

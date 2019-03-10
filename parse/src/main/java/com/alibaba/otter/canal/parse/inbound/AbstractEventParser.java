@@ -203,10 +203,7 @@ public abstract class AbstractEventParser<EVENT> extends AbstractCanalLifeCycle 
                                         throw (TableIdNotFoundException) e.getCause();
                                     }
                                     // 记录一下，出错的位点信息
-                                    processSinkError(e,
-                                        this.lastPosition,
-                                        startPosition.getJournalName(),
-                                        startPosition.getPosition());
+                                    processSinkError(e,this.lastPosition,startPosition.getJournalName(),startPosition.getPosition());
                                     throw new CanalParseException(e); // 继续抛出异常，让上层统一感知
                                 }
                             }
@@ -217,9 +214,7 @@ public abstract class AbstractEventParser<EVENT> extends AbstractCanalLifeCycle 
                         if (StringUtils.isEmpty(startPosition.getJournalName()) && startPosition.getTimestamp() != null) {
                             erosaConnection.dump(startPosition.getTimestamp(), sinkHandler);
                         } else {
-                            erosaConnection.dump(startPosition.getJournalName(),
-                                startPosition.getPosition(),
-                                sinkHandler);
+                            erosaConnection.dump(startPosition.getJournalName(),startPosition.getPosition(),sinkHandler);
                         }
 
                     } catch (TableIdNotFoundException e) {
@@ -227,8 +222,7 @@ public abstract class AbstractEventParser<EVENT> extends AbstractCanalLifeCycle 
                         // 特殊处理TableIdNotFound异常,出现这样的异常，一种可能就是起始的position是一个事务当中，导致tablemap
                         // Event时间没解析过
                         needTransactionPosition.compareAndSet(false, true);
-                        logger.error(String.format("dump address %s has an error, retrying. caused by ",
-                            runningInfo.getAddress().toString()), e);
+                        logger.error(String.format("dump address %s has an error, retrying. caused by ", runningInfo.getAddress().toString()), e);
                     } catch (Throwable e) {
                         processDumpError(e);
                         exception = e;

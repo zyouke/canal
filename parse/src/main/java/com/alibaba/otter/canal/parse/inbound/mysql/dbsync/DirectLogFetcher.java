@@ -1,15 +1,16 @@
 package com.alibaba.otter.canal.parse.inbound.mysql.dbsync;
 
+import com.alibaba.otter.canal.parse.driver.mysql.packets.server.RowDataPacket;
+import com.alibaba.otter.canal.parse.driver.mysql.socket.SocketChannel;
+import com.alibaba.otter.canal.parse.driver.mysql.utils.PacketManager;
+import com.taobao.tddl.dbsync.binlog.LogFetcher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.SocketTimeoutException;
 import java.nio.channels.ClosedByInterruptException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.alibaba.otter.canal.parse.driver.mysql.socket.SocketChannel;
-import com.taobao.tddl.dbsync.binlog.LogFetcher;
 
 /**
  * 基于socket的logEvent实现
@@ -70,7 +71,6 @@ public class DirectLogFetcher extends LogFetcher {
                 logger.warn("Reached end of input stream while fetching header");
                 return false;
             }
-
             // Fetching the first packet(may a multi-packet).
             int netlen = getUint24(PACKET_LEN_OFFSET);
             int netnum = getUint8(PACKET_SEQ_OFFSET);
@@ -91,18 +91,15 @@ public class DirectLogFetcher extends LogFetcher {
                     final int errno = getInt16();
                     String sqlstate = forward(1).getFixString(SQLSTATE_LENGTH);
                     String errmsg = getFixString(limit - position);
-                    throw new IOException("Received error packet:" + " errno = " + errno + ", sqlstate = " + sqlstate
-                                          + " errmsg = " + errmsg);
+                    throw new IOException("Received error packet:" + " errno = " + errno + ", sqlstate = " + sqlstate + " errmsg = " + errmsg);
                 } else if (mark == 254) {
                     // Indicates end of stream. It's not clear when this would
                     // be sent.
-                    logger.warn("Received EOF packet from server, apparent"
-                                + " master disconnected. It's may be duplicate slaveId , check instance config");
+                    logger.warn("Received EOF packet from server, apparent" + " master disconnected. It's may be duplicate slaveId , check instance config");
                     return false;
                 } else {
                     // Should not happen.
-                    throw new IOException("Unexpected response " + mark + " while fetching binlog: packet #" + netnum
-                                          + ", len = " + netlen);
+                    throw new IOException("Unexpected response " + mark + " while fetching binlog: packet #" + netnum + ", len = " + netlen);
                 }
             }
 
@@ -147,8 +144,12 @@ public class DirectLogFetcher extends LogFetcher {
 
     private final boolean fetch0(final int off, final int len) throws IOException {
         ensureCapacity(off + len);
-
         byte[] read = channel.read(len);
+        // 多加的逻辑打印监听的数据 -------开始------
+        RowDataPacket rowDataPacket = new RowDataPacket();
+        rowDataPacket.fromBytes(read);
+        logger.info("从channel 中获取的数据：{}",rowDataPacket);
+        // 多加的逻辑打印监听的数据 -------开始------
         System.arraycopy(read, 0, this.buffer, off, len);
 
         if (limit < off + len) limit = off + len;
