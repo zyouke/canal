@@ -281,6 +281,7 @@ public abstract class AbstractEventParser<EVENT> extends AbstractCanalLifeCycle 
         parseThread.start();
     }
 
+    @Override
     public void stop() {
         super.stop();
 
@@ -409,6 +410,7 @@ public abstract class AbstractEventParser<EVENT> extends AbstractCanalLifeCycle 
             logger.info("start heart beat.... ");
         }
     }
+
 
     protected TimerTask buildHeartBeatTimeTask(ErosaConnection connection) {
         return new TimerTask() {
