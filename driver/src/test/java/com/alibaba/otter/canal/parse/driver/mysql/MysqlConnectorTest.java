@@ -40,7 +40,7 @@ public class MysqlConnectorTest {
     public void testUpdate() {
         try {
             MysqlUpdateExecutor executor = new MysqlUpdateExecutor(connector);
-            String randomName = /*RandomStringUtils.randomAlphabetic(20)*/"测试";
+            String randomName = RandomStringUtils.randomAlphabetic(20);
             executor.update("insert into zyouke.canal_test(name) values('"+randomName+"')");
         } catch (IOException e) {
             Assert.fail(e.getMessage());

@@ -5,7 +5,7 @@ package com.alibaba.otter.canal.protocol;
 
 public final class CanalPacket {
 
-    private CanalPacket(){
+    private CanalPacket() {
     }
 
     public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
@@ -30,7 +30,7 @@ public final class CanalPacket {
         /**
          * <code>LZF = 4;</code>
          */
-        LZF(3, 4), ;
+        LZF(3, 4),;
 
         /**
          * <code>NONE = 1;</code>
@@ -47,7 +47,7 @@ public final class CanalPacket {
         /**
          * <code>LZF = 4;</code>
          */
-        public static final int LZF_VALUE  = 4;
+        public static final int LZF_VALUE = 4;
 
         public final int getNumber() {
             return value;
@@ -72,12 +72,13 @@ public final class CanalPacket {
             return internalValueMap;
         }
 
-        private static com.google.protobuf.Internal.EnumLiteMap<Compression> internalValueMap = new com.google.protobuf.Internal.EnumLiteMap<Compression>() {
+        private static com.google.protobuf.Internal.EnumLiteMap<Compression> internalValueMap = new com.google
+                .protobuf.Internal.EnumLiteMap<Compression>() {
 
-                                                                                                  public Compression findValueByNumber(int number) {
-                                                                                                      return Compression.valueOf(number);
-                                                                                                  }
-                                                                                              };
+            public Compression findValueByNumber(int number) {
+                return Compression.valueOf(number);
+            }
+        };
 
         public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
             return getDescriptor().getValues().get(index);
@@ -103,7 +104,7 @@ public final class CanalPacket {
         private final int index;
         private final int value;
 
-        private Compression(int index, int value){
+        private Compression(int index, int value) {
             this.index = index;
             this.value = value;
         }
@@ -149,7 +150,7 @@ public final class CanalPacket {
         CLIENTACK(7, 8),
         /**
          * <code>SHUTDOWN = 9;</code>
-         *
+         * <p>
          * <pre>
          * management part
          * </pre>
@@ -157,7 +158,7 @@ public final class CanalPacket {
         SHUTDOWN(8, 9),
         /**
          * <code>DUMP = 10;</code>
-         *
+         * <p>
          * <pre>
          * integration
          * </pre>
@@ -170,12 +171,12 @@ public final class CanalPacket {
         /**
          * <code>CLIENTROLLBACK = 12;</code>
          */
-        CLIENTROLLBACK(11, 12), ;
+        CLIENTROLLBACK(11, 12),;
 
         /**
          * <code>HANDSHAKE = 1;</code>
          */
-        public static final int HANDSHAKE_VALUE            = 1;
+        public static final int HANDSHAKE_VALUE = 1;
         /**
          * <code>CLIENTAUTHENTICATION = 2;</code>
          */
@@ -183,51 +184,51 @@ public final class CanalPacket {
         /**
          * <code>ACK = 3;</code>
          */
-        public static final int ACK_VALUE                  = 3;
+        public static final int ACK_VALUE = 3;
         /**
          * <code>SUBSCRIPTION = 4;</code>
          */
-        public static final int SUBSCRIPTION_VALUE         = 4;
+        public static final int SUBSCRIPTION_VALUE = 4;
         /**
          * <code>UNSUBSCRIPTION = 5;</code>
          */
-        public static final int UNSUBSCRIPTION_VALUE       = 5;
+        public static final int UNSUBSCRIPTION_VALUE = 5;
         /**
          * <code>GET = 6;</code>
          */
-        public static final int GET_VALUE                  = 6;
+        public static final int GET_VALUE = 6;
         /**
          * <code>MESSAGES = 7;</code>
          */
-        public static final int MESSAGES_VALUE             = 7;
+        public static final int MESSAGES_VALUE = 7;
         /**
          * <code>CLIENTACK = 8;</code>
          */
-        public static final int CLIENTACK_VALUE            = 8;
+        public static final int CLIENTACK_VALUE = 8;
         /**
          * <code>SHUTDOWN = 9;</code>
-         *
+         * <p>
          * <pre>
          * management part
          * </pre>
          */
-        public static final int SHUTDOWN_VALUE             = 9;
+        public static final int SHUTDOWN_VALUE = 9;
         /**
          * <code>DUMP = 10;</code>
-         *
+         * <p>
          * <pre>
          * integration
          * </pre>
          */
-        public static final int DUMP_VALUE                 = 10;
+        public static final int DUMP_VALUE = 10;
         /**
          * <code>HEARTBEAT = 11;</code>
          */
-        public static final int HEARTBEAT_VALUE            = 11;
+        public static final int HEARTBEAT_VALUE = 11;
         /**
          * <code>CLIENTROLLBACK = 12;</code>
          */
-        public static final int CLIENTROLLBACK_VALUE       = 12;
+        public static final int CLIENTROLLBACK_VALUE = 12;
 
         public final int getNumber() {
             return value;
@@ -268,12 +269,13 @@ public final class CanalPacket {
             return internalValueMap;
         }
 
-        private static com.google.protobuf.Internal.EnumLiteMap<PacketType> internalValueMap = new com.google.protobuf.Internal.EnumLiteMap<PacketType>() {
+        private static com.google.protobuf.Internal.EnumLiteMap<PacketType> internalValueMap = new com.google
+                .protobuf.Internal.EnumLiteMap<PacketType>() {
 
-                                                                                                 public PacketType findValueByNumber(int number) {
-                                                                                                     return PacketType.valueOf(number);
-                                                                                                 }
-                                                                                             };
+            public PacketType findValueByNumber(int number) {
+                return PacketType.valueOf(number);
+            }
+        };
 
         public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
             return getDescriptor().getValues().get(index);
@@ -299,7 +301,7 @@ public final class CanalPacket {
         private final int index;
         private final int value;
 
-        private PacketType(int index, int value){
+        private PacketType(int index, int value) {
             this.index = index;
             this.value = value;
         }
@@ -308,8 +310,8 @@ public final class CanalPacket {
     }
 
     public interface PacketOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Packet)
-    com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Packet)
+            com.google.protobuf.MessageOrBuilder {
 
         /**
          * <code>optional int32 magic_number = 1 [default = 17];</code>
@@ -366,16 +368,16 @@ public final class CanalPacket {
      * Protobuf type {@code com.alibaba.otter.canal.protocol.Packet}
      */
     public static final class Packet extends com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Packet)
-    PacketOrBuilder {
+            // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Packet)
+            PacketOrBuilder {
 
         // Use Packet.newBuilder() to construct.
-        private Packet(com.google.protobuf.GeneratedMessage.Builder<?> builder){
+        private Packet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
             super(builder);
             this.unknownFields = builder.getUnknownFields();
         }
 
-        private Packet(boolean noInit){
+        private Packet(boolean noInit) {
             this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
 
@@ -398,10 +400,11 @@ public final class CanalPacket {
 
         private Packet(com.google.protobuf.CodedInputStream input,
                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                   throws com.google.protobuf.InvalidProtocolBufferException{
+                throws com.google.protobuf.InvalidProtocolBufferException {
             initFields();
             int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
+                    .newBuilder();
             try {
                 boolean done = false;
                 while (!done) {
@@ -428,7 +431,8 @@ public final class CanalPacket {
                         }
                         case 24: {
                             int rawValue = input.readEnum();
-                            com.alibaba.otter.canal.protocol.CanalPacket.PacketType value = com.alibaba.otter.canal.protocol.CanalPacket.PacketType.valueOf(rawValue);
+                            com.alibaba.otter.canal.protocol.CanalPacket.PacketType value = com.alibaba.otter.canal
+                                    .protocol.CanalPacket.PacketType.valueOf(rawValue);
                             if (value == null) {
                                 unknownFields.mergeVarintField(3, rawValue);
                             } else {
@@ -439,7 +443,8 @@ public final class CanalPacket {
                         }
                         case 32: {
                             int rawValue = input.readEnum();
-                            com.alibaba.otter.canal.protocol.CanalPacket.Compression value = com.alibaba.otter.canal.protocol.CanalPacket.Compression.valueOf(rawValue);
+                            com.alibaba.otter.canal.protocol.CanalPacket.Compression value = com.alibaba.otter.canal
+                                    .protocol.CanalPacket.Compression.valueOf(rawValue);
                             if (value == null) {
                                 unknownFields.mergeVarintField(4, rawValue);
                             } else {
@@ -466,31 +471,34 @@ public final class CanalPacket {
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Packet_descriptor;
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Packet_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Packet_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Packet.class,
-                com.alibaba.otter.canal.protocol.CanalPacket.Packet.Builder.class);
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Packet_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Packet.class,
+                            com.alibaba.otter.canal.protocol.CanalPacket.Packet.Builder.class);
         }
 
         public static com.google.protobuf.Parser<Packet> PARSER = new com.google.protobuf.AbstractParser<Packet>() {
 
-                                                                    public Packet parsePartialFrom(com.google.protobuf.CodedInputStream input,
-                                                                                                   com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                               throws com.google.protobuf.InvalidProtocolBufferException {
-                                                                        return new Packet(input, extensionRegistry);
-                                                                    }
-                                                                };
+            public Packet parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                                           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new Packet(input, extensionRegistry);
+            }
+        };
 
         @java.lang.Override
         public com.google.protobuf.Parser<Packet> getParserForType() {
             return PARSER;
         }
 
-        private int             bitField0_;
+        private int bitField0_;
         public static final int MAGIC_NUMBER_FIELD_NUMBER = 1;
-        private int             magicNumber_;
+        private int magicNumber_;
 
         /**
          * <code>optional int32 magic_number = 1 [default = 17];</code>
@@ -507,7 +515,7 @@ public final class CanalPacket {
         }
 
         public static final int VERSION_FIELD_NUMBER = 2;
-        private int             version_;
+        private int version_;
 
         /**
          * <code>optional int32 version = 2 [default = 1];</code>
@@ -523,7 +531,7 @@ public final class CanalPacket {
             return version_;
         }
 
-        public static final int                                         TYPE_FIELD_NUMBER = 3;
+        public static final int TYPE_FIELD_NUMBER = 3;
         private com.alibaba.otter.canal.protocol.CanalPacket.PacketType type_;
 
         /**
@@ -540,7 +548,7 @@ public final class CanalPacket {
             return type_;
         }
 
-        public static final int                                          COMPRESSION_FIELD_NUMBER = 4;
+        public static final int COMPRESSION_FIELD_NUMBER = 4;
         private com.alibaba.otter.canal.protocol.CanalPacket.Compression compression_;
 
         /**
@@ -557,7 +565,7 @@ public final class CanalPacket {
             return compression_;
         }
 
-        public static final int                BODY_FIELD_NUMBER = 5;
+        public static final int BODY_FIELD_NUMBER = 5;
         private com.google.protobuf.ByteString body_;
 
         /**
@@ -586,8 +594,10 @@ public final class CanalPacket {
 
         public final boolean isInitialized() {
             byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
 
             memoizedIsInitialized = 1;
             return true;
@@ -617,7 +627,8 @@ public final class CanalPacket {
 
         public int getSerializedSize() {
             int size = memoizedSerializedSize;
-            if (size != -1) return size;
+            if (size != -1)
+                return size;
 
             size = 0;
             if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -648,57 +659,69 @@ public final class CanalPacket {
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Packet parseFrom(com.google.protobuf.ByteString data)
-                                                                                                                        throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Packet parseFrom(com.google.protobuf.ByteString data,
-                                                                                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                    com.google.protobuf
+                                                                                            .ExtensionRegistryLite
+                                                                                            extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Packet parseFrom(byte[] data)
-                                                                                                throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Packet parseFrom(byte[] data,
-                                                                                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                    com.google.protobuf
+                                                                                            .ExtensionRegistryLite
+                                                                                            extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Packet parseFrom(java.io.InputStream input)
-                                                                                                              throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Packet parseFrom(java.io.InputStream input,
-                                                                                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                throws java.io.IOException {
+                                                                                    com.google.protobuf
+                                                                                            .ExtensionRegistryLite
+                                                                                            extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Packet parseDelimitedFrom(java.io.InputStream input)
-                                                                                                                       throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Packet parseDelimitedFrom(java.io.InputStream input,
-                                                                                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                         throws java.io.IOException {
+                                                                                             com.google.protobuf
+                                                                                                     .ExtensionRegistryLite
+                                                                                                     extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Packet parseFrom(com.google.protobuf.CodedInputStream input)
-                                                                                                                               throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Packet parseFrom(com.google.protobuf
+                                                                                            .CodedInputStream input)
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Packet parseFrom(com.google.protobuf.CodedInputStream input,
-                                                                                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Packet parseFrom(com.google.protobuf
+                                                                                            .CodedInputStream input,
+                                                                                    com.google.protobuf
+                                                                                            .ExtensionRegistryLite
+                                                                                            extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
@@ -728,25 +751,28 @@ public final class CanalPacket {
          * Protobuf type {@code com.alibaba.otter.canal.protocol.Packet}
          */
         public static final class Builder extends com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Packet)
-        com.alibaba.otter.canal.protocol.CanalPacket.PacketOrBuilder {
+                // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Packet)
+                com.alibaba.otter.canal.protocol.CanalPacket.PacketOrBuilder {
 
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Packet_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Packet_descriptor;
             }
 
             protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Packet_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Packet.class,
-                    com.alibaba.otter.canal.protocol.CanalPacket.Packet.Builder.class);
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Packet_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Packet.class,
+                                com.alibaba.otter.canal.protocol.CanalPacket.Packet.Builder.class);
             }
 
             // Construct using
             // com.alibaba.otter.canal.protocol.CanalPacket.Packet.newBuilder()
-            private Builder(){
+            private Builder() {
                 maybeForceBuilderInitialization();
             }
 
-            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent){
+            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
                 super(parent);
                 maybeForceBuilderInitialization();
             }
@@ -780,7 +806,8 @@ public final class CanalPacket {
             }
 
             public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Packet_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Packet_descriptor;
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Packet getDefaultInstanceForType() {
@@ -796,7 +823,8 @@ public final class CanalPacket {
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Packet buildPartial() {
-                com.alibaba.otter.canal.protocol.CanalPacket.Packet result = new com.alibaba.otter.canal.protocol.CanalPacket.Packet(this);
+                com.alibaba.otter.canal.protocol.CanalPacket.Packet result = new com.alibaba.otter.canal.protocol
+                        .CanalPacket.Packet(this);
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -834,7 +862,8 @@ public final class CanalPacket {
             }
 
             public Builder mergeFrom(com.alibaba.otter.canal.protocol.CanalPacket.Packet other) {
-                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Packet.getDefaultInstance()) return this;
+                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Packet.getDefaultInstance())
+                    return this;
                 if (other.hasMagicNumber()) {
                     setMagicNumber(other.getMagicNumber());
                 }
@@ -860,7 +889,7 @@ public final class CanalPacket {
 
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                 throws java.io.IOException {
+                    throws java.io.IOException {
                 com.alibaba.otter.canal.protocol.CanalPacket.Packet parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
@@ -949,7 +978,8 @@ public final class CanalPacket {
                 return this;
             }
 
-            private com.alibaba.otter.canal.protocol.CanalPacket.PacketType type_ = com.alibaba.otter.canal.protocol.CanalPacket.PacketType.HANDSHAKE;
+            private com.alibaba.otter.canal.protocol.CanalPacket.PacketType type_ = com.alibaba.otter.canal.protocol
+                    .CanalPacket.PacketType.HANDSHAKE;
 
             /**
              * <code>optional .com.alibaba.otter.canal.protocol.PacketType type = 3;</code>
@@ -988,7 +1018,8 @@ public final class CanalPacket {
                 return this;
             }
 
-            private com.alibaba.otter.canal.protocol.CanalPacket.Compression compression_ = com.alibaba.otter.canal.protocol.CanalPacket.Compression.NONE;
+            private com.alibaba.otter.canal.protocol.CanalPacket.Compression compression_ = com.alibaba.otter.canal
+                    .protocol.CanalPacket.Compression.NONE;
 
             /**
              * <code>optional .com.alibaba.otter.canal.protocol.Compression compression = 4 [default = NONE];</code>
@@ -1078,8 +1109,8 @@ public final class CanalPacket {
     }
 
     public interface HeartBeatOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.HeartBeat)
-    com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.HeartBeat)
+            com.google.protobuf.MessageOrBuilder {
 
         /**
          * <code>optional int64 send_timestamp = 1;</code>
@@ -1106,16 +1137,16 @@ public final class CanalPacket {
      * Protobuf type {@code com.alibaba.otter.canal.protocol.HeartBeat}
      */
     public static final class HeartBeat extends com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.HeartBeat)
-    HeartBeatOrBuilder {
+            // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.HeartBeat)
+            HeartBeatOrBuilder {
 
         // Use HeartBeat.newBuilder() to construct.
-        private HeartBeat(com.google.protobuf.GeneratedMessage.Builder<?> builder){
+        private HeartBeat(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
             super(builder);
             this.unknownFields = builder.getUnknownFields();
         }
 
-        private HeartBeat(boolean noInit){
+        private HeartBeat(boolean noInit) {
             this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
 
@@ -1138,10 +1169,11 @@ public final class CanalPacket {
 
         private HeartBeat(com.google.protobuf.CodedInputStream input,
                           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                      throws com.google.protobuf.InvalidProtocolBufferException{
+                throws com.google.protobuf.InvalidProtocolBufferException {
             initFields();
             int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
+                    .newBuilder();
             try {
                 boolean done = false;
                 while (!done) {
@@ -1179,32 +1211,36 @@ public final class CanalPacket {
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_HeartBeat_descriptor;
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_HeartBeat_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_HeartBeat_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat.class,
-                com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat.Builder.class);
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_HeartBeat_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat.class,
+                            com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat.Builder.class);
         }
 
-        public static com.google.protobuf.Parser<HeartBeat> PARSER = new com.google.protobuf.AbstractParser<HeartBeat>() {
+        public static com.google.protobuf.Parser<HeartBeat> PARSER = new com.google.protobuf
+                .AbstractParser<HeartBeat>() {
 
-                                                                       public HeartBeat parsePartialFrom(com.google.protobuf.CodedInputStream input,
-                                                                                                         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                                     throws com.google.protobuf.InvalidProtocolBufferException {
-                                                                           return new HeartBeat(input,
-                                                                               extensionRegistry);
-                                                                       }
-                                                                   };
+            public HeartBeat parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                                              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new HeartBeat(input,
+                        extensionRegistry);
+            }
+        };
 
         @java.lang.Override
         public com.google.protobuf.Parser<HeartBeat> getParserForType() {
             return PARSER;
         }
 
-        private int             bitField0_;
+        private int bitField0_;
         public static final int SEND_TIMESTAMP_FIELD_NUMBER = 1;
-        private long            sendTimestamp_;
+        private long sendTimestamp_;
 
         /**
          * <code>optional int64 send_timestamp = 1;</code>
@@ -1221,7 +1257,7 @@ public final class CanalPacket {
         }
 
         public static final int START_TIMESTAMP_FIELD_NUMBER = 2;
-        private long            startTimestamp_;
+        private long startTimestamp_;
 
         /**
          * <code>optional int64 start_timestamp = 2;</code>
@@ -1246,8 +1282,10 @@ public final class CanalPacket {
 
         public final boolean isInitialized() {
             byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
 
             memoizedIsInitialized = 1;
             return true;
@@ -1268,7 +1306,8 @@ public final class CanalPacket {
 
         public int getSerializedSize() {
             int size = memoizedSerializedSize;
-            if (size != -1) return size;
+            if (size != -1)
+                return size;
 
             size = 0;
             if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1289,58 +1328,73 @@ public final class CanalPacket {
             return super.writeReplace();
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseFrom(com.google.protobuf.ByteString data)
-                                                                                                                           throws com.google.protobuf.InvalidProtocolBufferException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseFrom(com.google.protobuf.ByteString
+                                                                                               data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseFrom(com.google.protobuf.ByteString data,
-                                                                                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                   throws com.google.protobuf.InvalidProtocolBufferException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseFrom(com.google.protobuf.ByteString
+                                                                                               data,
+                                                                                       com.google.protobuf
+                                                                                               .ExtensionRegistryLite
+                                                                                               extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseFrom(byte[] data)
-                                                                                                   throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseFrom(byte[] data,
-                                                                                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                   throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                       com.google.protobuf
+                                                                                               .ExtensionRegistryLite
+                                                                                               extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseFrom(java.io.InputStream input)
-                                                                                                                 throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseFrom(java.io.InputStream input,
-                                                                                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                   throws java.io.IOException {
+                                                                                       com.google.protobuf
+                                                                                               .ExtensionRegistryLite
+                                                                                               extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseDelimitedFrom(java.io.InputStream input)
-                                                                                                                          throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseDelimitedFrom(java.io.InputStream
+                                                                                                        input)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseDelimitedFrom(java.io.InputStream input,
-                                                                                                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                            throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseDelimitedFrom(java.io.InputStream
+                                                                                                        input,
+                                                                                                com.google.protobuf
+                                                                                                        .ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseFrom(com.google.protobuf.CodedInputStream input)
-                                                                                                                                  throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseFrom(com.google.protobuf
+                                                                                               .CodedInputStream input)
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseFrom(com.google.protobuf.CodedInputStream input,
-                                                                                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                   throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parseFrom(com.google.protobuf
+                                                                                               .CodedInputStream input,
+                                                                                       com.google.protobuf
+                                                                                               .ExtensionRegistryLite
+                                                                                               extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
@@ -1370,25 +1424,28 @@ public final class CanalPacket {
          * Protobuf type {@code com.alibaba.otter.canal.protocol.HeartBeat}
          */
         public static final class Builder extends com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.HeartBeat)
-        com.alibaba.otter.canal.protocol.CanalPacket.HeartBeatOrBuilder {
+                // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.HeartBeat)
+                com.alibaba.otter.canal.protocol.CanalPacket.HeartBeatOrBuilder {
 
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_HeartBeat_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_HeartBeat_descriptor;
             }
 
             protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_HeartBeat_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat.class,
-                    com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat.Builder.class);
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_HeartBeat_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat.class,
+                                com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat.Builder.class);
             }
 
             // Construct using
             // com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat.newBuilder()
-            private Builder(){
+            private Builder() {
                 maybeForceBuilderInitialization();
             }
 
-            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent){
+            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
                 super(parent);
                 maybeForceBuilderInitialization();
             }
@@ -1416,7 +1473,8 @@ public final class CanalPacket {
             }
 
             public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_HeartBeat_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_HeartBeat_descriptor;
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat getDefaultInstanceForType() {
@@ -1432,7 +1490,8 @@ public final class CanalPacket {
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat buildPartial() {
-                com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat result = new com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat(this);
+                com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat result = new com.alibaba.otter.canal.protocol
+                        .CanalPacket.HeartBeat(this);
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1458,7 +1517,8 @@ public final class CanalPacket {
             }
 
             public Builder mergeFrom(com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat other) {
-                if (other == com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat.getDefaultInstance()) return this;
+                if (other == com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat.getDefaultInstance())
+                    return this;
                 if (other.hasSendTimestamp()) {
                     setSendTimestamp(other.getSendTimestamp());
                 }
@@ -1475,7 +1535,7 @@ public final class CanalPacket {
 
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                 throws java.io.IOException {
+                    throws java.io.IOException {
                 com.alibaba.otter.canal.protocol.CanalPacket.HeartBeat parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
@@ -1490,7 +1550,7 @@ public final class CanalPacket {
                 return this;
             }
 
-            private int  bitField0_;
+            private int bitField0_;
 
             private long sendTimestamp_;
 
@@ -1576,8 +1636,8 @@ public final class CanalPacket {
     }
 
     public interface HandshakeOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Handshake)
-    com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Handshake)
+            com.google.protobuf.MessageOrBuilder {
 
         /**
          * <code>optional string communication_encoding = 1 [default = "utf8"];</code>
@@ -1624,16 +1684,16 @@ public final class CanalPacket {
      * Protobuf type {@code com.alibaba.otter.canal.protocol.Handshake}
      */
     public static final class Handshake extends com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Handshake)
-    HandshakeOrBuilder {
+            // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Handshake)
+            HandshakeOrBuilder {
 
         // Use Handshake.newBuilder() to construct.
-        private Handshake(com.google.protobuf.GeneratedMessage.Builder<?> builder){
+        private Handshake(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
             super(builder);
             this.unknownFields = builder.getUnknownFields();
         }
 
-        private Handshake(boolean noInit){
+        private Handshake(boolean noInit) {
             this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
 
@@ -1656,10 +1716,11 @@ public final class CanalPacket {
 
         private Handshake(com.google.protobuf.CodedInputStream input,
                           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                      throws com.google.protobuf.InvalidProtocolBufferException{
+                throws com.google.protobuf.InvalidProtocolBufferException {
             initFields();
             int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
+                    .newBuilder();
             try {
                 boolean done = false;
                 while (!done) {
@@ -1687,12 +1748,14 @@ public final class CanalPacket {
                         }
                         case 24: {
                             int rawValue = input.readEnum();
-                            com.alibaba.otter.canal.protocol.CanalPacket.Compression value = com.alibaba.otter.canal.protocol.CanalPacket.Compression.valueOf(rawValue);
+                            com.alibaba.otter.canal.protocol.CanalPacket.Compression value = com.alibaba.otter.canal
+                                    .protocol.CanalPacket.Compression.valueOf(rawValue);
                             if (value == null) {
                                 unknownFields.mergeVarintField(3, rawValue);
                             } else {
                                 if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                                    supportedCompressions_ = new java.util.ArrayList<com.alibaba.otter.canal.protocol.CanalPacket.Compression>();
+                                    supportedCompressions_ = new java.util.ArrayList<com.alibaba.otter.canal.protocol
+                                            .CanalPacket.Compression>();
                                     mutable_bitField0_ |= 0x00000004;
                                 }
                                 supportedCompressions_.add(value);
@@ -1704,12 +1767,14 @@ public final class CanalPacket {
                             int oldLimit = input.pushLimit(length);
                             while (input.getBytesUntilLimit() > 0) {
                                 int rawValue = input.readEnum();
-                                com.alibaba.otter.canal.protocol.CanalPacket.Compression value = com.alibaba.otter.canal.protocol.CanalPacket.Compression.valueOf(rawValue);
+                                com.alibaba.otter.canal.protocol.CanalPacket.Compression value = com.alibaba.otter
+                                        .canal.protocol.CanalPacket.Compression.valueOf(rawValue);
                                 if (value == null) {
                                     unknownFields.mergeVarintField(3, rawValue);
                                 } else {
                                     if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                                        supportedCompressions_ = new java.util.ArrayList<com.alibaba.otter.canal.protocol.CanalPacket.Compression>();
+                                        supportedCompressions_ = new java.util.ArrayList<com.alibaba.otter.canal
+                                                .protocol.CanalPacket.Compression>();
                                         mutable_bitField0_ |= 0x00000004;
                                     }
                                     supportedCompressions_.add(value);
@@ -1734,31 +1799,35 @@ public final class CanalPacket {
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Handshake_descriptor;
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Handshake_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Handshake_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Handshake.class,
-                com.alibaba.otter.canal.protocol.CanalPacket.Handshake.Builder.class);
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Handshake_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Handshake.class,
+                            com.alibaba.otter.canal.protocol.CanalPacket.Handshake.Builder.class);
         }
 
-        public static com.google.protobuf.Parser<Handshake> PARSER = new com.google.protobuf.AbstractParser<Handshake>() {
+        public static com.google.protobuf.Parser<Handshake> PARSER = new com.google.protobuf
+                .AbstractParser<Handshake>() {
 
-                                                                       public Handshake parsePartialFrom(com.google.protobuf.CodedInputStream input,
-                                                                                                         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                                     throws com.google.protobuf.InvalidProtocolBufferException {
-                                                                           return new Handshake(input,
-                                                                               extensionRegistry);
-                                                                       }
-                                                                   };
+            public Handshake parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                                              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new Handshake(input,
+                        extensionRegistry);
+            }
+        };
 
         @java.lang.Override
         public com.google.protobuf.Parser<Handshake> getParserForType() {
             return PARSER;
         }
 
-        private int              bitField0_;
-        public static final int  COMMUNICATION_ENCODING_FIELD_NUMBER = 1;
+        private int bitField0_;
+        public static final int COMMUNICATION_ENCODING_FIELD_NUMBER = 1;
         private java.lang.Object communicationEncoding_;
 
         /**
@@ -1799,7 +1868,7 @@ public final class CanalPacket {
             }
         }
 
-        public static final int                SEEDS_FIELD_NUMBER = 2;
+        public static final int SEEDS_FIELD_NUMBER = 2;
         private com.google.protobuf.ByteString seeds_;
 
         /**
@@ -1816,7 +1885,7 @@ public final class CanalPacket {
             return seeds_;
         }
 
-        public static final int                                                          SUPPORTED_COMPRESSIONS_FIELD_NUMBER = 3;
+        public static final int SUPPORTED_COMPRESSIONS_FIELD_NUMBER = 3;
         private java.util.List<com.alibaba.otter.canal.protocol.CanalPacket.Compression> supportedCompressions_;
 
         /**
@@ -1850,8 +1919,10 @@ public final class CanalPacket {
 
         public final boolean isInitialized() {
             byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
 
             memoizedIsInitialized = 1;
             return true;
@@ -1875,7 +1946,8 @@ public final class CanalPacket {
 
         public int getSerializedSize() {
             int size = memoizedSerializedSize;
-            if (size != -1) return size;
+            if (size != -1)
+                return size;
 
             size = 0;
             if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1888,7 +1960,7 @@ public final class CanalPacket {
                 int dataSize = 0;
                 for (int i = 0; i < supportedCompressions_.size(); i++) {
                     dataSize += com.google.protobuf.CodedOutputStream.computeEnumSizeNoTag(supportedCompressions_.get(i)
-                        .getNumber());
+                            .getNumber());
                 }
                 size += dataSize;
                 size += 1 * supportedCompressions_.size();
@@ -1905,58 +1977,73 @@ public final class CanalPacket {
             return super.writeReplace();
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseFrom(com.google.protobuf.ByteString data)
-                                                                                                                           throws com.google.protobuf.InvalidProtocolBufferException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseFrom(com.google.protobuf.ByteString
+                                                                                               data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseFrom(com.google.protobuf.ByteString data,
-                                                                                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                   throws com.google.protobuf.InvalidProtocolBufferException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseFrom(com.google.protobuf.ByteString
+                                                                                               data,
+                                                                                       com.google.protobuf
+                                                                                               .ExtensionRegistryLite
+                                                                                               extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseFrom(byte[] data)
-                                                                                                   throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseFrom(byte[] data,
-                                                                                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                   throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                       com.google.protobuf
+                                                                                               .ExtensionRegistryLite
+                                                                                               extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseFrom(java.io.InputStream input)
-                                                                                                                 throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseFrom(java.io.InputStream input,
-                                                                                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                   throws java.io.IOException {
+                                                                                       com.google.protobuf
+                                                                                               .ExtensionRegistryLite
+                                                                                               extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseDelimitedFrom(java.io.InputStream input)
-                                                                                                                          throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseDelimitedFrom(java.io.InputStream
+                                                                                                        input)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseDelimitedFrom(java.io.InputStream input,
-                                                                                                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                            throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseDelimitedFrom(java.io.InputStream
+                                                                                                        input,
+                                                                                                com.google.protobuf
+                                                                                                        .ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseFrom(com.google.protobuf.CodedInputStream input)
-                                                                                                                                  throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseFrom(com.google.protobuf
+                                                                                               .CodedInputStream input)
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseFrom(com.google.protobuf.CodedInputStream input,
-                                                                                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                   throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Handshake parseFrom(com.google.protobuf
+                                                                                               .CodedInputStream input,
+                                                                                       com.google.protobuf
+                                                                                               .ExtensionRegistryLite
+                                                                                               extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
@@ -1986,25 +2073,28 @@ public final class CanalPacket {
          * Protobuf type {@code com.alibaba.otter.canal.protocol.Handshake}
          */
         public static final class Builder extends com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Handshake)
-        com.alibaba.otter.canal.protocol.CanalPacket.HandshakeOrBuilder {
+                // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Handshake)
+                com.alibaba.otter.canal.protocol.CanalPacket.HandshakeOrBuilder {
 
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Handshake_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Handshake_descriptor;
             }
 
             protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Handshake_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Handshake.class,
-                    com.alibaba.otter.canal.protocol.CanalPacket.Handshake.Builder.class);
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Handshake_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Handshake.class,
+                                com.alibaba.otter.canal.protocol.CanalPacket.Handshake.Builder.class);
             }
 
             // Construct using
             // com.alibaba.otter.canal.protocol.CanalPacket.Handshake.newBuilder()
-            private Builder(){
+            private Builder() {
                 maybeForceBuilderInitialization();
             }
 
-            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent){
+            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
                 super(parent);
                 maybeForceBuilderInitialization();
             }
@@ -2034,7 +2124,8 @@ public final class CanalPacket {
             }
 
             public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Handshake_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Handshake_descriptor;
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Handshake getDefaultInstanceForType() {
@@ -2050,7 +2141,8 @@ public final class CanalPacket {
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Handshake buildPartial() {
-                com.alibaba.otter.canal.protocol.CanalPacket.Handshake result = new com.alibaba.otter.canal.protocol.CanalPacket.Handshake(this);
+                com.alibaba.otter.canal.protocol.CanalPacket.Handshake result = new com.alibaba.otter.canal.protocol
+                        .CanalPacket.Handshake(this);
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2081,7 +2173,8 @@ public final class CanalPacket {
             }
 
             public Builder mergeFrom(com.alibaba.otter.canal.protocol.CanalPacket.Handshake other) {
-                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Handshake.getDefaultInstance()) return this;
+                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Handshake.getDefaultInstance())
+                    return this;
                 if (other.hasCommunicationEncoding()) {
                     bitField0_ |= 0x00000001;
                     communicationEncoding_ = other.communicationEncoding_;
@@ -2110,7 +2203,7 @@ public final class CanalPacket {
 
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                 throws java.io.IOException {
+                    throws java.io.IOException {
                 com.alibaba.otter.canal.protocol.CanalPacket.Handshake parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
@@ -2125,7 +2218,7 @@ public final class CanalPacket {
                 return this;
             }
 
-            private int              bitField0_;
+            private int bitField0_;
 
             private java.lang.Object communicationEncoding_ = "utf8";
 
@@ -2159,7 +2252,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getCommunicationEncodingBytes() {
                 java.lang.Object ref = communicationEncoding_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     communicationEncoding_ = b;
                     return b;
                 } else {
@@ -2242,11 +2336,13 @@ public final class CanalPacket {
                 return this;
             }
 
-            private java.util.List<com.alibaba.otter.canal.protocol.CanalPacket.Compression> supportedCompressions_ = java.util.Collections.emptyList();
+            private java.util.List<com.alibaba.otter.canal.protocol.CanalPacket.Compression> supportedCompressions_ =
+                    java.util.Collections.emptyList();
 
             private void ensureSupportedCompressionsIsMutable() {
                 if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-                    supportedCompressions_ = new java.util.ArrayList<com.alibaba.otter.canal.protocol.CanalPacket.Compression>(supportedCompressions_);
+                    supportedCompressions_ = new java.util.ArrayList<com.alibaba.otter.canal.protocol.CanalPacket
+                            .Compression>(supportedCompressions_);
                     bitField0_ |= 0x00000004;
                 }
             }
@@ -2254,7 +2350,8 @@ public final class CanalPacket {
             /**
              * <code>repeated .com.alibaba.otter.canal.protocol.Compression supported_compressions = 3;</code>
              */
-            public java.util.List<com.alibaba.otter.canal.protocol.CanalPacket.Compression> getSupportedCompressionsList() {
+            public java.util.List<com.alibaba.otter.canal.protocol.CanalPacket.Compression>
+            getSupportedCompressionsList() {
                 return java.util.Collections.unmodifiableList(supportedCompressions_);
             }
 
@@ -2302,7 +2399,8 @@ public final class CanalPacket {
             /**
              * <code>repeated .com.alibaba.otter.canal.protocol.Compression supported_compressions = 3;</code>
              */
-            public Builder addAllSupportedCompressions(java.lang.Iterable<? extends com.alibaba.otter.canal.protocol.CanalPacket.Compression> values) {
+            public Builder addAllSupportedCompressions(java.lang.Iterable<? extends com.alibaba.otter.canal.protocol
+                    .CanalPacket.Compression> values) {
                 ensureSupportedCompressionsIsMutable();
                 com.google.protobuf.AbstractMessageLite.Builder.addAll(values, supportedCompressions_);
                 onChanged();
@@ -2331,8 +2429,8 @@ public final class CanalPacket {
     }
 
     public interface ClientAuthOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.ClientAuth)
-    com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.ClientAuth)
+            com.google.protobuf.MessageOrBuilder {
 
         /**
          * <code>optional string username = 1;</code>
@@ -2351,7 +2449,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional bytes password = 2;</code>
-         *
+         * <p>
          * <pre>
          * hashed password with seeds from Handshake message
          * </pre>
@@ -2360,7 +2458,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional bytes password = 2;</code>
-         *
+         * <p>
          * <pre>
          * hashed password with seeds from Handshake message
          * </pre>
@@ -2369,7 +2467,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional int32 net_read_timeout = 3 [default = 0];</code>
-         *
+         * <p>
          * <pre>
          * in seconds
          * </pre>
@@ -2378,7 +2476,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional int32 net_read_timeout = 3 [default = 0];</code>
-         *
+         * <p>
          * <pre>
          * in seconds
          * </pre>
@@ -2387,7 +2485,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional int32 net_write_timeout = 4 [default = 0];</code>
-         *
+         * <p>
          * <pre>
          * in seconds
          * </pre>
@@ -2396,7 +2494,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional int32 net_write_timeout = 4 [default = 0];</code>
-         *
+         * <p>
          * <pre>
          * in seconds
          * </pre>
@@ -2461,22 +2559,22 @@ public final class CanalPacket {
 
     /**
      * Protobuf type {@code com.alibaba.otter.canal.protocol.ClientAuth}
-     *
+     * <p>
      * <pre>
      * client authentication
      * </pre>
      */
     public static final class ClientAuth extends com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.ClientAuth)
-    ClientAuthOrBuilder {
+            // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.ClientAuth)
+            ClientAuthOrBuilder {
 
         // Use ClientAuth.newBuilder() to construct.
-        private ClientAuth(com.google.protobuf.GeneratedMessage.Builder<?> builder){
+        private ClientAuth(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
             super(builder);
             this.unknownFields = builder.getUnknownFields();
         }
 
-        private ClientAuth(boolean noInit){
+        private ClientAuth(boolean noInit) {
             this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
 
@@ -2499,10 +2597,11 @@ public final class CanalPacket {
 
         private ClientAuth(com.google.protobuf.CodedInputStream input,
                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                       throws com.google.protobuf.InvalidProtocolBufferException{
+                throws com.google.protobuf.InvalidProtocolBufferException {
             initFields();
             int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
+                    .newBuilder();
             try {
                 boolean done = false;
                 while (!done) {
@@ -2574,31 +2673,35 @@ public final class CanalPacket {
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientAuth_descriptor;
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_ClientAuth_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientAuth_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth.class,
-                com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth.Builder.class);
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_ClientAuth_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth.class,
+                            com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth.Builder.class);
         }
 
-        public static com.google.protobuf.Parser<ClientAuth> PARSER = new com.google.protobuf.AbstractParser<ClientAuth>() {
+        public static com.google.protobuf.Parser<ClientAuth> PARSER = new com.google.protobuf
+                .AbstractParser<ClientAuth>() {
 
-                                                                        public ClientAuth parsePartialFrom(com.google.protobuf.CodedInputStream input,
-                                                                                                           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                                       throws com.google.protobuf.InvalidProtocolBufferException {
-                                                                            return new ClientAuth(input,
-                                                                                extensionRegistry);
-                                                                        }
-                                                                    };
+            public ClientAuth parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                                               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new ClientAuth(input,
+                        extensionRegistry);
+            }
+        };
 
         @java.lang.Override
         public com.google.protobuf.Parser<ClientAuth> getParserForType() {
             return PARSER;
         }
 
-        private int              bitField0_;
-        public static final int  USERNAME_FIELD_NUMBER = 1;
+        private int bitField0_;
+        public static final int USERNAME_FIELD_NUMBER = 1;
         private java.lang.Object username_;
 
         /**
@@ -2639,12 +2742,12 @@ public final class CanalPacket {
             }
         }
 
-        public static final int                PASSWORD_FIELD_NUMBER = 2;
+        public static final int PASSWORD_FIELD_NUMBER = 2;
         private com.google.protobuf.ByteString password_;
 
         /**
          * <code>optional bytes password = 2;</code>
-         *
+         * <p>
          * <pre>
          * hashed password with seeds from Handshake message
          * </pre>
@@ -2655,7 +2758,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional bytes password = 2;</code>
-         *
+         * <p>
          * <pre>
          * hashed password with seeds from Handshake message
          * </pre>
@@ -2665,11 +2768,11 @@ public final class CanalPacket {
         }
 
         public static final int NET_READ_TIMEOUT_FIELD_NUMBER = 3;
-        private int             netReadTimeout_;
+        private int netReadTimeout_;
 
         /**
          * <code>optional int32 net_read_timeout = 3 [default = 0];</code>
-         *
+         * <p>
          * <pre>
          * in seconds
          * </pre>
@@ -2680,7 +2783,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional int32 net_read_timeout = 3 [default = 0];</code>
-         *
+         * <p>
          * <pre>
          * in seconds
          * </pre>
@@ -2690,11 +2793,11 @@ public final class CanalPacket {
         }
 
         public static final int NET_WRITE_TIMEOUT_FIELD_NUMBER = 4;
-        private int             netWriteTimeout_;
+        private int netWriteTimeout_;
 
         /**
          * <code>optional int32 net_write_timeout = 4 [default = 0];</code>
-         *
+         * <p>
          * <pre>
          * in seconds
          * </pre>
@@ -2705,7 +2808,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional int32 net_write_timeout = 4 [default = 0];</code>
-         *
+         * <p>
          * <pre>
          * in seconds
          * </pre>
@@ -2714,7 +2817,7 @@ public final class CanalPacket {
             return netWriteTimeout_;
         }
 
-        public static final int  DESTINATION_FIELD_NUMBER = 5;
+        public static final int DESTINATION_FIELD_NUMBER = 5;
         private java.lang.Object destination_;
 
         /**
@@ -2755,7 +2858,7 @@ public final class CanalPacket {
             }
         }
 
-        public static final int  CLIENT_ID_FIELD_NUMBER = 6;
+        public static final int CLIENT_ID_FIELD_NUMBER = 6;
         private java.lang.Object clientId_;
 
         /**
@@ -2796,7 +2899,7 @@ public final class CanalPacket {
             }
         }
 
-        public static final int  FILTER_FIELD_NUMBER = 7;
+        public static final int FILTER_FIELD_NUMBER = 7;
         private java.lang.Object filter_;
 
         /**
@@ -2838,7 +2941,7 @@ public final class CanalPacket {
         }
 
         public static final int START_TIMESTAMP_FIELD_NUMBER = 8;
-        private long            startTimestamp_;
+        private long startTimestamp_;
 
         /**
          * <code>optional int64 start_timestamp = 8;</code>
@@ -2869,8 +2972,10 @@ public final class CanalPacket {
 
         public final boolean isInitialized() {
             byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
 
             memoizedIsInitialized = 1;
             return true;
@@ -2909,7 +3014,8 @@ public final class CanalPacket {
 
         public int getSerializedSize() {
             int size = memoizedSerializedSize;
-            if (size != -1) return size;
+            if (size != -1)
+                return size;
 
             size = 0;
             if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2948,58 +3054,73 @@ public final class CanalPacket {
             return super.writeReplace();
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseFrom(com.google.protobuf.ByteString data)
-                                                                                                                            throws com.google.protobuf.InvalidProtocolBufferException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseFrom(com.google.protobuf
+                                                                                                .ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseFrom(com.google.protobuf.ByteString data,
-                                                                                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                    throws com.google.protobuf.InvalidProtocolBufferException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseFrom(com.google.protobuf
+                                                                                                .ByteString data,
+                                                                                        com.google.protobuf
+                                                                                                .ExtensionRegistryLite
+                                                                                                extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseFrom(byte[] data)
-                                                                                                    throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseFrom(byte[] data,
-                                                                                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                    throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                        com.google.protobuf
+                                                                                                .ExtensionRegistryLite
+                                                                                                extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseFrom(java.io.InputStream input)
-                                                                                                                  throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseFrom(java.io.InputStream input,
-                                                                                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                    throws java.io.IOException {
+                                                                                        com.google.protobuf
+                                                                                                .ExtensionRegistryLite
+                                                                                                extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseDelimitedFrom(java.io.InputStream input)
-                                                                                                                           throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseDelimitedFrom(java.io.InputStream
+                                                                                                         input)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseDelimitedFrom(java.io.InputStream input,
-                                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                             throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseDelimitedFrom(java.io.InputStream
+                                                                                                         input,
+                                                                                                 com.google.protobuf
+                                                                                                         .ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseFrom(com.google.protobuf.CodedInputStream input)
-                                                                                                                                   throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseFrom(com.google.protobuf
+                                                                                                .CodedInputStream input)
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseFrom(com.google.protobuf.CodedInputStream input,
-                                                                                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                    throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parseFrom(com.google.protobuf
+                                                                                                .CodedInputStream input,
+                                                                                        com.google.protobuf
+                                                                                                .ExtensionRegistryLite
+                                                                                                extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
@@ -3027,31 +3148,34 @@ public final class CanalPacket {
 
         /**
          * Protobuf type {@code com.alibaba.otter.canal.protocol.ClientAuth}
-         *
+         * <p>
          * <pre>
          * client authentication
          * </pre>
          */
         public static final class Builder extends com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.ClientAuth)
-        com.alibaba.otter.canal.protocol.CanalPacket.ClientAuthOrBuilder {
+                // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.ClientAuth)
+                com.alibaba.otter.canal.protocol.CanalPacket.ClientAuthOrBuilder {
 
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientAuth_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_ClientAuth_descriptor;
             }
 
             protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientAuth_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth.class,
-                    com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth.Builder.class);
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_ClientAuth_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth.class,
+                                com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth.Builder.class);
             }
 
             // Construct using
             // com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth.newBuilder()
-            private Builder(){
+            private Builder() {
                 maybeForceBuilderInitialization();
             }
 
-            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent){
+            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
                 super(parent);
                 maybeForceBuilderInitialization();
             }
@@ -3091,7 +3215,8 @@ public final class CanalPacket {
             }
 
             public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientAuth_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_ClientAuth_descriptor;
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth getDefaultInstanceForType() {
@@ -3107,7 +3232,8 @@ public final class CanalPacket {
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth buildPartial() {
-                com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth result = new com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth(this);
+                com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth result = new com.alibaba.otter.canal.protocol
+                        .CanalPacket.ClientAuth(this);
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -3157,7 +3283,8 @@ public final class CanalPacket {
             }
 
             public Builder mergeFrom(com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth other) {
-                if (other == com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth.getDefaultInstance()) return this;
+                if (other == com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth.getDefaultInstance())
+                    return this;
                 if (other.hasUsername()) {
                     bitField0_ |= 0x00000001;
                     username_ = other.username_;
@@ -3200,7 +3327,7 @@ public final class CanalPacket {
 
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                 throws java.io.IOException {
+                    throws java.io.IOException {
                 com.alibaba.otter.canal.protocol.CanalPacket.ClientAuth parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
@@ -3215,7 +3342,7 @@ public final class CanalPacket {
                 return this;
             }
 
-            private int              bitField0_;
+            private int bitField0_;
 
             private java.lang.Object username_ = "";
 
@@ -3249,7 +3376,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getUsernameBytes() {
                 java.lang.Object ref = username_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     username_ = b;
                     return b;
                 } else {
@@ -3297,7 +3425,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional bytes password = 2;</code>
-             *
+             * <p>
              * <pre>
              * hashed password with seeds from Handshake message
              * </pre>
@@ -3308,7 +3436,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional bytes password = 2;</code>
-             *
+             * <p>
              * <pre>
              * hashed password with seeds from Handshake message
              * </pre>
@@ -3319,7 +3447,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional bytes password = 2;</code>
-             *
+             * <p>
              * <pre>
              * hashed password with seeds from Handshake message
              * </pre>
@@ -3336,7 +3464,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional bytes password = 2;</code>
-             *
+             * <p>
              * <pre>
              * hashed password with seeds from Handshake message
              * </pre>
@@ -3352,7 +3480,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int32 net_read_timeout = 3 [default = 0];</code>
-             *
+             * <p>
              * <pre>
              * in seconds
              * </pre>
@@ -3363,7 +3491,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int32 net_read_timeout = 3 [default = 0];</code>
-             *
+             * <p>
              * <pre>
              * in seconds
              * </pre>
@@ -3374,7 +3502,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int32 net_read_timeout = 3 [default = 0];</code>
-             *
+             * <p>
              * <pre>
              * in seconds
              * </pre>
@@ -3388,7 +3516,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int32 net_read_timeout = 3 [default = 0];</code>
-             *
+             * <p>
              * <pre>
              * in seconds
              * </pre>
@@ -3404,7 +3532,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int32 net_write_timeout = 4 [default = 0];</code>
-             *
+             * <p>
              * <pre>
              * in seconds
              * </pre>
@@ -3415,7 +3543,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int32 net_write_timeout = 4 [default = 0];</code>
-             *
+             * <p>
              * <pre>
              * in seconds
              * </pre>
@@ -3426,7 +3554,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int32 net_write_timeout = 4 [default = 0];</code>
-             *
+             * <p>
              * <pre>
              * in seconds
              * </pre>
@@ -3440,7 +3568,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int32 net_write_timeout = 4 [default = 0];</code>
-             *
+             * <p>
              * <pre>
              * in seconds
              * </pre>
@@ -3484,7 +3612,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getDestinationBytes() {
                 java.lang.Object ref = destination_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     destination_ = b;
                     return b;
                 } else {
@@ -3560,7 +3689,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getClientIdBytes() {
                 java.lang.Object ref = clientId_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     clientId_ = b;
                     return b;
                 } else {
@@ -3636,7 +3766,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getFilterBytes() {
                 java.lang.Object ref = filter_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     filter_ = b;
                     return b;
                 } else {
@@ -3728,8 +3859,8 @@ public final class CanalPacket {
     }
 
     public interface AckOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Ack)
-    com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Ack)
+            com.google.protobuf.MessageOrBuilder {
 
         /**
          * <code>optional int32 error_code = 1 [default = 0];</code>
@@ -3743,7 +3874,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional string error_message = 2;</code>
-         *
+         * <p>
          * <pre>
          * if something like compression is not supported, erorr_message will tell about it.
          * </pre>
@@ -3752,7 +3883,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional string error_message = 2;</code>
-         *
+         * <p>
          * <pre>
          * if something like compression is not supported, erorr_message will tell about it.
          * </pre>
@@ -3761,7 +3892,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional string error_message = 2;</code>
-         *
+         * <p>
          * <pre>
          * if something like compression is not supported, erorr_message will tell about it.
          * </pre>
@@ -3773,16 +3904,16 @@ public final class CanalPacket {
      * Protobuf type {@code com.alibaba.otter.canal.protocol.Ack}
      */
     public static final class Ack extends com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Ack)
-    AckOrBuilder {
+            // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Ack)
+            AckOrBuilder {
 
         // Use Ack.newBuilder() to construct.
-        private Ack(com.google.protobuf.GeneratedMessage.Builder<?> builder){
+        private Ack(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
             super(builder);
             this.unknownFields = builder.getUnknownFields();
         }
 
-        private Ack(boolean noInit){
+        private Ack(boolean noInit) {
             this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
 
@@ -3805,10 +3936,11 @@ public final class CanalPacket {
 
         private Ack(com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                throws com.google.protobuf.InvalidProtocolBufferException{
+                throws com.google.protobuf.InvalidProtocolBufferException {
             initFields();
             int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
+                    .newBuilder();
             try {
                 boolean done = false;
                 while (!done) {
@@ -3847,31 +3979,35 @@ public final class CanalPacket {
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Ack_descriptor;
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Ack_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Ack_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Ack.class,
-                com.alibaba.otter.canal.protocol.CanalPacket.Ack.Builder.class);
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Ack_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized
+                            (com.alibaba.otter.canal.protocol.CanalPacket.Ack.class,
+                                    com.alibaba.otter.canal.protocol.CanalPacket.Ack.Builder.class);
         }
 
         public static com.google.protobuf.Parser<Ack> PARSER = new com.google.protobuf.AbstractParser<Ack>() {
 
-                                                                 public Ack parsePartialFrom(com.google.protobuf.CodedInputStream input,
-                                                                                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                         throws com.google.protobuf.InvalidProtocolBufferException {
-                                                                     return new Ack(input, extensionRegistry);
-                                                                 }
-                                                             };
+            public Ack parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new Ack(input, extensionRegistry);
+            }
+        };
 
         @java.lang.Override
         public com.google.protobuf.Parser<Ack> getParserForType() {
             return PARSER;
         }
 
-        private int             bitField0_;
+        private int bitField0_;
         public static final int ERROR_CODE_FIELD_NUMBER = 1;
-        private int             errorCode_;
+        private int errorCode_;
 
         /**
          * <code>optional int32 error_code = 1 [default = 0];</code>
@@ -3887,12 +4023,12 @@ public final class CanalPacket {
             return errorCode_;
         }
 
-        public static final int  ERROR_MESSAGE_FIELD_NUMBER = 2;
+        public static final int ERROR_MESSAGE_FIELD_NUMBER = 2;
         private java.lang.Object errorMessage_;
 
         /**
          * <code>optional string error_message = 2;</code>
-         *
+         * <p>
          * <pre>
          * if something like compression is not supported, erorr_message will tell about it.
          * </pre>
@@ -3903,7 +4039,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional string error_message = 2;</code>
-         *
+         * <p>
          * <pre>
          * if something like compression is not supported, erorr_message will tell about it.
          * </pre>
@@ -3924,7 +4060,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional string error_message = 2;</code>
-         *
+         * <p>
          * <pre>
          * if something like compression is not supported, erorr_message will tell about it.
          * </pre>
@@ -3949,8 +4085,10 @@ public final class CanalPacket {
 
         public final boolean isInitialized() {
             byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
 
             memoizedIsInitialized = 1;
             return true;
@@ -3971,7 +4109,8 @@ public final class CanalPacket {
 
         public int getSerializedSize() {
             int size = memoizedSerializedSize;
-            if (size != -1) return size;
+            if (size != -1)
+                return size;
 
             size = 0;
             if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -3993,57 +4132,69 @@ public final class CanalPacket {
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Ack parseFrom(com.google.protobuf.ByteString data)
-                                                                                                                     throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Ack parseFrom(com.google.protobuf.ByteString data,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                             throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                 com.google.protobuf
+                                                                                         .ExtensionRegistryLite
+                                                                                         extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Ack parseFrom(byte[] data)
-                                                                                             throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Ack parseFrom(byte[] data,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                             throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                 com.google.protobuf
+                                                                                         .ExtensionRegistryLite
+                                                                                         extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Ack parseFrom(java.io.InputStream input)
-                                                                                                           throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Ack parseFrom(java.io.InputStream input,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                             throws java.io.IOException {
+                                                                                 com.google.protobuf
+                                                                                         .ExtensionRegistryLite
+                                                                                         extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Ack parseDelimitedFrom(java.io.InputStream input)
-                                                                                                                    throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Ack parseDelimitedFrom(java.io.InputStream input,
-                                                                                          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                      throws java.io.IOException {
+                                                                                          com.google.protobuf
+                                                                                                  .ExtensionRegistryLite
+                                                                                                  extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Ack parseFrom(com.google.protobuf.CodedInputStream input)
-                                                                                                                            throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Ack parseFrom(com.google.protobuf.CodedInputStream
+                                                                                         input)
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Ack parseFrom(com.google.protobuf.CodedInputStream input,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                             throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Ack parseFrom(com.google.protobuf.CodedInputStream
+                                                                                         input,
+                                                                                 com.google.protobuf
+                                                                                         .ExtensionRegistryLite
+                                                                                         extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
@@ -4073,25 +4224,28 @@ public final class CanalPacket {
          * Protobuf type {@code com.alibaba.otter.canal.protocol.Ack}
          */
         public static final class Builder extends com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Ack)
-        com.alibaba.otter.canal.protocol.CanalPacket.AckOrBuilder {
+                // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Ack)
+                com.alibaba.otter.canal.protocol.CanalPacket.AckOrBuilder {
 
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Ack_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Ack_descriptor;
             }
 
             protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Ack_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Ack.class,
-                    com.alibaba.otter.canal.protocol.CanalPacket.Ack.Builder.class);
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Ack_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Ack.class,
+                                com.alibaba.otter.canal.protocol.CanalPacket.Ack.Builder.class);
             }
 
             // Construct using
             // com.alibaba.otter.canal.protocol.CanalPacket.Ack.newBuilder()
-            private Builder(){
+            private Builder() {
                 maybeForceBuilderInitialization();
             }
 
-            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent){
+            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
                 super(parent);
                 maybeForceBuilderInitialization();
             }
@@ -4119,7 +4273,8 @@ public final class CanalPacket {
             }
 
             public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Ack_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Ack_descriptor;
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Ack getDefaultInstanceForType() {
@@ -4135,7 +4290,8 @@ public final class CanalPacket {
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Ack buildPartial() {
-                com.alibaba.otter.canal.protocol.CanalPacket.Ack result = new com.alibaba.otter.canal.protocol.CanalPacket.Ack(this);
+                com.alibaba.otter.canal.protocol.CanalPacket.Ack result = new com.alibaba.otter.canal.protocol
+                        .CanalPacket.Ack(this);
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4161,7 +4317,8 @@ public final class CanalPacket {
             }
 
             public Builder mergeFrom(com.alibaba.otter.canal.protocol.CanalPacket.Ack other) {
-                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Ack.getDefaultInstance()) return this;
+                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Ack.getDefaultInstance())
+                    return this;
                 if (other.hasErrorCode()) {
                     setErrorCode(other.getErrorCode());
                 }
@@ -4180,7 +4337,7 @@ public final class CanalPacket {
 
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                 throws java.io.IOException {
+                    throws java.io.IOException {
                 com.alibaba.otter.canal.protocol.CanalPacket.Ack parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
@@ -4237,7 +4394,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional string error_message = 2;</code>
-             *
+             * <p>
              * <pre>
              * if something like compression is not supported, erorr_message will tell about it.
              * </pre>
@@ -4248,7 +4405,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional string error_message = 2;</code>
-             *
+             * <p>
              * <pre>
              * if something like compression is not supported, erorr_message will tell about it.
              * </pre>
@@ -4269,7 +4426,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional string error_message = 2;</code>
-             *
+             * <p>
              * <pre>
              * if something like compression is not supported, erorr_message will tell about it.
              * </pre>
@@ -4277,7 +4434,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getErrorMessageBytes() {
                 java.lang.Object ref = errorMessage_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     errorMessage_ = b;
                     return b;
                 } else {
@@ -4287,7 +4445,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional string error_message = 2;</code>
-             *
+             * <p>
              * <pre>
              * if something like compression is not supported, erorr_message will tell about it.
              * </pre>
@@ -4304,7 +4462,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional string error_message = 2;</code>
-             *
+             * <p>
              * <pre>
              * if something like compression is not supported, erorr_message will tell about it.
              * </pre>
@@ -4318,7 +4476,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional string error_message = 2;</code>
-             *
+             * <p>
              * <pre>
              * if something like compression is not supported, erorr_message will tell about it.
              * </pre>
@@ -4345,8 +4503,8 @@ public final class CanalPacket {
     }
 
     public interface ClientAckOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.ClientAck)
-    com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.ClientAck)
+            com.google.protobuf.MessageOrBuilder {
 
         /**
          * <code>optional string destination = 1;</code>
@@ -4393,16 +4551,16 @@ public final class CanalPacket {
      * Protobuf type {@code com.alibaba.otter.canal.protocol.ClientAck}
      */
     public static final class ClientAck extends com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.ClientAck)
-    ClientAckOrBuilder {
+            // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.ClientAck)
+            ClientAckOrBuilder {
 
         // Use ClientAck.newBuilder() to construct.
-        private ClientAck(com.google.protobuf.GeneratedMessage.Builder<?> builder){
+        private ClientAck(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
             super(builder);
             this.unknownFields = builder.getUnknownFields();
         }
 
-        private ClientAck(boolean noInit){
+        private ClientAck(boolean noInit) {
             this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
 
@@ -4425,10 +4583,11 @@ public final class CanalPacket {
 
         private ClientAck(com.google.protobuf.CodedInputStream input,
                           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                      throws com.google.protobuf.InvalidProtocolBufferException{
+                throws com.google.protobuf.InvalidProtocolBufferException {
             initFields();
             int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
+                    .newBuilder();
             try {
                 boolean done = false;
                 while (!done) {
@@ -4473,31 +4632,35 @@ public final class CanalPacket {
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientAck_descriptor;
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_ClientAck_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientAck_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.ClientAck.class,
-                com.alibaba.otter.canal.protocol.CanalPacket.ClientAck.Builder.class);
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_ClientAck_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.ClientAck.class,
+                            com.alibaba.otter.canal.protocol.CanalPacket.ClientAck.Builder.class);
         }
 
-        public static com.google.protobuf.Parser<ClientAck> PARSER = new com.google.protobuf.AbstractParser<ClientAck>() {
+        public static com.google.protobuf.Parser<ClientAck> PARSER = new com.google.protobuf
+                .AbstractParser<ClientAck>() {
 
-                                                                       public ClientAck parsePartialFrom(com.google.protobuf.CodedInputStream input,
-                                                                                                         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                                     throws com.google.protobuf.InvalidProtocolBufferException {
-                                                                           return new ClientAck(input,
-                                                                               extensionRegistry);
-                                                                       }
-                                                                   };
+            public ClientAck parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                                              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new ClientAck(input,
+                        extensionRegistry);
+            }
+        };
 
         @java.lang.Override
         public com.google.protobuf.Parser<ClientAck> getParserForType() {
             return PARSER;
         }
 
-        private int              bitField0_;
-        public static final int  DESTINATION_FIELD_NUMBER = 1;
+        private int bitField0_;
+        public static final int DESTINATION_FIELD_NUMBER = 1;
         private java.lang.Object destination_;
 
         /**
@@ -4538,7 +4701,7 @@ public final class CanalPacket {
             }
         }
 
-        public static final int  CLIENT_ID_FIELD_NUMBER = 2;
+        public static final int CLIENT_ID_FIELD_NUMBER = 2;
         private java.lang.Object clientId_;
 
         /**
@@ -4580,7 +4743,7 @@ public final class CanalPacket {
         }
 
         public static final int BATCH_ID_FIELD_NUMBER = 3;
-        private long            batchId_;
+        private long batchId_;
 
         /**
          * <code>optional int64 batch_id = 3;</code>
@@ -4606,8 +4769,10 @@ public final class CanalPacket {
 
         public final boolean isInitialized() {
             byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
 
             memoizedIsInitialized = 1;
             return true;
@@ -4631,7 +4796,8 @@ public final class CanalPacket {
 
         public int getSerializedSize() {
             int size = memoizedSerializedSize;
-            if (size != -1) return size;
+            if (size != -1)
+                return size;
 
             size = 0;
             if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4655,58 +4821,73 @@ public final class CanalPacket {
             return super.writeReplace();
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseFrom(com.google.protobuf.ByteString data)
-                                                                                                                           throws com.google.protobuf.InvalidProtocolBufferException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseFrom(com.google.protobuf.ByteString
+                                                                                               data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseFrom(com.google.protobuf.ByteString data,
-                                                                                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                   throws com.google.protobuf.InvalidProtocolBufferException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseFrom(com.google.protobuf.ByteString
+                                                                                               data,
+                                                                                       com.google.protobuf
+                                                                                               .ExtensionRegistryLite
+                                                                                               extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseFrom(byte[] data)
-                                                                                                   throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseFrom(byte[] data,
-                                                                                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                   throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                       com.google.protobuf
+                                                                                               .ExtensionRegistryLite
+                                                                                               extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseFrom(java.io.InputStream input)
-                                                                                                                 throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseFrom(java.io.InputStream input,
-                                                                                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                   throws java.io.IOException {
+                                                                                       com.google.protobuf
+                                                                                               .ExtensionRegistryLite
+                                                                                               extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseDelimitedFrom(java.io.InputStream input)
-                                                                                                                          throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseDelimitedFrom(java.io.InputStream
+                                                                                                        input)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseDelimitedFrom(java.io.InputStream input,
-                                                                                                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                            throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseDelimitedFrom(java.io.InputStream
+                                                                                                        input,
+                                                                                                com.google.protobuf
+                                                                                                        .ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseFrom(com.google.protobuf.CodedInputStream input)
-                                                                                                                                  throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseFrom(com.google.protobuf
+                                                                                               .CodedInputStream input)
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseFrom(com.google.protobuf.CodedInputStream input,
-                                                                                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                   throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parseFrom(com.google.protobuf
+                                                                                               .CodedInputStream input,
+                                                                                       com.google.protobuf
+                                                                                               .ExtensionRegistryLite
+                                                                                               extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
@@ -4736,25 +4917,28 @@ public final class CanalPacket {
          * Protobuf type {@code com.alibaba.otter.canal.protocol.ClientAck}
          */
         public static final class Builder extends com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.ClientAck)
-        com.alibaba.otter.canal.protocol.CanalPacket.ClientAckOrBuilder {
+                // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.ClientAck)
+                com.alibaba.otter.canal.protocol.CanalPacket.ClientAckOrBuilder {
 
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientAck_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_ClientAck_descriptor;
             }
 
             protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientAck_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.ClientAck.class,
-                    com.alibaba.otter.canal.protocol.CanalPacket.ClientAck.Builder.class);
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_ClientAck_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.ClientAck.class,
+                                com.alibaba.otter.canal.protocol.CanalPacket.ClientAck.Builder.class);
             }
 
             // Construct using
             // com.alibaba.otter.canal.protocol.CanalPacket.ClientAck.newBuilder()
-            private Builder(){
+            private Builder() {
                 maybeForceBuilderInitialization();
             }
 
-            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent){
+            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
                 super(parent);
                 maybeForceBuilderInitialization();
             }
@@ -4784,7 +4968,8 @@ public final class CanalPacket {
             }
 
             public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientAck_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_ClientAck_descriptor;
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.ClientAck getDefaultInstanceForType() {
@@ -4800,7 +4985,8 @@ public final class CanalPacket {
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.ClientAck buildPartial() {
-                com.alibaba.otter.canal.protocol.CanalPacket.ClientAck result = new com.alibaba.otter.canal.protocol.CanalPacket.ClientAck(this);
+                com.alibaba.otter.canal.protocol.CanalPacket.ClientAck result = new com.alibaba.otter.canal.protocol
+                        .CanalPacket.ClientAck(this);
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4830,7 +5016,8 @@ public final class CanalPacket {
             }
 
             public Builder mergeFrom(com.alibaba.otter.canal.protocol.CanalPacket.ClientAck other) {
-                if (other == com.alibaba.otter.canal.protocol.CanalPacket.ClientAck.getDefaultInstance()) return this;
+                if (other == com.alibaba.otter.canal.protocol.CanalPacket.ClientAck.getDefaultInstance())
+                    return this;
                 if (other.hasDestination()) {
                     bitField0_ |= 0x00000001;
                     destination_ = other.destination_;
@@ -4854,7 +5041,7 @@ public final class CanalPacket {
 
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                 throws java.io.IOException {
+                    throws java.io.IOException {
                 com.alibaba.otter.canal.protocol.CanalPacket.ClientAck parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
@@ -4869,7 +5056,7 @@ public final class CanalPacket {
                 return this;
             }
 
-            private int              bitField0_;
+            private int bitField0_;
 
             private java.lang.Object destination_ = "";
 
@@ -4903,7 +5090,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getDestinationBytes() {
                 java.lang.Object ref = destination_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     destination_ = b;
                     return b;
                 } else {
@@ -4979,7 +5167,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getClientIdBytes() {
                 java.lang.Object ref = clientId_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     clientId_ = b;
                     return b;
                 } else {
@@ -5071,8 +5260,8 @@ public final class CanalPacket {
     }
 
     public interface SubOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Sub)
-    com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Sub)
+            com.google.protobuf.MessageOrBuilder {
 
         /**
          * <code>optional string destination = 1;</code>
@@ -5122,22 +5311,22 @@ public final class CanalPacket {
 
     /**
      * Protobuf type {@code com.alibaba.otter.canal.protocol.Sub}
-     *
+     * <p>
      * <pre>
      * subscription
      * </pre>
      */
     public static final class Sub extends com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Sub)
-    SubOrBuilder {
+            // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Sub)
+            SubOrBuilder {
 
         // Use Sub.newBuilder() to construct.
-        private Sub(com.google.protobuf.GeneratedMessage.Builder<?> builder){
+        private Sub(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
             super(builder);
             this.unknownFields = builder.getUnknownFields();
         }
 
-        private Sub(boolean noInit){
+        private Sub(boolean noInit) {
             this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
 
@@ -5160,10 +5349,11 @@ public final class CanalPacket {
 
         private Sub(com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                throws com.google.protobuf.InvalidProtocolBufferException{
+                throws com.google.protobuf.InvalidProtocolBufferException {
             initFields();
             int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
+                    .newBuilder();
             try {
                 boolean done = false;
                 while (!done) {
@@ -5209,30 +5399,34 @@ public final class CanalPacket {
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Sub_descriptor;
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Sub_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Sub_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Sub.class,
-                com.alibaba.otter.canal.protocol.CanalPacket.Sub.Builder.class);
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Sub_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized
+                            (com.alibaba.otter.canal.protocol.CanalPacket.Sub.class,
+                                    com.alibaba.otter.canal.protocol.CanalPacket.Sub.Builder.class);
         }
 
         public static com.google.protobuf.Parser<Sub> PARSER = new com.google.protobuf.AbstractParser<Sub>() {
 
-                                                                 public Sub parsePartialFrom(com.google.protobuf.CodedInputStream input,
-                                                                                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                         throws com.google.protobuf.InvalidProtocolBufferException {
-                                                                     return new Sub(input, extensionRegistry);
-                                                                 }
-                                                             };
+            public Sub parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new Sub(input, extensionRegistry);
+            }
+        };
 
         @java.lang.Override
         public com.google.protobuf.Parser<Sub> getParserForType() {
             return PARSER;
         }
 
-        private int              bitField0_;
-        public static final int  DESTINATION_FIELD_NUMBER = 1;
+        private int bitField0_;
+        public static final int DESTINATION_FIELD_NUMBER = 1;
         private java.lang.Object destination_;
 
         /**
@@ -5273,7 +5467,7 @@ public final class CanalPacket {
             }
         }
 
-        public static final int  CLIENT_ID_FIELD_NUMBER = 2;
+        public static final int CLIENT_ID_FIELD_NUMBER = 2;
         private java.lang.Object clientId_;
 
         /**
@@ -5314,7 +5508,7 @@ public final class CanalPacket {
             }
         }
 
-        public static final int  FILTER_FIELD_NUMBER = 7;
+        public static final int FILTER_FIELD_NUMBER = 7;
         private java.lang.Object filter_;
 
         /**
@@ -5365,8 +5559,10 @@ public final class CanalPacket {
 
         public final boolean isInitialized() {
             byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
 
             memoizedIsInitialized = 1;
             return true;
@@ -5390,7 +5586,8 @@ public final class CanalPacket {
 
         public int getSerializedSize() {
             int size = memoizedSerializedSize;
-            if (size != -1) return size;
+            if (size != -1)
+                return size;
 
             size = 0;
             if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -5415,57 +5612,69 @@ public final class CanalPacket {
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Sub parseFrom(com.google.protobuf.ByteString data)
-                                                                                                                     throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Sub parseFrom(com.google.protobuf.ByteString data,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                             throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                 com.google.protobuf
+                                                                                         .ExtensionRegistryLite
+                                                                                         extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Sub parseFrom(byte[] data)
-                                                                                             throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Sub parseFrom(byte[] data,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                             throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                 com.google.protobuf
+                                                                                         .ExtensionRegistryLite
+                                                                                         extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Sub parseFrom(java.io.InputStream input)
-                                                                                                           throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Sub parseFrom(java.io.InputStream input,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                             throws java.io.IOException {
+                                                                                 com.google.protobuf
+                                                                                         .ExtensionRegistryLite
+                                                                                         extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Sub parseDelimitedFrom(java.io.InputStream input)
-                                                                                                                    throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Sub parseDelimitedFrom(java.io.InputStream input,
-                                                                                          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                      throws java.io.IOException {
+                                                                                          com.google.protobuf
+                                                                                                  .ExtensionRegistryLite
+                                                                                                  extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Sub parseFrom(com.google.protobuf.CodedInputStream input)
-                                                                                                                            throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Sub parseFrom(com.google.protobuf.CodedInputStream
+                                                                                         input)
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Sub parseFrom(com.google.protobuf.CodedInputStream input,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                             throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Sub parseFrom(com.google.protobuf.CodedInputStream
+                                                                                         input,
+                                                                                 com.google.protobuf
+                                                                                         .ExtensionRegistryLite
+                                                                                         extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
@@ -5493,31 +5702,34 @@ public final class CanalPacket {
 
         /**
          * Protobuf type {@code com.alibaba.otter.canal.protocol.Sub}
-         *
+         * <p>
          * <pre>
          * subscription
          * </pre>
          */
         public static final class Builder extends com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Sub)
-        com.alibaba.otter.canal.protocol.CanalPacket.SubOrBuilder {
+                // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Sub)
+                com.alibaba.otter.canal.protocol.CanalPacket.SubOrBuilder {
 
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Sub_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Sub_descriptor;
             }
 
             protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Sub_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Sub.class,
-                    com.alibaba.otter.canal.protocol.CanalPacket.Sub.Builder.class);
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Sub_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Sub.class,
+                                com.alibaba.otter.canal.protocol.CanalPacket.Sub.Builder.class);
             }
 
             // Construct using
             // com.alibaba.otter.canal.protocol.CanalPacket.Sub.newBuilder()
-            private Builder(){
+            private Builder() {
                 maybeForceBuilderInitialization();
             }
 
-            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent){
+            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
                 super(parent);
                 maybeForceBuilderInitialization();
             }
@@ -5547,7 +5759,8 @@ public final class CanalPacket {
             }
 
             public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Sub_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Sub_descriptor;
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Sub getDefaultInstanceForType() {
@@ -5563,7 +5776,8 @@ public final class CanalPacket {
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Sub buildPartial() {
-                com.alibaba.otter.canal.protocol.CanalPacket.Sub result = new com.alibaba.otter.canal.protocol.CanalPacket.Sub(this);
+                com.alibaba.otter.canal.protocol.CanalPacket.Sub result = new com.alibaba.otter.canal.protocol
+                        .CanalPacket.Sub(this);
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -5593,7 +5807,8 @@ public final class CanalPacket {
             }
 
             public Builder mergeFrom(com.alibaba.otter.canal.protocol.CanalPacket.Sub other) {
-                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Sub.getDefaultInstance()) return this;
+                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Sub.getDefaultInstance())
+                    return this;
                 if (other.hasDestination()) {
                     bitField0_ |= 0x00000001;
                     destination_ = other.destination_;
@@ -5619,7 +5834,7 @@ public final class CanalPacket {
 
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                 throws java.io.IOException {
+                    throws java.io.IOException {
                 com.alibaba.otter.canal.protocol.CanalPacket.Sub parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
@@ -5634,7 +5849,7 @@ public final class CanalPacket {
                 return this;
             }
 
-            private int              bitField0_;
+            private int bitField0_;
 
             private java.lang.Object destination_ = "";
 
@@ -5668,7 +5883,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getDestinationBytes() {
                 java.lang.Object ref = destination_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     destination_ = b;
                     return b;
                 } else {
@@ -5744,7 +5960,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getClientIdBytes() {
                 java.lang.Object ref = clientId_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     clientId_ = b;
                     return b;
                 } else {
@@ -5820,7 +6037,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getFilterBytes() {
                 java.lang.Object ref = filter_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     filter_ = b;
                     return b;
                 } else {
@@ -5876,8 +6094,8 @@ public final class CanalPacket {
     }
 
     public interface UnsubOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Unsub)
-    com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Unsub)
+            com.google.protobuf.MessageOrBuilder {
 
         /**
          * <code>optional string destination = 1;</code>
@@ -5927,22 +6145,22 @@ public final class CanalPacket {
 
     /**
      * Protobuf type {@code com.alibaba.otter.canal.protocol.Unsub}
-     *
+     * <p>
      * <pre>
      * Unsubscription
      * </pre>
      */
     public static final class Unsub extends com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Unsub)
-    UnsubOrBuilder {
+            // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Unsub)
+            UnsubOrBuilder {
 
         // Use Unsub.newBuilder() to construct.
-        private Unsub(com.google.protobuf.GeneratedMessage.Builder<?> builder){
+        private Unsub(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
             super(builder);
             this.unknownFields = builder.getUnknownFields();
         }
 
-        private Unsub(boolean noInit){
+        private Unsub(boolean noInit) {
             this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
 
@@ -5965,10 +6183,11 @@ public final class CanalPacket {
 
         private Unsub(com.google.protobuf.CodedInputStream input,
                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                  throws com.google.protobuf.InvalidProtocolBufferException{
+                throws com.google.protobuf.InvalidProtocolBufferException {
             initFields();
             int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
+                    .newBuilder();
             try {
                 boolean done = false;
                 while (!done) {
@@ -6014,30 +6233,33 @@ public final class CanalPacket {
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Unsub_descriptor;
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Unsub_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Unsub_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Unsub.class,
-                com.alibaba.otter.canal.protocol.CanalPacket.Unsub.Builder.class);
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Unsub_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Unsub.class,
+                            com.alibaba.otter.canal.protocol.CanalPacket.Unsub.Builder.class);
         }
 
         public static com.google.protobuf.Parser<Unsub> PARSER = new com.google.protobuf.AbstractParser<Unsub>() {
 
-                                                                   public Unsub parsePartialFrom(com.google.protobuf.CodedInputStream input,
-                                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                             throws com.google.protobuf.InvalidProtocolBufferException {
-                                                                       return new Unsub(input, extensionRegistry);
-                                                                   }
-                                                               };
+            public Unsub parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                                          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new Unsub(input, extensionRegistry);
+            }
+        };
 
         @java.lang.Override
         public com.google.protobuf.Parser<Unsub> getParserForType() {
             return PARSER;
         }
 
-        private int              bitField0_;
-        public static final int  DESTINATION_FIELD_NUMBER = 1;
+        private int bitField0_;
+        public static final int DESTINATION_FIELD_NUMBER = 1;
         private java.lang.Object destination_;
 
         /**
@@ -6078,7 +6300,7 @@ public final class CanalPacket {
             }
         }
 
-        public static final int  CLIENT_ID_FIELD_NUMBER = 2;
+        public static final int CLIENT_ID_FIELD_NUMBER = 2;
         private java.lang.Object clientId_;
 
         /**
@@ -6119,7 +6341,7 @@ public final class CanalPacket {
             }
         }
 
-        public static final int  FILTER_FIELD_NUMBER = 7;
+        public static final int FILTER_FIELD_NUMBER = 7;
         private java.lang.Object filter_;
 
         /**
@@ -6170,8 +6392,10 @@ public final class CanalPacket {
 
         public final boolean isInitialized() {
             byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
 
             memoizedIsInitialized = 1;
             return true;
@@ -6195,7 +6419,8 @@ public final class CanalPacket {
 
         public int getSerializedSize() {
             int size = memoizedSerializedSize;
-            if (size != -1) return size;
+            if (size != -1)
+                return size;
 
             size = 0;
             if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -6220,57 +6445,69 @@ public final class CanalPacket {
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Unsub parseFrom(com.google.protobuf.ByteString data)
-                                                                                                                       throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Unsub parseFrom(com.google.protobuf.ByteString data,
-                                                                                   com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                               throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                   com.google.protobuf
+                                                                                           .ExtensionRegistryLite
+                                                                                           extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Unsub parseFrom(byte[] data)
-                                                                                               throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Unsub parseFrom(byte[] data,
-                                                                                   com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                               throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                   com.google.protobuf
+                                                                                           .ExtensionRegistryLite
+                                                                                           extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Unsub parseFrom(java.io.InputStream input)
-                                                                                                             throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Unsub parseFrom(java.io.InputStream input,
-                                                                                   com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                               throws java.io.IOException {
+                                                                                   com.google.protobuf
+                                                                                           .ExtensionRegistryLite
+                                                                                           extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Unsub parseDelimitedFrom(java.io.InputStream input)
-                                                                                                                      throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Unsub parseDelimitedFrom(java.io.InputStream input,
-                                                                                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                        throws java.io.IOException {
+                                                                                            com.google.protobuf
+                                                                                                    .ExtensionRegistryLite
+                                                                                                    extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Unsub parseFrom(com.google.protobuf.CodedInputStream input)
-                                                                                                                              throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Unsub parseFrom(com.google.protobuf
+                                                                                           .CodedInputStream input)
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Unsub parseFrom(com.google.protobuf.CodedInputStream input,
-                                                                                   com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                               throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Unsub parseFrom(com.google.protobuf
+                                                                                           .CodedInputStream input,
+                                                                                   com.google.protobuf
+                                                                                           .ExtensionRegistryLite
+                                                                                           extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
@@ -6298,31 +6535,34 @@ public final class CanalPacket {
 
         /**
          * Protobuf type {@code com.alibaba.otter.canal.protocol.Unsub}
-         *
+         * <p>
          * <pre>
          * Unsubscription
          * </pre>
          */
         public static final class Builder extends com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Unsub)
-        com.alibaba.otter.canal.protocol.CanalPacket.UnsubOrBuilder {
+                // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Unsub)
+                com.alibaba.otter.canal.protocol.CanalPacket.UnsubOrBuilder {
 
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Unsub_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Unsub_descriptor;
             }
 
             protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Unsub_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Unsub.class,
-                    com.alibaba.otter.canal.protocol.CanalPacket.Unsub.Builder.class);
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Unsub_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Unsub.class,
+                                com.alibaba.otter.canal.protocol.CanalPacket.Unsub.Builder.class);
             }
 
             // Construct using
             // com.alibaba.otter.canal.protocol.CanalPacket.Unsub.newBuilder()
-            private Builder(){
+            private Builder() {
                 maybeForceBuilderInitialization();
             }
 
-            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent){
+            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
                 super(parent);
                 maybeForceBuilderInitialization();
             }
@@ -6352,7 +6592,8 @@ public final class CanalPacket {
             }
 
             public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Unsub_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Unsub_descriptor;
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Unsub getDefaultInstanceForType() {
@@ -6368,7 +6609,8 @@ public final class CanalPacket {
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Unsub buildPartial() {
-                com.alibaba.otter.canal.protocol.CanalPacket.Unsub result = new com.alibaba.otter.canal.protocol.CanalPacket.Unsub(this);
+                com.alibaba.otter.canal.protocol.CanalPacket.Unsub result = new com.alibaba.otter.canal.protocol
+                        .CanalPacket.Unsub(this);
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -6398,7 +6640,8 @@ public final class CanalPacket {
             }
 
             public Builder mergeFrom(com.alibaba.otter.canal.protocol.CanalPacket.Unsub other) {
-                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Unsub.getDefaultInstance()) return this;
+                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Unsub.getDefaultInstance())
+                    return this;
                 if (other.hasDestination()) {
                     bitField0_ |= 0x00000001;
                     destination_ = other.destination_;
@@ -6424,7 +6667,7 @@ public final class CanalPacket {
 
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                 throws java.io.IOException {
+                    throws java.io.IOException {
                 com.alibaba.otter.canal.protocol.CanalPacket.Unsub parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
@@ -6439,7 +6682,7 @@ public final class CanalPacket {
                 return this;
             }
 
-            private int              bitField0_;
+            private int bitField0_;
 
             private java.lang.Object destination_ = "";
 
@@ -6473,7 +6716,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getDestinationBytes() {
                 java.lang.Object ref = destination_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     destination_ = b;
                     return b;
                 } else {
@@ -6549,7 +6793,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getClientIdBytes() {
                 java.lang.Object ref = clientId_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     clientId_ = b;
                     return b;
                 } else {
@@ -6625,7 +6870,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getFilterBytes() {
                 java.lang.Object ref = filter_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     filter_ = b;
                     return b;
                 } else {
@@ -6681,8 +6927,8 @@ public final class CanalPacket {
     }
 
     public interface GetOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Get)
-    com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Get)
+            com.google.protobuf.MessageOrBuilder {
 
         /**
          * <code>optional string destination = 1;</code>
@@ -6726,7 +6972,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional int64 timeout = 4 [default = -1];</code>
-         *
+         * <p>
          * <pre>
          * 默认-1时代表不控制
          * </pre>
@@ -6735,7 +6981,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional int64 timeout = 4 [default = -1];</code>
-         *
+         * <p>
          * <pre>
          * 默认-1时代表不控制
          * </pre>
@@ -6744,7 +6990,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional int32 unit = 5 [default = 2];</code>
-         *
+         * <p>
          * <pre>
          * 数字类型，0:纳秒,1:毫秒,2:微秒,3:秒,4:分钟,5:小时,6:天
          * </pre>
@@ -6753,7 +6999,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional int32 unit = 5 [default = 2];</code>
-         *
+         * <p>
          * <pre>
          * 数字类型，0:纳秒,1:毫秒,2:微秒,3:秒,4:分钟,5:小时,6:天
          * </pre>
@@ -6762,7 +7008,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional bool auto_ack = 6 [default = false];</code>
-         *
+         * <p>
          * <pre>
          * 是否自动ack
          * </pre>
@@ -6771,7 +7017,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional bool auto_ack = 6 [default = false];</code>
-         *
+         * <p>
          * <pre>
          * 是否自动ack
          * </pre>
@@ -6781,22 +7027,22 @@ public final class CanalPacket {
 
     /**
      * Protobuf type {@code com.alibaba.otter.canal.protocol.Get}
-     *
+     * <p>
      * <pre>
      * PullRequest
      * </pre>
      */
     public static final class Get extends com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Get)
-    GetOrBuilder {
+            // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Get)
+            GetOrBuilder {
 
         // Use Get.newBuilder() to construct.
-        private Get(com.google.protobuf.GeneratedMessage.Builder<?> builder){
+        private Get(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
             super(builder);
             this.unknownFields = builder.getUnknownFields();
         }
 
-        private Get(boolean noInit){
+        private Get(boolean noInit) {
             this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
 
@@ -6819,10 +7065,11 @@ public final class CanalPacket {
 
         private Get(com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                throws com.google.protobuf.InvalidProtocolBufferException{
+                throws com.google.protobuf.InvalidProtocolBufferException {
             initFields();
             int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
+                    .newBuilder();
             try {
                 boolean done = false;
                 while (!done) {
@@ -6882,30 +7129,34 @@ public final class CanalPacket {
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Get_descriptor;
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Get_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Get_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Get.class,
-                com.alibaba.otter.canal.protocol.CanalPacket.Get.Builder.class);
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Get_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized
+                            (com.alibaba.otter.canal.protocol.CanalPacket.Get.class,
+                                    com.alibaba.otter.canal.protocol.CanalPacket.Get.Builder.class);
         }
 
         public static com.google.protobuf.Parser<Get> PARSER = new com.google.protobuf.AbstractParser<Get>() {
 
-                                                                 public Get parsePartialFrom(com.google.protobuf.CodedInputStream input,
-                                                                                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                         throws com.google.protobuf.InvalidProtocolBufferException {
-                                                                     return new Get(input, extensionRegistry);
-                                                                 }
-                                                             };
+            public Get parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new Get(input, extensionRegistry);
+            }
+        };
 
         @java.lang.Override
         public com.google.protobuf.Parser<Get> getParserForType() {
             return PARSER;
         }
 
-        private int              bitField0_;
-        public static final int  DESTINATION_FIELD_NUMBER = 1;
+        private int bitField0_;
+        public static final int DESTINATION_FIELD_NUMBER = 1;
         private java.lang.Object destination_;
 
         /**
@@ -6946,7 +7197,7 @@ public final class CanalPacket {
             }
         }
 
-        public static final int  CLIENT_ID_FIELD_NUMBER = 2;
+        public static final int CLIENT_ID_FIELD_NUMBER = 2;
         private java.lang.Object clientId_;
 
         /**
@@ -6988,7 +7239,7 @@ public final class CanalPacket {
         }
 
         public static final int FETCH_SIZE_FIELD_NUMBER = 3;
-        private int             fetchSize_;
+        private int fetchSize_;
 
         /**
          * <code>optional int32 fetch_size = 3;</code>
@@ -7005,11 +7256,11 @@ public final class CanalPacket {
         }
 
         public static final int TIMEOUT_FIELD_NUMBER = 4;
-        private long            timeout_;
+        private long timeout_;
 
         /**
          * <code>optional int64 timeout = 4 [default = -1];</code>
-         *
+         * <p>
          * <pre>
          * 默认-1时代表不控制
          * </pre>
@@ -7020,7 +7271,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional int64 timeout = 4 [default = -1];</code>
-         *
+         * <p>
          * <pre>
          * 默认-1时代表不控制
          * </pre>
@@ -7030,11 +7281,11 @@ public final class CanalPacket {
         }
 
         public static final int UNIT_FIELD_NUMBER = 5;
-        private int             unit_;
+        private int unit_;
 
         /**
          * <code>optional int32 unit = 5 [default = 2];</code>
-         *
+         * <p>
          * <pre>
          * 数字类型，0:纳秒,1:毫秒,2:微秒,3:秒,4:分钟,5:小时,6:天
          * </pre>
@@ -7045,7 +7296,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional int32 unit = 5 [default = 2];</code>
-         *
+         * <p>
          * <pre>
          * 数字类型，0:纳秒,1:毫秒,2:微秒,3:秒,4:分钟,5:小时,6:天
          * </pre>
@@ -7055,11 +7306,11 @@ public final class CanalPacket {
         }
 
         public static final int AUTO_ACK_FIELD_NUMBER = 6;
-        private boolean         autoAck_;
+        private boolean autoAck_;
 
         /**
          * <code>optional bool auto_ack = 6 [default = false];</code>
-         *
+         * <p>
          * <pre>
          * 是否自动ack
          * </pre>
@@ -7070,7 +7321,7 @@ public final class CanalPacket {
 
         /**
          * <code>optional bool auto_ack = 6 [default = false];</code>
-         *
+         * <p>
          * <pre>
          * 是否自动ack
          * </pre>
@@ -7092,8 +7343,10 @@ public final class CanalPacket {
 
         public final boolean isInitialized() {
             byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
 
             memoizedIsInitialized = 1;
             return true;
@@ -7126,7 +7379,8 @@ public final class CanalPacket {
 
         public int getSerializedSize() {
             int size = memoizedSerializedSize;
-            if (size != -1) return size;
+            if (size != -1)
+                return size;
 
             size = 0;
             if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -7160,57 +7414,69 @@ public final class CanalPacket {
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Get parseFrom(com.google.protobuf.ByteString data)
-                                                                                                                     throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Get parseFrom(com.google.protobuf.ByteString data,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                             throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                 com.google.protobuf
+                                                                                         .ExtensionRegistryLite
+                                                                                         extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Get parseFrom(byte[] data)
-                                                                                             throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Get parseFrom(byte[] data,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                             throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                 com.google.protobuf
+                                                                                         .ExtensionRegistryLite
+                                                                                         extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Get parseFrom(java.io.InputStream input)
-                                                                                                           throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Get parseFrom(java.io.InputStream input,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                             throws java.io.IOException {
+                                                                                 com.google.protobuf
+                                                                                         .ExtensionRegistryLite
+                                                                                         extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Get parseDelimitedFrom(java.io.InputStream input)
-                                                                                                                    throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Get parseDelimitedFrom(java.io.InputStream input,
-                                                                                          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                      throws java.io.IOException {
+                                                                                          com.google.protobuf
+                                                                                                  .ExtensionRegistryLite
+                                                                                                  extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Get parseFrom(com.google.protobuf.CodedInputStream input)
-                                                                                                                            throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Get parseFrom(com.google.protobuf.CodedInputStream
+                                                                                         input)
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Get parseFrom(com.google.protobuf.CodedInputStream input,
-                                                                                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                             throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Get parseFrom(com.google.protobuf.CodedInputStream
+                                                                                         input,
+                                                                                 com.google.protobuf
+                                                                                         .ExtensionRegistryLite
+                                                                                         extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
@@ -7238,31 +7504,34 @@ public final class CanalPacket {
 
         /**
          * Protobuf type {@code com.alibaba.otter.canal.protocol.Get}
-         *
+         * <p>
          * <pre>
          * PullRequest
          * </pre>
          */
         public static final class Builder extends com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Get)
-        com.alibaba.otter.canal.protocol.CanalPacket.GetOrBuilder {
+                // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Get)
+                com.alibaba.otter.canal.protocol.CanalPacket.GetOrBuilder {
 
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Get_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Get_descriptor;
             }
 
             protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Get_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Get.class,
-                    com.alibaba.otter.canal.protocol.CanalPacket.Get.Builder.class);
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Get_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Get.class,
+                                com.alibaba.otter.canal.protocol.CanalPacket.Get.Builder.class);
             }
 
             // Construct using
             // com.alibaba.otter.canal.protocol.CanalPacket.Get.newBuilder()
-            private Builder(){
+            private Builder() {
                 maybeForceBuilderInitialization();
             }
 
-            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent){
+            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
                 super(parent);
                 maybeForceBuilderInitialization();
             }
@@ -7298,7 +7567,8 @@ public final class CanalPacket {
             }
 
             public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Get_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Get_descriptor;
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Get getDefaultInstanceForType() {
@@ -7314,7 +7584,8 @@ public final class CanalPacket {
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Get buildPartial() {
-                com.alibaba.otter.canal.protocol.CanalPacket.Get result = new com.alibaba.otter.canal.protocol.CanalPacket.Get(this);
+                com.alibaba.otter.canal.protocol.CanalPacket.Get result = new com.alibaba.otter.canal.protocol
+                        .CanalPacket.Get(this);
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -7356,7 +7627,8 @@ public final class CanalPacket {
             }
 
             public Builder mergeFrom(com.alibaba.otter.canal.protocol.CanalPacket.Get other) {
-                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Get.getDefaultInstance()) return this;
+                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Get.getDefaultInstance())
+                    return this;
                 if (other.hasDestination()) {
                     bitField0_ |= 0x00000001;
                     destination_ = other.destination_;
@@ -7389,7 +7661,7 @@ public final class CanalPacket {
 
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                 throws java.io.IOException {
+                    throws java.io.IOException {
                 com.alibaba.otter.canal.protocol.CanalPacket.Get parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
@@ -7404,7 +7676,7 @@ public final class CanalPacket {
                 return this;
             }
 
-            private int              bitField0_;
+            private int bitField0_;
 
             private java.lang.Object destination_ = "";
 
@@ -7438,7 +7710,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getDestinationBytes() {
                 java.lang.Object ref = destination_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     destination_ = b;
                     return b;
                 } else {
@@ -7514,7 +7787,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getClientIdBytes() {
                 java.lang.Object ref = clientId_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     clientId_ = b;
                     return b;
                 } else {
@@ -7598,7 +7872,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int64 timeout = 4 [default = -1];</code>
-             *
+             * <p>
              * <pre>
              * 默认-1时代表不控制
              * </pre>
@@ -7609,7 +7883,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int64 timeout = 4 [default = -1];</code>
-             *
+             * <p>
              * <pre>
              * 默认-1时代表不控制
              * </pre>
@@ -7620,7 +7894,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int64 timeout = 4 [default = -1];</code>
-             *
+             * <p>
              * <pre>
              * 默认-1时代表不控制
              * </pre>
@@ -7634,7 +7908,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int64 timeout = 4 [default = -1];</code>
-             *
+             * <p>
              * <pre>
              * 默认-1时代表不控制
              * </pre>
@@ -7650,7 +7924,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int32 unit = 5 [default = 2];</code>
-             *
+             * <p>
              * <pre>
              * 数字类型，0:纳秒,1:毫秒,2:微秒,3:秒,4:分钟,5:小时,6:天
              * </pre>
@@ -7661,7 +7935,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int32 unit = 5 [default = 2];</code>
-             *
+             * <p>
              * <pre>
              * 数字类型，0:纳秒,1:毫秒,2:微秒,3:秒,4:分钟,5:小时,6:天
              * </pre>
@@ -7672,7 +7946,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int32 unit = 5 [default = 2];</code>
-             *
+             * <p>
              * <pre>
              * 数字类型，0:纳秒,1:毫秒,2:微秒,3:秒,4:分钟,5:小时,6:天
              * </pre>
@@ -7686,7 +7960,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional int32 unit = 5 [default = 2];</code>
-             *
+             * <p>
              * <pre>
              * 数字类型，0:纳秒,1:毫秒,2:微秒,3:秒,4:分钟,5:小时,6:天
              * </pre>
@@ -7702,7 +7976,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional bool auto_ack = 6 [default = false];</code>
-             *
+             * <p>
              * <pre>
              * 是否自动ack
              * </pre>
@@ -7713,7 +7987,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional bool auto_ack = 6 [default = false];</code>
-             *
+             * <p>
              * <pre>
              * 是否自动ack
              * </pre>
@@ -7724,7 +7998,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional bool auto_ack = 6 [default = false];</code>
-             *
+             * <p>
              * <pre>
              * 是否自动ack
              * </pre>
@@ -7738,7 +8012,7 @@ public final class CanalPacket {
 
             /**
              * <code>optional bool auto_ack = 6 [default = false];</code>
-             *
+             * <p>
              * <pre>
              * 是否自动ack
              * </pre>
@@ -7762,8 +8036,8 @@ public final class CanalPacket {
     }
 
     public interface MessagesOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Messages)
-    com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Messages)
+            com.google.protobuf.MessageOrBuilder {
 
         /**
          * <code>optional int64 batch_id = 1;</code>
@@ -7793,21 +8067,21 @@ public final class CanalPacket {
 
     /**
      * Protobuf type {@code com.alibaba.otter.canal.protocol.Messages}
-     *
+     * <p>
      * <pre>
      * </pre>
      */
     public static final class Messages extends com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Messages)
-    MessagesOrBuilder {
+            // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Messages)
+            MessagesOrBuilder {
 
         // Use Messages.newBuilder() to construct.
-        private Messages(com.google.protobuf.GeneratedMessage.Builder<?> builder){
+        private Messages(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
             super(builder);
             this.unknownFields = builder.getUnknownFields();
         }
 
-        private Messages(boolean noInit){
+        private Messages(boolean noInit) {
             this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
 
@@ -7830,10 +8104,11 @@ public final class CanalPacket {
 
         private Messages(com.google.protobuf.CodedInputStream input,
                          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                     throws com.google.protobuf.InvalidProtocolBufferException{
+                throws com.google.protobuf.InvalidProtocolBufferException {
             initFields();
             int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
+                    .newBuilder();
             try {
                 boolean done = false;
                 while (!done) {
@@ -7877,31 +8152,34 @@ public final class CanalPacket {
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Messages_descriptor;
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Messages_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Messages_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Messages.class,
-                com.alibaba.otter.canal.protocol.CanalPacket.Messages.Builder.class);
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Messages_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Messages.class,
+                            com.alibaba.otter.canal.protocol.CanalPacket.Messages.Builder.class);
         }
 
         public static com.google.protobuf.Parser<Messages> PARSER = new com.google.protobuf.AbstractParser<Messages>() {
 
-                                                                      public Messages parsePartialFrom(com.google.protobuf.CodedInputStream input,
-                                                                                                       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                                   throws com.google.protobuf.InvalidProtocolBufferException {
-                                                                          return new Messages(input, extensionRegistry);
-                                                                      }
-                                                                  };
+            public Messages parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new Messages(input, extensionRegistry);
+            }
+        };
 
         @java.lang.Override
         public com.google.protobuf.Parser<Messages> getParserForType() {
             return PARSER;
         }
 
-        private int             bitField0_;
+        private int bitField0_;
         public static final int BATCH_ID_FIELD_NUMBER = 1;
-        private long            batchId_;
+        private long batchId_;
 
         /**
          * <code>optional int64 batch_id = 1;</code>
@@ -7917,7 +8195,7 @@ public final class CanalPacket {
             return batchId_;
         }
 
-        public static final int                                MESSAGES_FIELD_NUMBER = 2;
+        public static final int MESSAGES_FIELD_NUMBER = 2;
         private java.util.List<com.google.protobuf.ByteString> messages_;
 
         /**
@@ -7950,8 +8228,10 @@ public final class CanalPacket {
 
         public final boolean isInitialized() {
             byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
 
             memoizedIsInitialized = 1;
             return true;
@@ -7972,7 +8252,8 @@ public final class CanalPacket {
 
         public int getSerializedSize() {
             int size = memoizedSerializedSize;
-            if (size != -1) return size;
+            if (size != -1)
+                return size;
 
             size = 0;
             if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -7998,58 +8279,74 @@ public final class CanalPacket {
             return super.writeReplace();
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseFrom(com.google.protobuf.ByteString data)
-                                                                                                                          throws com.google.protobuf.InvalidProtocolBufferException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseFrom(com.google.protobuf.ByteString
+                                                                                              data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseFrom(com.google.protobuf.ByteString data,
-                                                                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                  throws com.google.protobuf.InvalidProtocolBufferException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseFrom(com.google.protobuf.ByteString
+                                                                                              data,
+                                                                                      com.google.protobuf
+                                                                                              .ExtensionRegistryLite
+                                                                                              extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseFrom(byte[] data)
-                                                                                                  throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseFrom(byte[] data,
-                                                                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                  throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                      com.google.protobuf
+                                                                                              .ExtensionRegistryLite
+                                                                                              extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseFrom(java.io.InputStream input)
-                                                                                                                throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseFrom(java.io.InputStream input,
-                                                                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                  throws java.io.IOException {
+                                                                                      com.google.protobuf
+                                                                                              .ExtensionRegistryLite
+                                                                                              extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseDelimitedFrom(java.io.InputStream input)
-                                                                                                                         throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseDelimitedFrom(java.io.InputStream
+                                                                                                       input)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseDelimitedFrom(java.io.InputStream input,
-                                                                                               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                           throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseDelimitedFrom(java.io.InputStream
+                                                                                                       input,
+                                                                                               com.google.protobuf
+                                                                                                       .ExtensionRegistryLite
+                                                                                                       extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseFrom(com.google.protobuf.CodedInputStream input)
-                                                                                                                                 throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseFrom(com.google.protobuf
+                                                                                              .CodedInputStream input)
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseFrom(com.google.protobuf.CodedInputStream input,
-                                                                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                  throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Messages parseFrom(com.google.protobuf
+                                                                                              .CodedInputStream input,
+                                                                                      com.google.protobuf
+                                                                                              .ExtensionRegistryLite
+                                                                                              extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
@@ -8077,30 +8374,33 @@ public final class CanalPacket {
 
         /**
          * Protobuf type {@code com.alibaba.otter.canal.protocol.Messages}
-         *
+         * <p>
          * <pre>
          * </pre>
          */
         public static final class Builder extends com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Messages)
-        com.alibaba.otter.canal.protocol.CanalPacket.MessagesOrBuilder {
+                // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Messages)
+                com.alibaba.otter.canal.protocol.CanalPacket.MessagesOrBuilder {
 
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Messages_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Messages_descriptor;
             }
 
             protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Messages_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Messages.class,
-                    com.alibaba.otter.canal.protocol.CanalPacket.Messages.Builder.class);
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Messages_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Messages.class,
+                                com.alibaba.otter.canal.protocol.CanalPacket.Messages.Builder.class);
             }
 
             // Construct using
             // com.alibaba.otter.canal.protocol.CanalPacket.Messages.newBuilder()
-            private Builder(){
+            private Builder() {
                 maybeForceBuilderInitialization();
             }
 
-            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent){
+            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
                 super(parent);
                 maybeForceBuilderInitialization();
             }
@@ -8128,7 +8428,8 @@ public final class CanalPacket {
             }
 
             public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Messages_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Messages_descriptor;
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Messages getDefaultInstanceForType() {
@@ -8144,7 +8445,8 @@ public final class CanalPacket {
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Messages buildPartial() {
-                com.alibaba.otter.canal.protocol.CanalPacket.Messages result = new com.alibaba.otter.canal.protocol.CanalPacket.Messages(this);
+                com.alibaba.otter.canal.protocol.CanalPacket.Messages result = new com.alibaba.otter.canal.protocol
+                        .CanalPacket.Messages(this);
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -8171,7 +8473,8 @@ public final class CanalPacket {
             }
 
             public Builder mergeFrom(com.alibaba.otter.canal.protocol.CanalPacket.Messages other) {
-                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Messages.getDefaultInstance()) return this;
+                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Messages.getDefaultInstance())
+                    return this;
                 if (other.hasBatchId()) {
                     setBatchId(other.getBatchId());
                 }
@@ -8195,7 +8498,7 @@ public final class CanalPacket {
 
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                 throws java.io.IOException {
+                    throws java.io.IOException {
                 com.alibaba.otter.canal.protocol.CanalPacket.Messages parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
@@ -8210,7 +8513,7 @@ public final class CanalPacket {
                 return this;
             }
 
-            private int  bitField0_;
+            private int bitField0_;
 
             private long batchId_;
 
@@ -8336,8 +8639,8 @@ public final class CanalPacket {
     }
 
     public interface DumpOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Dump)
-    com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.Dump)
+            com.google.protobuf.MessageOrBuilder {
 
         /**
          * <code>optional string journal = 1;</code>
@@ -8377,22 +8680,22 @@ public final class CanalPacket {
 
     /**
      * Protobuf type {@code com.alibaba.otter.canal.protocol.Dump}
-     *
+     * <p>
      * <pre>
      * TBD when new packets are required
      * </pre>
      */
     public static final class Dump extends com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Dump)
-    DumpOrBuilder {
+            // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.Dump)
+            DumpOrBuilder {
 
         // Use Dump.newBuilder() to construct.
-        private Dump(com.google.protobuf.GeneratedMessage.Builder<?> builder){
+        private Dump(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
             super(builder);
             this.unknownFields = builder.getUnknownFields();
         }
 
-        private Dump(boolean noInit){
+        private Dump(boolean noInit) {
             this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
 
@@ -8415,10 +8718,11 @@ public final class CanalPacket {
 
         private Dump(com.google.protobuf.CodedInputStream input,
                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                 throws com.google.protobuf.InvalidProtocolBufferException{
+                throws com.google.protobuf.InvalidProtocolBufferException {
             initFields();
             int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
+                    .newBuilder();
             try {
                 boolean done = false;
                 while (!done) {
@@ -8462,30 +8766,34 @@ public final class CanalPacket {
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Dump_descriptor;
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Dump_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Dump_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Dump.class,
-                com.alibaba.otter.canal.protocol.CanalPacket.Dump.Builder.class);
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_Dump_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized
+                            (com.alibaba.otter.canal.protocol.CanalPacket.Dump.class,
+                                    com.alibaba.otter.canal.protocol.CanalPacket.Dump.Builder.class);
         }
 
         public static com.google.protobuf.Parser<Dump> PARSER = new com.google.protobuf.AbstractParser<Dump>() {
 
-                                                                  public Dump parsePartialFrom(com.google.protobuf.CodedInputStream input,
-                                                                                               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                           throws com.google.protobuf.InvalidProtocolBufferException {
-                                                                      return new Dump(input, extensionRegistry);
-                                                                  }
-                                                              };
+            public Dump parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                                         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new Dump(input, extensionRegistry);
+            }
+        };
 
         @java.lang.Override
         public com.google.protobuf.Parser<Dump> getParserForType() {
             return PARSER;
         }
 
-        private int              bitField0_;
-        public static final int  JOURNAL_FIELD_NUMBER = 1;
+        private int bitField0_;
+        public static final int JOURNAL_FIELD_NUMBER = 1;
         private java.lang.Object journal_;
 
         /**
@@ -8527,7 +8835,7 @@ public final class CanalPacket {
         }
 
         public static final int POSITION_FIELD_NUMBER = 2;
-        private long            position_;
+        private long position_;
 
         /**
          * <code>optional int64 position = 2;</code>
@@ -8544,7 +8852,7 @@ public final class CanalPacket {
         }
 
         public static final int TIMESTAMP_FIELD_NUMBER = 3;
-        private long            timestamp_;
+        private long timestamp_;
 
         /**
          * <code>optional int64 timestamp = 3 [default = 0];</code>
@@ -8570,8 +8878,10 @@ public final class CanalPacket {
 
         public final boolean isInitialized() {
             byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
 
             memoizedIsInitialized = 1;
             return true;
@@ -8595,7 +8905,8 @@ public final class CanalPacket {
 
         public int getSerializedSize() {
             int size = memoizedSerializedSize;
-            if (size != -1) return size;
+            if (size != -1)
+                return size;
 
             size = 0;
             if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -8620,57 +8931,69 @@ public final class CanalPacket {
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Dump parseFrom(com.google.protobuf.ByteString data)
-                                                                                                                      throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Dump parseFrom(com.google.protobuf.ByteString data,
-                                                                                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                              throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                  com.google.protobuf
+                                                                                          .ExtensionRegistryLite
+                                                                                          extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Dump parseFrom(byte[] data)
-                                                                                              throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Dump parseFrom(byte[] data,
-                                                                                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                              throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                  com.google.protobuf
+                                                                                          .ExtensionRegistryLite
+                                                                                          extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Dump parseFrom(java.io.InputStream input)
-                                                                                                            throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Dump parseFrom(java.io.InputStream input,
-                                                                                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                              throws java.io.IOException {
+                                                                                  com.google.protobuf
+                                                                                          .ExtensionRegistryLite
+                                                                                          extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Dump parseDelimitedFrom(java.io.InputStream input)
-                                                                                                                     throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.Dump parseDelimitedFrom(java.io.InputStream input,
-                                                                                           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                       throws java.io.IOException {
+                                                                                           com.google.protobuf
+                                                                                                   .ExtensionRegistryLite
+                                                                                                   extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Dump parseFrom(com.google.protobuf.CodedInputStream input)
-                                                                                                                             throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Dump parseFrom(com.google.protobuf
+                                                                                          .CodedInputStream input)
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.Dump parseFrom(com.google.protobuf.CodedInputStream input,
-                                                                                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                              throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.Dump parseFrom(com.google.protobuf
+                                                                                          .CodedInputStream input,
+                                                                                  com.google.protobuf
+                                                                                          .ExtensionRegistryLite
+                                                                                          extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
@@ -8698,31 +9021,34 @@ public final class CanalPacket {
 
         /**
          * Protobuf type {@code com.alibaba.otter.canal.protocol.Dump}
-         *
+         * <p>
          * <pre>
          * TBD when new packets are required
          * </pre>
          */
         public static final class Builder extends com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Dump)
-        com.alibaba.otter.canal.protocol.CanalPacket.DumpOrBuilder {
+                // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.Dump)
+                com.alibaba.otter.canal.protocol.CanalPacket.DumpOrBuilder {
 
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Dump_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Dump_descriptor;
             }
 
             protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Dump_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Dump.class,
-                    com.alibaba.otter.canal.protocol.CanalPacket.Dump.Builder.class);
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Dump_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.Dump.class,
+                                com.alibaba.otter.canal.protocol.CanalPacket.Dump.Builder.class);
             }
 
             // Construct using
             // com.alibaba.otter.canal.protocol.CanalPacket.Dump.newBuilder()
-            private Builder(){
+            private Builder() {
                 maybeForceBuilderInitialization();
             }
 
-            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent){
+            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
                 super(parent);
                 maybeForceBuilderInitialization();
             }
@@ -8752,7 +9078,8 @@ public final class CanalPacket {
             }
 
             public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_Dump_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_Dump_descriptor;
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Dump getDefaultInstanceForType() {
@@ -8768,7 +9095,8 @@ public final class CanalPacket {
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.Dump buildPartial() {
-                com.alibaba.otter.canal.protocol.CanalPacket.Dump result = new com.alibaba.otter.canal.protocol.CanalPacket.Dump(this);
+                com.alibaba.otter.canal.protocol.CanalPacket.Dump result = new com.alibaba.otter.canal.protocol
+                        .CanalPacket.Dump(this);
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -8798,7 +9126,8 @@ public final class CanalPacket {
             }
 
             public Builder mergeFrom(com.alibaba.otter.canal.protocol.CanalPacket.Dump other) {
-                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Dump.getDefaultInstance()) return this;
+                if (other == com.alibaba.otter.canal.protocol.CanalPacket.Dump.getDefaultInstance())
+                    return this;
                 if (other.hasJournal()) {
                     bitField0_ |= 0x00000001;
                     journal_ = other.journal_;
@@ -8820,7 +9149,7 @@ public final class CanalPacket {
 
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                 throws java.io.IOException {
+                    throws java.io.IOException {
                 com.alibaba.otter.canal.protocol.CanalPacket.Dump parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
@@ -8835,7 +9164,7 @@ public final class CanalPacket {
                 return this;
             }
 
-            private int              bitField0_;
+            private int bitField0_;
 
             private java.lang.Object journal_ = "";
 
@@ -8869,7 +9198,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getJournalBytes() {
                 java.lang.Object ref = journal_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     journal_ = b;
                     return b;
                 } else {
@@ -8997,8 +9327,8 @@ public final class CanalPacket {
     }
 
     public interface ClientRollbackOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.ClientRollback)
-    com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:com.alibaba.otter.canal.protocol.ClientRollback)
+            com.google.protobuf.MessageOrBuilder {
 
         /**
          * <code>optional string destination = 1;</code>
@@ -9045,16 +9375,16 @@ public final class CanalPacket {
      * Protobuf type {@code com.alibaba.otter.canal.protocol.ClientRollback}
      */
     public static final class ClientRollback extends com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.ClientRollback)
-    ClientRollbackOrBuilder {
+            // @@protoc_insertion_point(message_implements:com.alibaba.otter.canal.protocol.ClientRollback)
+            ClientRollbackOrBuilder {
 
         // Use ClientRollback.newBuilder() to construct.
-        private ClientRollback(com.google.protobuf.GeneratedMessage.Builder<?> builder){
+        private ClientRollback(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
             super(builder);
             this.unknownFields = builder.getUnknownFields();
         }
 
-        private ClientRollback(boolean noInit){
+        private ClientRollback(boolean noInit) {
             this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
 
@@ -9077,10 +9407,11 @@ public final class CanalPacket {
 
         private ClientRollback(com.google.protobuf.CodedInputStream input,
                                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                           throws com.google.protobuf.InvalidProtocolBufferException{
+                throws com.google.protobuf.InvalidProtocolBufferException {
             initFields();
             int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
+                    .newBuilder();
             try {
                 boolean done = false;
                 while (!done) {
@@ -9125,31 +9456,35 @@ public final class CanalPacket {
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientRollback_descriptor;
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_ClientRollback_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-            return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientRollback_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback.class,
-                com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback.Builder.class);
+            return com.alibaba.otter.canal.protocol.CanalPacket
+                    .internal_static_com_alibaba_otter_canal_protocol_ClientRollback_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback.class,
+                            com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback.Builder.class);
         }
 
-        public static com.google.protobuf.Parser<ClientRollback> PARSER = new com.google.protobuf.AbstractParser<ClientRollback>() {
+        public static com.google.protobuf.Parser<ClientRollback> PARSER = new com.google.protobuf
+                .AbstractParser<ClientRollback>() {
 
-                                                                            public ClientRollback parsePartialFrom(com.google.protobuf.CodedInputStream input,
-                                                                                                                   com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                                               throws com.google.protobuf.InvalidProtocolBufferException {
-                                                                                return new ClientRollback(input,
-                                                                                    extensionRegistry);
-                                                                            }
-                                                                        };
+            public ClientRollback parsePartialFrom(com.google.protobuf.CodedInputStream input,
+                                                   com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new ClientRollback(input,
+                        extensionRegistry);
+            }
+        };
 
         @java.lang.Override
         public com.google.protobuf.Parser<ClientRollback> getParserForType() {
             return PARSER;
         }
 
-        private int              bitField0_;
-        public static final int  DESTINATION_FIELD_NUMBER = 1;
+        private int bitField0_;
+        public static final int DESTINATION_FIELD_NUMBER = 1;
         private java.lang.Object destination_;
 
         /**
@@ -9190,7 +9525,7 @@ public final class CanalPacket {
             }
         }
 
-        public static final int  CLIENT_ID_FIELD_NUMBER = 2;
+        public static final int CLIENT_ID_FIELD_NUMBER = 2;
         private java.lang.Object clientId_;
 
         /**
@@ -9232,7 +9567,7 @@ public final class CanalPacket {
         }
 
         public static final int BATCH_ID_FIELD_NUMBER = 3;
-        private long            batchId_;
+        private long batchId_;
 
         /**
          * <code>optional int64 batch_id = 3;</code>
@@ -9258,8 +9593,10 @@ public final class CanalPacket {
 
         public final boolean isInitialized() {
             byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
+            if (isInitialized == 1)
+                return true;
+            if (isInitialized == 0)
+                return false;
 
             memoizedIsInitialized = 1;
             return true;
@@ -9283,7 +9620,8 @@ public final class CanalPacket {
 
         public int getSerializedSize() {
             int size = memoizedSerializedSize;
-            if (size != -1) return size;
+            if (size != -1)
+                return size;
 
             size = 0;
             if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -9307,58 +9645,76 @@ public final class CanalPacket {
             return super.writeReplace();
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseFrom(com.google.protobuf.ByteString data)
-                                                                                                                                throws com.google.protobuf.InvalidProtocolBufferException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseFrom(com.google.protobuf
+                                                                                                    .ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseFrom(com.google.protobuf.ByteString data,
-                                                                                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                        throws com.google.protobuf.InvalidProtocolBufferException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseFrom(com.google.protobuf
+                                                                                                    .ByteString data,
+                                                                                            com.google.protobuf
+                                                                                                    .ExtensionRegistryLite
+                                                                                                    extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseFrom(byte[] data)
-                                                                                                        throws com.google.protobuf.InvalidProtocolBufferException {
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseFrom(byte[] data,
-                                                                                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                        throws com.google.protobuf.InvalidProtocolBufferException {
+                                                                                            com.google.protobuf
+                                                                                                    .ExtensionRegistryLite
+                                                                                                    extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseFrom(java.io.InputStream input)
-                                                                                                                      throws java.io.IOException {
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
         public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseFrom(java.io.InputStream input,
-                                                                                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                        throws java.io.IOException {
+                                                                                            com.google.protobuf
+                                                                                                    .ExtensionRegistryLite
+                                                                                                    extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseDelimitedFrom(java.io.InputStream input)
-                                                                                                                               throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseDelimitedFrom(java.io
+                                                                                                             .InputStream input)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseDelimitedFrom(java.io.InputStream input,
-                                                                                                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                                 throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseDelimitedFrom(java.io
+                                                                                                             .InputStream input,
+                                                                                                     com.google
+                                                                                                             .protobuf
+                                                                                                             .ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseDelimitedFrom(input, extensionRegistry);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseFrom(com.google.protobuf.CodedInputStream input)
-                                                                                                                                       throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseFrom(com.google.protobuf
+                                                                                                    .CodedInputStream
+                                                                                                    input)
+                throws java.io.IOException {
             return PARSER.parseFrom(input);
         }
 
-        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseFrom(com.google.protobuf.CodedInputStream input,
-                                                                                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                                                                        throws java.io.IOException {
+        public static com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parseFrom(com.google.protobuf
+                                                                                                    .CodedInputStream
+                                                                                                    input,
+                                                                                            com.google.protobuf
+                                                                                                    .ExtensionRegistryLite
+                                                                                                    extensionRegistry)
+                throws java.io.IOException {
             return PARSER.parseFrom(input, extensionRegistry);
         }
 
@@ -9388,25 +9744,29 @@ public final class CanalPacket {
          * Protobuf type {@code com.alibaba.otter.canal.protocol.ClientRollback}
          */
         public static final class Builder extends com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.ClientRollback)
-        com.alibaba.otter.canal.protocol.CanalPacket.ClientRollbackOrBuilder {
+                // @@protoc_insertion_point(builder_implements:com.alibaba.otter.canal.protocol.ClientRollback)
+                com.alibaba.otter.canal.protocol.CanalPacket.ClientRollbackOrBuilder {
 
             public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientRollback_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_ClientRollback_descriptor;
             }
 
             protected com.google.protobuf.GeneratedMessage.FieldAccessorTable internalGetFieldAccessorTable() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientRollback_fieldAccessorTable.ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback.class,
-                    com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback.Builder.class);
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_ClientRollback_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback
+                                        .class,
+                                com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback.Builder.class);
             }
 
             // Construct using
             // com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback.newBuilder()
-            private Builder(){
+            private Builder() {
                 maybeForceBuilderInitialization();
             }
 
-            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent){
+            private Builder(com.google.protobuf.GeneratedMessage.BuilderParent parent) {
                 super(parent);
                 maybeForceBuilderInitialization();
             }
@@ -9436,7 +9796,8 @@ public final class CanalPacket {
             }
 
             public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-                return com.alibaba.otter.canal.protocol.CanalPacket.internal_static_com_alibaba_otter_canal_protocol_ClientRollback_descriptor;
+                return com.alibaba.otter.canal.protocol.CanalPacket
+                        .internal_static_com_alibaba_otter_canal_protocol_ClientRollback_descriptor;
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback getDefaultInstanceForType() {
@@ -9452,7 +9813,8 @@ public final class CanalPacket {
             }
 
             public com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback buildPartial() {
-                com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback result = new com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback(this);
+                com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback result = new com.alibaba.otter.canal
+                        .protocol.CanalPacket.ClientRollback(this);
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -9482,7 +9844,8 @@ public final class CanalPacket {
             }
 
             public Builder mergeFrom(com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback other) {
-                if (other == com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback.getDefaultInstance()) return this;
+                if (other == com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback.getDefaultInstance())
+                    return this;
                 if (other.hasDestination()) {
                     bitField0_ |= 0x00000001;
                     destination_ = other.destination_;
@@ -9506,12 +9869,13 @@ public final class CanalPacket {
 
             public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
                                      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                                                                                                 throws java.io.IOException {
+                    throws java.io.IOException {
                 com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback) e.getUnfinishedMessage();
+                    parsedMessage = (com.alibaba.otter.canal.protocol.CanalPacket.ClientRollback) e
+                            .getUnfinishedMessage();
                     throw e;
                 } finally {
                     if (parsedMessage != null) {
@@ -9521,7 +9885,7 @@ public final class CanalPacket {
                 return this;
             }
 
-            private int              bitField0_;
+            private int bitField0_;
 
             private java.lang.Object destination_ = "";
 
@@ -9555,7 +9919,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getDestinationBytes() {
                 java.lang.Object ref = destination_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     destination_ = b;
                     return b;
                 } else {
@@ -9631,7 +9996,8 @@ public final class CanalPacket {
             public com.google.protobuf.ByteString getClientIdBytes() {
                 java.lang.Object ref = clientId_;
                 if (ref instanceof String) {
-                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String)
+                            ref);
                     clientId_ = b;
                     return b;
                 } else {
@@ -9722,128 +10088,175 @@ public final class CanalPacket {
         // @@protoc_insertion_point(class_scope:com.alibaba.otter.canal.protocol.ClientRollback)
     }
 
-    private static final com.google.protobuf.Descriptors.Descriptor        internal_static_com_alibaba_otter_canal_protocol_Packet_descriptor;
-    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_com_alibaba_otter_canal_protocol_Packet_fieldAccessorTable;
-    private static final com.google.protobuf.Descriptors.Descriptor        internal_static_com_alibaba_otter_canal_protocol_HeartBeat_descriptor;
-    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_com_alibaba_otter_canal_protocol_HeartBeat_fieldAccessorTable;
-    private static final com.google.protobuf.Descriptors.Descriptor        internal_static_com_alibaba_otter_canal_protocol_Handshake_descriptor;
-    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_com_alibaba_otter_canal_protocol_Handshake_fieldAccessorTable;
-    private static final com.google.protobuf.Descriptors.Descriptor        internal_static_com_alibaba_otter_canal_protocol_ClientAuth_descriptor;
-    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_com_alibaba_otter_canal_protocol_ClientAuth_fieldAccessorTable;
-    private static final com.google.protobuf.Descriptors.Descriptor        internal_static_com_alibaba_otter_canal_protocol_Ack_descriptor;
-    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_com_alibaba_otter_canal_protocol_Ack_fieldAccessorTable;
-    private static final com.google.protobuf.Descriptors.Descriptor        internal_static_com_alibaba_otter_canal_protocol_ClientAck_descriptor;
-    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_com_alibaba_otter_canal_protocol_ClientAck_fieldAccessorTable;
-    private static final com.google.protobuf.Descriptors.Descriptor        internal_static_com_alibaba_otter_canal_protocol_Sub_descriptor;
-    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_com_alibaba_otter_canal_protocol_Sub_fieldAccessorTable;
-    private static final com.google.protobuf.Descriptors.Descriptor        internal_static_com_alibaba_otter_canal_protocol_Unsub_descriptor;
-    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_com_alibaba_otter_canal_protocol_Unsub_fieldAccessorTable;
-    private static final com.google.protobuf.Descriptors.Descriptor        internal_static_com_alibaba_otter_canal_protocol_Get_descriptor;
-    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_com_alibaba_otter_canal_protocol_Get_fieldAccessorTable;
-    private static final com.google.protobuf.Descriptors.Descriptor        internal_static_com_alibaba_otter_canal_protocol_Messages_descriptor;
-    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_com_alibaba_otter_canal_protocol_Messages_fieldAccessorTable;
-    private static final com.google.protobuf.Descriptors.Descriptor        internal_static_com_alibaba_otter_canal_protocol_Dump_descriptor;
-    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_com_alibaba_otter_canal_protocol_Dump_fieldAccessorTable;
-    private static final com.google.protobuf.Descriptors.Descriptor        internal_static_com_alibaba_otter_canal_protocol_ClientRollback_descriptor;
-    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_com_alibaba_otter_canal_protocol_ClientRollback_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_com_alibaba_otter_canal_protocol_Packet_descriptor;
+    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_com_alibaba_otter_canal_protocol_Packet_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_com_alibaba_otter_canal_protocol_HeartBeat_descriptor;
+    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_com_alibaba_otter_canal_protocol_HeartBeat_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_com_alibaba_otter_canal_protocol_Handshake_descriptor;
+    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_com_alibaba_otter_canal_protocol_Handshake_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_com_alibaba_otter_canal_protocol_ClientAuth_descriptor;
+    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_com_alibaba_otter_canal_protocol_ClientAuth_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_com_alibaba_otter_canal_protocol_Ack_descriptor;
+    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_com_alibaba_otter_canal_protocol_Ack_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_com_alibaba_otter_canal_protocol_ClientAck_descriptor;
+    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_com_alibaba_otter_canal_protocol_ClientAck_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_com_alibaba_otter_canal_protocol_Sub_descriptor;
+    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_com_alibaba_otter_canal_protocol_Sub_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_com_alibaba_otter_canal_protocol_Unsub_descriptor;
+    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_com_alibaba_otter_canal_protocol_Unsub_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_com_alibaba_otter_canal_protocol_Get_descriptor;
+    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_com_alibaba_otter_canal_protocol_Get_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_com_alibaba_otter_canal_protocol_Messages_descriptor;
+    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_com_alibaba_otter_canal_protocol_Messages_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_com_alibaba_otter_canal_protocol_Dump_descriptor;
+    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_com_alibaba_otter_canal_protocol_Dump_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_com_alibaba_otter_canal_protocol_ClientRollback_descriptor;
+    private static com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_com_alibaba_otter_canal_protocol_ClientRollback_fieldAccessorTable;
 
     public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
         return descriptor;
     }
 
     private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
     static {
         java.lang.String[] descriptorData = {
-            "\n\023CanalProtocol.proto\022 com.alibaba.otter"
-                    + ".canal.protocol\"\312\001\n\006Packet\022\030\n\014magic_numb"
-                    + "er\030\001 \001(\005:\00217\022\022\n\007version\030\002 \001(\005:\0011\022:\n\004type"
-                    + "\030\003 \001(\0162,.com.alibaba.otter.canal.protoco"
-                    + "l.PacketType\022H\n\013compression\030\004 \001(\0162-.com."
-                    + "alibaba.otter.canal.protocol.Compression"
-                    + ":\004NONE\022\014\n\004body\030\005 \001(\014\"<\n\tHeartBeat\022\026\n\016sen"
-                    + "d_timestamp\030\001 \001(\003\022\027\n\017start_timestamp\030\002 \001"
-                    + "(\003\"\217\001\n\tHandshake\022$\n\026communication_encodi"
-                    + "ng\030\001 \001(\t:\004utf8\022\r\n\005seeds\030\002 \001(\014\022M\n\026support",
-            "ed_compressions\030\003 \003(\0162-.com.alibaba.otte"
-                    + "r.canal.protocol.Compression\"\274\001\n\nClientA"
-                    + "uth\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001(\014\022"
-                    + "\033\n\020net_read_timeout\030\003 \001(\005:\0010\022\034\n\021net_writ"
-                    + "e_timeout\030\004 \001(\005:\0010\022\023\n\013destination\030\005 \001(\t\022"
-                    + "\021\n\tclient_id\030\006 \001(\t\022\016\n\006filter\030\007 \001(\t\022\027\n\017st"
-                    + "art_timestamp\030\010 \001(\003\"3\n\003Ack\022\025\n\nerror_code"
-                    + "\030\001 \001(\005:\0010\022\025\n\rerror_message\030\002 \001(\t\"E\n\tClie"
-                    + "ntAck\022\023\n\013destination\030\001 \001(\t\022\021\n\tclient_id\030"
-                    + "\002 \001(\t\022\020\n\010batch_id\030\003 \001(\003\"=\n\003Sub\022\023\n\013destin",
-            "ation\030\001 \001(\t\022\021\n\tclient_id\030\002 \001(\t\022\016\n\006filter"
-                    + "\030\007 \001(\t\"?\n\005Unsub\022\023\n\013destination\030\001 \001(\t\022\021\n\t"
-                    + "client_id\030\002 \001(\t\022\016\n\006filter\030\007 \001(\t\"\200\001\n\003Get\022"
-                    + "\023\n\013destination\030\001 \001(\t\022\021\n\tclient_id\030\002 \001(\t\022"
-                    + "\022\n\nfetch_size\030\003 \001(\005\022\023\n\007timeout\030\004 \001(\003:\002-1"
-                    + "\022\017\n\004unit\030\005 \001(\005:\0012\022\027\n\010auto_ack\030\006 \001(\010:\005fal"
-                    + "se\".\n\010Messages\022\020\n\010batch_id\030\001 \001(\003\022\020\n\010mess"
-                    + "ages\030\002 \003(\014\"?\n\004Dump\022\017\n\007journal\030\001 \001(\t\022\020\n\010p"
-                    + "osition\030\002 \001(\003\022\024\n\ttimestamp\030\003 \001(\003:\0010\"J\n\016C"
-                    + "lientRollback\022\023\n\013destination\030\001 \001(\t\022\021\n\tcl",
-            "ient_id\030\002 \001(\t\022\020\n\010batch_id\030\003 \001(\003*4\n\013Compr"
-                    + "ession\022\010\n\004NONE\020\001\022\010\n\004ZLIB\020\002\022\010\n\004GZIP\020\003\022\007\n\003"
-                    + "LZF\020\004*\305\001\n\nPacketType\022\r\n\tHANDSHAKE\020\001\022\030\n\024C"
-                    + "LIENTAUTHENTICATION\020\002\022\007\n\003ACK\020\003\022\020\n\014SUBSCR"
-                    + "IPTION\020\004\022\022\n\016UNSUBSCRIPTION\020\005\022\007\n\003GET\020\006\022\014\n"
-                    + "\010MESSAGES\020\007\022\r\n\tCLIENTACK\020\010\022\014\n\010SHUTDOWN\020\t"
-                    + "\022\010\n\004DUMP\020\n\022\r\n\tHEARTBEAT\020\013\022\022\n\016CLIENTROLLB"
-                    + "ACK\020\014B1\n com.alibaba.otter.canal.protoco" + "lB\013CanalPacketH\001" };
-        com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
+                "\n\023CanalProtocol.proto\022 com.alibaba.otter"
+                        + ".canal.protocol\"\312\001\n\006Packet\022\030\n\014magic_numb"
+                        + "er\030\001 \001(\005:\00217\022\022\n\007version\030\002 \001(\005:\0011\022:\n\004type"
+                        + "\030\003 \001(\0162,.com.alibaba.otter.canal.protoco"
+                        + "l.PacketType\022H\n\013compression\030\004 \001(\0162-.com."
+                        + "alibaba.otter.canal.protocol.Compression"
+                        + ":\004NONE\022\014\n\004body\030\005 \001(\014\"<\n\tHeartBeat\022\026\n\016sen"
+                        + "d_timestamp\030\001 \001(\003\022\027\n\017start_timestamp\030\002 \001"
+                        + "(\003\"\217\001\n\tHandshake\022$\n\026communication_encodi"
+                        + "ng\030\001 \001(\t:\004utf8\022\r\n\005seeds\030\002 \001(\014\022M\n\026support",
+                "ed_compressions\030\003 \003(\0162-.com.alibaba.otte"
+                        + "r.canal.protocol.Compression\"\274\001\n\nClientA"
+                        + "uth\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001(\014\022"
+                        + "\033\n\020net_read_timeout\030\003 \001(\005:\0010\022\034\n\021net_writ"
+                        + "e_timeout\030\004 \001(\005:\0010\022\023\n\013destination\030\005 \001(\t\022"
+                        + "\021\n\tclient_id\030\006 \001(\t\022\016\n\006filter\030\007 \001(\t\022\027\n\017st"
+                        + "art_timestamp\030\010 \001(\003\"3\n\003Ack\022\025\n\nerror_code"
+                        + "\030\001 \001(\005:\0010\022\025\n\rerror_message\030\002 \001(\t\"E\n\tClie"
+                        + "ntAck\022\023\n\013destination\030\001 \001(\t\022\021\n\tclient_id\030"
+                        + "\002 \001(\t\022\020\n\010batch_id\030\003 \001(\003\"=\n\003Sub\022\023\n\013destin",
+                "ation\030\001 \001(\t\022\021\n\tclient_id\030\002 \001(\t\022\016\n\006filter"
+                        + "\030\007 \001(\t\"?\n\005Unsub\022\023\n\013destination\030\001 \001(\t\022\021\n\t"
+                        + "client_id\030\002 \001(\t\022\016\n\006filter\030\007 \001(\t\"\200\001\n\003Get\022"
+                        + "\023\n\013destination\030\001 \001(\t\022\021\n\tclient_id\030\002 \001(\t\022"
+                        + "\022\n\nfetch_size\030\003 \001(\005\022\023\n\007timeout\030\004 \001(\003:\002-1"
+                        + "\022\017\n\004unit\030\005 \001(\005:\0012\022\027\n\010auto_ack\030\006 \001(\010:\005fal"
+                        + "se\".\n\010Messages\022\020\n\010batch_id\030\001 \001(\003\022\020\n\010mess"
+                        + "ages\030\002 \003(\014\"?\n\004Dump\022\017\n\007journal\030\001 \001(\t\022\020\n\010p"
+                        + "osition\030\002 \001(\003\022\024\n\ttimestamp\030\003 \001(\003:\0010\"J\n\016C"
+                        + "lientRollback\022\023\n\013destination\030\001 \001(\t\022\021\n\tcl",
+                "ient_id\030\002 \001(\t\022\020\n\010batch_id\030\003 \001(\003*4\n\013Compr"
+                        + "ession\022\010\n\004NONE\020\001\022\010\n\004ZLIB\020\002\022\010\n\004GZIP\020\003\022" +
+                        "\007\n\003"
+                        + "LZF\020\004*\305\001\n\nPacketType\022\r\n\tHANDSHAKE\020\001\022\030\n\024C"
+                        + "LIENTAUTHENTICATION\020\002\022\007\n\003ACK\020\003\022\020\n\014SUBSCR"
+                        + "IPTION\020\004\022\022\n\016UNSUBSCRIPTION\020\005\022\007\n\003GET\020\006\022\014\n"
+                        + "\010MESSAGES\020\007\022\r\n\tCLIENTACK\020\010\022\014\n\010SHUTDOWN\020\t"
+                        + "\022\010\n\004DUMP\020\n\022\r\n\tHEARTBEAT\020\013\022\022\n\016CLIENTROLLB"
+                        + "ACK\020\014B1\n com.alibaba.otter.canal.protoco" + "lB\013CanalPacketH\001"};
+        com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf
+                .Descriptors.FileDescriptor.InternalDescriptorAssigner() {
 
-            public com.google.protobuf.ExtensionRegistry assignDescriptors(com.google.protobuf.Descriptors.FileDescriptor root) {
+            public com.google.protobuf.ExtensionRegistry assignDescriptors(com.google.protobuf.Descriptors
+                                                                                   .FileDescriptor root) {
                 descriptor = root;
                 return null;
             }
         };
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData,
-            new com.google.protobuf.Descriptors.FileDescriptor[] {},
-            assigner);
+                new com.google.protobuf.Descriptors.FileDescriptor[]{},
+                assigner);
         internal_static_com_alibaba_otter_canal_protocol_Packet_descriptor = getDescriptor().getMessageTypes().get(0);
-        internal_static_com_alibaba_otter_canal_protocol_Packet_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_Packet_descriptor,
-            new java.lang.String[] { "MagicNumber", "Version", "Type", "Compression", "Body", });
+        internal_static_com_alibaba_otter_canal_protocol_Packet_fieldAccessorTable = new com.google.protobuf
+                .GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_Packet_descriptor,
+                new java.lang.String[]{"MagicNumber", "Version", "Type", "Compression", "Body",});
         internal_static_com_alibaba_otter_canal_protocol_HeartBeat_descriptor = getDescriptor().getMessageTypes()
-            .get(1);
-        internal_static_com_alibaba_otter_canal_protocol_HeartBeat_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_HeartBeat_descriptor,
-            new java.lang.String[] { "SendTimestamp", "StartTimestamp", });
+                .get(1);
+        internal_static_com_alibaba_otter_canal_protocol_HeartBeat_fieldAccessorTable = new com.google.protobuf
+                .GeneratedMessage.FieldAccessorTable
+                (internal_static_com_alibaba_otter_canal_protocol_HeartBeat_descriptor,
+                        new java.lang.String[]{"SendTimestamp", "StartTimestamp",});
         internal_static_com_alibaba_otter_canal_protocol_Handshake_descriptor = getDescriptor().getMessageTypes()
-            .get(2);
-        internal_static_com_alibaba_otter_canal_protocol_Handshake_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_Handshake_descriptor,
-            new java.lang.String[] { "CommunicationEncoding", "Seeds", "SupportedCompressions", });
+                .get(2);
+        internal_static_com_alibaba_otter_canal_protocol_Handshake_fieldAccessorTable = new com.google.protobuf
+                .GeneratedMessage.FieldAccessorTable
+                (internal_static_com_alibaba_otter_canal_protocol_Handshake_descriptor,
+                        new java.lang.String[]{"CommunicationEncoding", "Seeds", "SupportedCompressions",});
         internal_static_com_alibaba_otter_canal_protocol_ClientAuth_descriptor = getDescriptor().getMessageTypes()
-            .get(3);
-        internal_static_com_alibaba_otter_canal_protocol_ClientAuth_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_ClientAuth_descriptor,
-            new java.lang.String[] { "Username", "Password", "NetReadTimeout", "NetWriteTimeout", "Destination",
-            "ClientId", "Filter", "StartTimestamp", });
+                .get(3);
+        internal_static_com_alibaba_otter_canal_protocol_ClientAuth_fieldAccessorTable = new com.google.protobuf
+                .GeneratedMessage.FieldAccessorTable
+                (internal_static_com_alibaba_otter_canal_protocol_ClientAuth_descriptor,
+                        new java.lang.String[]{"Username", "Password", "NetReadTimeout", "NetWriteTimeout",
+                                "Destination",
+                                "ClientId", "Filter", "StartTimestamp",});
         internal_static_com_alibaba_otter_canal_protocol_Ack_descriptor = getDescriptor().getMessageTypes().get(4);
-        internal_static_com_alibaba_otter_canal_protocol_Ack_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_Ack_descriptor,
-            new java.lang.String[] { "ErrorCode", "ErrorMessage", });
+        internal_static_com_alibaba_otter_canal_protocol_Ack_fieldAccessorTable = new com.google.protobuf
+                .GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_Ack_descriptor,
+                new java.lang.String[]{"ErrorCode", "ErrorMessage",});
         internal_static_com_alibaba_otter_canal_protocol_ClientAck_descriptor = getDescriptor().getMessageTypes()
-            .get(5);
-        internal_static_com_alibaba_otter_canal_protocol_ClientAck_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_ClientAck_descriptor,
-            new java.lang.String[] { "Destination", "ClientId", "BatchId", });
+                .get(5);
+        internal_static_com_alibaba_otter_canal_protocol_ClientAck_fieldAccessorTable = new com.google.protobuf
+                .GeneratedMessage.FieldAccessorTable
+                (internal_static_com_alibaba_otter_canal_protocol_ClientAck_descriptor,
+                        new java.lang.String[]{"Destination", "ClientId", "BatchId",});
         internal_static_com_alibaba_otter_canal_protocol_Sub_descriptor = getDescriptor().getMessageTypes().get(6);
-        internal_static_com_alibaba_otter_canal_protocol_Sub_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_Sub_descriptor,
-            new java.lang.String[] { "Destination", "ClientId", "Filter", });
+        internal_static_com_alibaba_otter_canal_protocol_Sub_fieldAccessorTable = new com.google.protobuf
+                .GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_Sub_descriptor,
+                new java.lang.String[]{"Destination", "ClientId", "Filter",});
         internal_static_com_alibaba_otter_canal_protocol_Unsub_descriptor = getDescriptor().getMessageTypes().get(7);
-        internal_static_com_alibaba_otter_canal_protocol_Unsub_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_Unsub_descriptor,
-            new java.lang.String[] { "Destination", "ClientId", "Filter", });
+        internal_static_com_alibaba_otter_canal_protocol_Unsub_fieldAccessorTable = new com.google.protobuf
+                .GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_Unsub_descriptor,
+                new java.lang.String[]{"Destination", "ClientId", "Filter",});
         internal_static_com_alibaba_otter_canal_protocol_Get_descriptor = getDescriptor().getMessageTypes().get(8);
-        internal_static_com_alibaba_otter_canal_protocol_Get_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_Get_descriptor,
-            new java.lang.String[] { "Destination", "ClientId", "FetchSize", "Timeout", "Unit", "AutoAck", });
+        internal_static_com_alibaba_otter_canal_protocol_Get_fieldAccessorTable = new com.google.protobuf
+                .GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_Get_descriptor,
+                new java.lang.String[]{"Destination", "ClientId", "FetchSize", "Timeout", "Unit", "AutoAck",});
         internal_static_com_alibaba_otter_canal_protocol_Messages_descriptor = getDescriptor().getMessageTypes().get(9);
-        internal_static_com_alibaba_otter_canal_protocol_Messages_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_Messages_descriptor,
-            new java.lang.String[] { "BatchId", "Messages", });
+        internal_static_com_alibaba_otter_canal_protocol_Messages_fieldAccessorTable = new com.google.protobuf
+                .GeneratedMessage.FieldAccessorTable
+                (internal_static_com_alibaba_otter_canal_protocol_Messages_descriptor,
+                        new java.lang.String[]{"BatchId", "Messages",});
         internal_static_com_alibaba_otter_canal_protocol_Dump_descriptor = getDescriptor().getMessageTypes().get(10);
-        internal_static_com_alibaba_otter_canal_protocol_Dump_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_Dump_descriptor,
-            new java.lang.String[] { "Journal", "Position", "Timestamp", });
+        internal_static_com_alibaba_otter_canal_protocol_Dump_fieldAccessorTable = new com.google.protobuf
+                .GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_Dump_descriptor,
+                new java.lang.String[]{"Journal", "Position", "Timestamp",});
         internal_static_com_alibaba_otter_canal_protocol_ClientRollback_descriptor = getDescriptor().getMessageTypes()
-            .get(11);
-        internal_static_com_alibaba_otter_canal_protocol_ClientRollback_fieldAccessorTable = new com.google.protobuf.GeneratedMessage.FieldAccessorTable(internal_static_com_alibaba_otter_canal_protocol_ClientRollback_descriptor,
-            new java.lang.String[] { "Destination", "ClientId", "BatchId", });
+                .get(11);
+        internal_static_com_alibaba_otter_canal_protocol_ClientRollback_fieldAccessorTable = new com.google.protobuf
+                .GeneratedMessage.FieldAccessorTable
+                (internal_static_com_alibaba_otter_canal_protocol_ClientRollback_descriptor,
+                        new java.lang.String[]{"Destination", "ClientId", "BatchId",});
     }
 
     // @@protoc_insertion_point(outer_class_scope)

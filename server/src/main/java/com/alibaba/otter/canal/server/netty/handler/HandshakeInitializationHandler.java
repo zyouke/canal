@@ -22,7 +22,7 @@ public class HandshakeInitializationHandler extends SimpleChannelHandler {
     // support to maintain socket channel.
     private ChannelGroup childGroups;
 
-    public HandshakeInitializationHandler(ChannelGroup childGroups){
+    public HandshakeInitializationHandler(ChannelGroup childGroups) {
         this.childGroups = childGroups;
     }
 
@@ -33,12 +33,11 @@ public class HandshakeInitializationHandler extends SimpleChannelHandler {
         if (childGroups != null) {
             childGroups.add(ctx.getChannel());
         }
-
         byte[] body = Packet.newBuilder()
-            .setType(CanalPacket.PacketType.HANDSHAKE)
-            .setBody(Handshake.newBuilder().build().toByteString())
-            .build()
-            .toByteArray();
+                .setType(CanalPacket.PacketType.HANDSHAKE)
+                .setBody(Handshake.newBuilder().build().toByteString())
+                .build()
+                .toByteArray();
         NettyUtils.write(ctx.getChannel(), body, null);
         logger.info("send handshake initialization packet to : {}", ctx.getChannel());
     }
