@@ -4,9 +4,10 @@ import com.alibaba.otter.canal.protocol.CanalPacket;
 import com.alibaba.otter.canal.protocol.CanalPacket.Handshake;
 import com.alibaba.otter.canal.protocol.CanalPacket.Packet;
 import com.alibaba.otter.canal.server.netty.NettyUtils;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.channel.group.ChannelGroup;
+import org.jboss.netty.channel.ChannelHandlerContext;
+import org.jboss.netty.channel.ChannelStateEvent;
+import org.jboss.netty.channel.SimpleChannelHandler;
+import org.jboss.netty.channel.group.ChannelGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +17,7 @@ import org.slf4j.LoggerFactory;
  * @author jianghang 2012-10-24 上午11:39:54
  * @version 1.0.0
  */
-public class HandshakeInitializationHandler extends SimpleChannelInboundHandler {
+public class HandshakeInitializationHandler extends SimpleChannelHandler {
 
     // support to maintain socket channel.
     private ChannelGroup childGroups;
@@ -27,11 +28,10 @@ public class HandshakeInitializationHandler extends SimpleChannelInboundHandler 
 
     private static final Logger logger = LoggerFactory.getLogger(HandshakeInitializationHandler.class);
 
-    @Override
-    protected void channelRead0(ChannelHandlerContext ctx,Object o) throws Exception {
+    public void channelOpen(ChannelHandlerContext ctx, ChannelStateEvent e) throws Exception {
         // add new socket channel in channel container, used to manage sockets.
         if (childGroups != null) {
-            childGroups.add(ctx.channel());
+            childGroups.add(ctx.getChannel());
         }
 
         byte[] body = Packet.newBuilder()
@@ -39,8 +39,7 @@ public class HandshakeInitializationHandler extends SimpleChannelInboundHandler 
             .setBody(Handshake.newBuilder().build().toByteString())
             .build()
             .toByteArray();
-        NettyUtils.write(ctx.channel(), body, null);
-        logger.info("send handshake initialization packet to : {}", ctx.channel());
+        NettyUtils.write(ctx.getChannel(), body, null);
+        logger.info("send handshake initialization packet to : {}", ctx.getChannel());
     }
-
 }

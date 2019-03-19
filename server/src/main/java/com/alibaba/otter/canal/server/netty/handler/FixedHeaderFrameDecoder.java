@@ -1,11 +1,10 @@
 package com.alibaba.otter.canal.server.netty.handler;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ReplayingDecoder;
-
-import java.util.List;
+import org.jboss.netty.buffer.ChannelBuffer;
+import org.jboss.netty.channel.Channel;
+import org.jboss.netty.channel.ChannelHandlerContext;
+import org.jboss.netty.handler.codec.replay.ReplayingDecoder;
+import org.jboss.netty.handler.codec.replay.VoidEnum;
 
 /**
  * 解析对应的header信息
@@ -13,10 +12,9 @@ import java.util.List;
  * @author jianghang 2012-10-24 上午11:31:39
  * @version 1.0.0
  */
-public class FixedHeaderFrameDecoder extends ReplayingDecoder {
+public class FixedHeaderFrameDecoder extends ReplayingDecoder<VoidEnum> {
 
-    @Override
-    protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-        out.add(in.readLong());
+    protected Object decode(ChannelHandlerContext ctx, Channel channel, ChannelBuffer buffer, VoidEnum state)throws Exception {
+        return buffer.readBytes(buffer.readInt());
     }
 }

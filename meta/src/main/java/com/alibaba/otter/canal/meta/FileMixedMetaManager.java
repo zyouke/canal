@@ -49,8 +49,7 @@ public class FileMixedMetaManager extends MemoryMetaManager implements CanalMeta
     private Map<String, File>        dataFileCaches;
     private ScheduledExecutorService executor;
     @SuppressWarnings("serial")
-    private final Position           nullCursor   = new Position() {
-                                                  };
+    private final Position           nullCursor   = new Position() {};
     private long                     period       = 1000;                                               // 单位ms
     private Set<ClientIdentity>      updateCursorTasks;
 
