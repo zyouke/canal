@@ -33,38 +33,35 @@ import com.alibaba.otter.canal.server.netty.NettyUtils;
  * @author jianghang 2012-10-24 下午02:21:13
  * @version 1.0.0
  */
-public class SessionHandler extends SimpleChannelHandler {
+public class SessionHandler extends SimpleChannelHandler{
 
     private static final Logger logger = LoggerFactory.getLogger(SessionHandler.class);
     private CanalServerWithEmbedded embeddedServer;
 
-    public SessionHandler() {
+    public SessionHandler(){
     }
 
-    public SessionHandler(CanalServerWithEmbedded embeddedServer) {
+    public SessionHandler(CanalServerWithEmbedded embeddedServer){
         this.embeddedServer = embeddedServer;
     }
 
-    public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception {
+    public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception{
         //logger.info("message receives in session handler...");
         ChannelBuffer buffer = (ChannelBuffer) e.getMessage();
         Packet packet = Packet.parseFrom(buffer.readBytes(buffer.readableBytes()).array());
         ClientIdentity clientIdentity = null;
-        try {
-            switch (packet.getType()) {
+        try{
+            switch(packet.getType()){
                 case SUBSCRIPTION:
                     Sub sub = Sub.parseFrom(packet.getBody());
-                    if (StringUtils.isNotEmpty(sub.getDestination()) && StringUtils.isNotEmpty(sub.getClientId())) {
-                        clientIdentity = new ClientIdentity(sub.getDestination(),
-                                Short.valueOf(sub.getClientId()),
-                                sub.getFilter());
+                    if(StringUtils.isNotEmpty(sub.getDestination()) && StringUtils.isNotEmpty(sub.getClientId())){
+                        clientIdentity = new ClientIdentity(sub.getDestination(), Short.valueOf(sub.getClientId()), sub.getFilter());
                         MDC.put("destination", clientIdentity.getDestination());
 
                         // 尝试启动，如果已经启动，忽略
-                        if (!embeddedServer.isStart(clientIdentity.getDestination())) {
-                            ServerRunningMonitor runningMonitor = ServerRunningMonitors.getRunningMonitor
-                                    (clientIdentity.getDestination());
-                            if (!runningMonitor.isStart()) {
+                        if(!embeddedServer.isStart(clientIdentity.getDestination())){
+                            ServerRunningMonitor runningMonitor = ServerRunningMonitors.getRunningMonitor(clientIdentity.getDestination());
+                            if(!runningMonitor.isStart()){
                                 runningMonitor.start();
                             }
                         }
@@ -72,34 +69,25 @@ public class SessionHandler extends SimpleChannelHandler {
                         embeddedServer.subscribe(clientIdentity);
                         ctx.setAttachment(clientIdentity);// 设置状态数据
                         NettyUtils.ack(ctx.getChannel(), null);
-                    } else {
-                        NettyUtils.error(401,
-                                MessageFormatter.format("destination or clientId is null", sub.toString()).getMessage(),
-                                ctx.getChannel(),
-                                null);
+                    }else{
+                        NettyUtils.error(401, MessageFormatter.format("destination or clientId is null", sub.toString()).getMessage(), ctx.getChannel(), null);
                     }
                     break;
                 case UNSUBSCRIPTION:
                     Unsub unsub = Unsub.parseFrom(packet.getBody());
-                    if (StringUtils.isNotEmpty(unsub.getDestination()) && StringUtils.isNotEmpty(unsub.getClientId())) {
-                        clientIdentity = new ClientIdentity(unsub.getDestination(),
-                                Short.valueOf(unsub.getClientId()),
-                                unsub.getFilter());
+                    if(StringUtils.isNotEmpty(unsub.getDestination()) && StringUtils.isNotEmpty(unsub.getClientId())){
+                        clientIdentity = new ClientIdentity(unsub.getDestination(), Short.valueOf(unsub.getClientId()), unsub.getFilter());
                         MDC.put("destination", clientIdentity.getDestination());
                         embeddedServer.unsubscribe(clientIdentity);
                         stopCanalInstanceIfNecessary(clientIdentity);// 尝试关闭
                         NettyUtils.ack(ctx.getChannel(), null);
-                    } else {
-                        NettyUtils.error(401,
-                                MessageFormatter.format("destination or clientId is null", unsub.toString())
-                                        .getMessage(),
-                                ctx.getChannel(),
-                                null);
+                    }else{
+                        NettyUtils.error(401, MessageFormatter.format("destination or clientId is null", unsub.toString()).getMessage(), ctx.getChannel(), null);
                     }
                     break;
                 case GET:
                     Get get = CanalPacket.Get.parseFrom(packet.getBody());
-                    if (StringUtils.isNotEmpty(get.getDestination()) && StringUtils.isNotEmpty(get.getClientId())) {
+                    if(StringUtils.isNotEmpty(get.getDestination()) && StringUtils.isNotEmpty(get.getClientId())){
                         clientIdentity = new ClientIdentity(get.getDestination(), Short.valueOf(get.getClientId()));
                         MDC.put("destination", clientIdentity.getDestination());
                         Message message = null;
@@ -114,14 +102,11 @@ public class SessionHandler extends SimpleChannelHandler {
                         // get.getFetchSize(), get.getTimeout(), unit);
                         // }
                         // } else {
-                        if (get.getTimeout() == -1) {// 是否是初始值
+                        if(get.getTimeout() == -1){// 是否是初始值
                             message = embeddedServer.getWithoutAck(clientIdentity, get.getFetchSize());
-                        } else {
+                        }else{
                             TimeUnit unit = convertTimeUnit(get.getUnit());
-                            message = embeddedServer.getWithoutAck(clientIdentity,
-                                    get.getFetchSize(),
-                                    get.getTimeout(),
-                                    unit);
+                            message = embeddedServer.getWithoutAck(clientIdentity, get.getFetchSize(), get.getTimeout(), unit);
                         }
                         // }
 
@@ -130,100 +115,77 @@ public class SessionHandler extends SimpleChannelHandler {
 
                         Messages.Builder messageBuilder = CanalPacket.Messages.newBuilder();
                         messageBuilder.setBatchId(message.getId());
-                        if (message.getId() != -1 && !CollectionUtils.isEmpty(message.getEntries())) {
-                            for (Entry entry : message.getEntries()) {
+                        if(message.getId() != -1 && !CollectionUtils.isEmpty(message.getEntries())){
+                            for(Entry entry : message.getEntries()){
                                 messageBuilder.addMessages(entry.toByteString());
                             }
                         }
                         packetBuilder.setBody(messageBuilder.build().toByteString());
                         NettyUtils.write(ctx.getChannel(), packetBuilder.build().toByteArray(), null);// 输出数据
-                    } else {
-                        NettyUtils.error(401,
-                                MessageFormatter.format("destination or clientId is null", get.toString()).getMessage(),
-                                ctx.getChannel(),
-                                null);
+                    }else{
+                        NettyUtils.error(401, MessageFormatter.format("destination or clientId is null", get.toString()).getMessage(), ctx.getChannel(), null);
                     }
                     break;
                 case CLIENTACK:
                     ClientAck ack = CanalPacket.ClientAck.parseFrom(packet.getBody());
                     MDC.put("destination", ack.getDestination());
-                    if (StringUtils.isNotEmpty(ack.getDestination()) && StringUtils.isNotEmpty(ack.getClientId())) {
-                        if (ack.getBatchId() == 0L) {
-                            NettyUtils.error(402,
-                                    MessageFormatter.format("batchId should assign value", ack.toString()).getMessage(),
-                                    ctx.getChannel(),
-                                    null);
-                        } else if (ack.getBatchId() == -1L) { // -1代表上一次get没有数据，直接忽略之
+                    if(StringUtils.isNotEmpty(ack.getDestination()) && StringUtils.isNotEmpty(ack.getClientId())){
+                        if(ack.getBatchId() == 0L){
+                            NettyUtils.error(402, MessageFormatter.format("batchId should assign value", ack.toString()).getMessage(), ctx.getChannel(), null);
+                        }else if(ack.getBatchId() == -1L){ // -1代表上一次get没有数据，直接忽略之
                             // donothing
-                        } else {
+                        }else{
                             clientIdentity = new ClientIdentity(ack.getDestination(), Short.valueOf(ack.getClientId()));
                             embeddedServer.ack(clientIdentity, ack.getBatchId());
                         }
-                    } else {
-                        NettyUtils.error(401,
-                                MessageFormatter.format("destination or clientId is null", ack.toString()).getMessage(),
-                                ctx.getChannel(),
-                                null);
+                    }else{
+                        NettyUtils.error(401, MessageFormatter.format("destination or clientId is null", ack.toString()).getMessage(), ctx.getChannel(), null);
                     }
                     break;
                 case CLIENTROLLBACK:
                     ClientRollback rollback = CanalPacket.ClientRollback.parseFrom(packet.getBody());
                     MDC.put("destination", rollback.getDestination());
-                    if (StringUtils.isNotEmpty(rollback.getDestination())
-                            && StringUtils.isNotEmpty(rollback.getClientId())) {
-                        clientIdentity = new ClientIdentity(rollback.getDestination(),
-                                Short.valueOf(rollback.getClientId()));
-                        if (rollback.getBatchId() == 0L) {
+                    if(StringUtils.isNotEmpty(rollback.getDestination()) && StringUtils.isNotEmpty(rollback.getClientId())){
+                        clientIdentity = new ClientIdentity(rollback.getDestination(), Short.valueOf(rollback.getClientId()));
+                        if(rollback.getBatchId() == 0L){
                             embeddedServer.rollback(clientIdentity);// 回滚所有批次
-                        } else {
+                        }else{
                             embeddedServer.rollback(clientIdentity, rollback.getBatchId()); // 只回滚单个批次
                         }
-                    } else {
-                        NettyUtils.error(401,
-                                MessageFormatter.format("destination or clientId is null", rollback.toString())
-                                        .getMessage(),
-                                ctx.getChannel(),
-                                null);
+                    }else{
+                        NettyUtils.error(401, MessageFormatter.format("destination or clientId is null", rollback.toString()).getMessage(), ctx.getChannel(), null);
                     }
                     break;
                 default:
-                    NettyUtils.error(400, MessageFormatter.format("packet type={} is NOT supported!", packet.getType())
-                            .getMessage(), ctx.getChannel(), null);
+                    NettyUtils.error(400, MessageFormatter.format("packet type={} is NOT supported!", packet.getType()).getMessage(), ctx.getChannel(), null);
                     break;
             }
-        } catch (Throwable exception) {
-            NettyUtils.error(400,
-                    MessageFormatter.format("something goes wrong with channel:{}, exception={}",
-                            ctx.getChannel(),
-                            ExceptionUtils.getStackTrace(exception)).getMessage(),
-                    ctx.getChannel(),
-                    null);
-        } finally {
+        }catch(Throwable exception){
+            NettyUtils.error(400, MessageFormatter.format("something goes wrong with channel:{}, exception={}", ctx.getChannel(), ExceptionUtils.getStackTrace(exception)).getMessage(), ctx.getChannel(), null);
+        }finally{
             MDC.remove("destination");
         }
 
     }
 
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        logger.error("something goes wrong with channel:{}, exception={}", ctx.getChannel(), ExceptionUtils
-                .getStackTrace(cause.getCause()));
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception{
+        logger.error("something goes wrong with channel:{}, exception={}", ctx.getChannel(), ExceptionUtils.getStackTrace(cause.getCause()));
         ctx.getChannel().close();
     }
 
 
-    private void stopCanalInstanceIfNecessary(ClientIdentity clientIdentity) {
+    private void stopCanalInstanceIfNecessary(ClientIdentity clientIdentity){
         List<ClientIdentity> clientIdentitys = embeddedServer.listAllSubscribe(clientIdentity.getDestination());
-        if (clientIdentitys != null && clientIdentitys.size() == 1 && clientIdentitys.contains(clientIdentity)) {
-            ServerRunningMonitor runningMonitor = ServerRunningMonitors.getRunningMonitor(clientIdentity
-                    .getDestination());
-            if (runningMonitor.isStart()) {
+        if(clientIdentitys != null && clientIdentitys.size() == 1 && clientIdentitys.contains(clientIdentity)){
+            ServerRunningMonitor runningMonitor = ServerRunningMonitors.getRunningMonitor(clientIdentity.getDestination());
+            if(runningMonitor.isStart()){
                 runningMonitor.release();
             }
         }
     }
 
-    private TimeUnit convertTimeUnit(int unit) {
-        switch (unit) {
+    private TimeUnit convertTimeUnit(int unit){
+        switch(unit){
             case 0:
                 return TimeUnit.NANOSECONDS;
             case 1:
@@ -243,7 +205,7 @@ public class SessionHandler extends SimpleChannelHandler {
         }
     }
 
-    public void setEmbeddedServer(CanalServerWithEmbedded embeddedServer) {
+    public void setEmbeddedServer(CanalServerWithEmbedded embeddedServer){
         this.embeddedServer = embeddedServer;
     }
 

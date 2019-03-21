@@ -15,17 +15,17 @@ import com.alibaba.otter.canal.protocol.CanalEntry.Entry;
  */
 public class Message implements Serializable {
 
-    private static final long      serialVersionUID = 1234034768477580009L;
+    private static final long serialVersionUID = 1234034768477580009L;
 
-    private long                   id;
-    private List<CanalEntry.Entry> entries          = new ArrayList<CanalEntry.Entry>();
+    private long id;
+    private List<CanalEntry.Entry> entries = new ArrayList<CanalEntry.Entry>();
 
-    public Message(long id, List<Entry> entries){
+    public Message(long id, List<Entry> entries) {
         this.id = id;
         this.entries = entries == null ? new ArrayList<Entry>() : entries;
     }
 
-    public Message(long id){
+    public Message(long id) {
         this.id = id;
     }
 

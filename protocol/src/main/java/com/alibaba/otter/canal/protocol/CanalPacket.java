@@ -2372,8 +2372,7 @@ public final class CanalPacket {
             /**
              * <code>repeated .com.alibaba.otter.canal.protocol.Compression supported_compressions = 3;</code>
              */
-            public Builder setSupportedCompressions(int index,
-                                                    com.alibaba.otter.canal.protocol.CanalPacket.Compression value) {
+            public Builder setSupportedCompressions(int index,com.alibaba.otter.canal.protocol.CanalPacket.Compression value) {
                 if (value == null) {
                     throw new NullPointerException();
                 }
