@@ -91,25 +91,12 @@ public class SessionHandler extends SimpleChannelHandler{
                         clientIdentity = new ClientIdentity(get.getDestination(), Short.valueOf(get.getClientId()));
                         MDC.put("destination", clientIdentity.getDestination());
                         Message message = null;
-
-                        // if (get.getAutoAck()) {
-                        // if (get.getTimeout() == -1) {//是否是初始值
-                        // message = embeddedServer.get(clientIdentity,
-                        // get.getFetchSize());
-                        // } else {
-                        // TimeUnit unit = convertTimeUnit(get.getUnit());
-                        // message = embeddedServer.get(clientIdentity,
-                        // get.getFetchSize(), get.getTimeout(), unit);
-                        // }
-                        // } else {
                         if(get.getTimeout() == -1){// 是否是初始值
                             message = embeddedServer.getWithoutAck(clientIdentity, get.getFetchSize());
                         }else{
                             TimeUnit unit = convertTimeUnit(get.getUnit());
                             message = embeddedServer.getWithoutAck(clientIdentity, get.getFetchSize(), get.getTimeout(), unit);
                         }
-                        // }
-
                         Packet.Builder packetBuilder = CanalPacket.Packet.newBuilder();
                         packetBuilder.setType(PacketType.MESSAGES);
 

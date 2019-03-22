@@ -3,6 +3,7 @@ package com.alibaba.otter.canal.example;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang.SystemUtils;
 import org.slf4j.Logger;
@@ -103,14 +104,15 @@ public class AbstractCanalClientTest {
     }
 
     protected void process() {
-        int batchSize = 5;
+        int batchSize = 500;
         while (running) {
             try {
                 MDC.put("destination", destination);
                 connector.connect();
                 connector.subscribe();
                 while (running) {
-                    Message message = connector.getWithoutAck(batchSize); // 获取指定数量的数据
+                    // Message message = connector.getWithoutAck(batchSize); // 获取指定数量的数据
+                    Message message = connector.getWithoutAck(batchSize, 0L, TimeUnit.MILLISECONDS);
                     long batchId = message.getId();
                     int size = message.getEntries().size();
                     if (batchId == -1 || size == 0) {

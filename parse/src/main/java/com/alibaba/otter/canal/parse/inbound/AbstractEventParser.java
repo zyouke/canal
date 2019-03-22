@@ -152,13 +152,10 @@ public abstract class AbstractEventParser<EVENT> extends AbstractCanalLifeCycle 
                         // 开始执行replication
                         // 1. 构造Erosa连接
                         erosaConnection = buildErosaConnection();
-
                         // 2. 启动一个心跳线程
                         startHeartBeat(erosaConnection);
-
                         // 3. 执行dump前的准备工作
                         preDump(erosaConnection);
-
                         erosaConnection.connect();// 链接
                         // 4. 获取最后的位置信息
                         EntryPosition position = findStartPosition(erosaConnection);
@@ -176,9 +173,7 @@ public abstract class AbstractEventParser<EVENT> extends AbstractCanalLifeCycle 
                         erosaConnection.reconnect();
 
                         final SinkFunction sinkHandler = new SinkFunction<EVENT>() {
-
                             private LogPosition lastPosition;
-
                             public boolean sink(EVENT event) {
                                 try {
                                     CanalEntry.Entry entry = parseAndProfilingIfNecessary(event, false);
@@ -186,7 +181,6 @@ public abstract class AbstractEventParser<EVENT> extends AbstractCanalLifeCycle 
                                     if (!running) {
                                         return false;
                                     }
-
                                     if (entry != null) {
                                         exception = null; // 有正常数据流过，清空exception
                                         transactionBuffer.add(entry);
@@ -275,9 +269,7 @@ public abstract class AbstractEventParser<EVENT> extends AbstractCanalLifeCycle 
         });
 
         parseThread.setUncaughtExceptionHandler(handler);
-        parseThread.setName(String.format("destination = %s , address = %s , EventParser",
-            destination,
-            runningInfo == null ? null : runningInfo.getAddress()));
+        parseThread.setName(String.format("destination = %s , address = %s , EventParser",destination,runningInfo == null ? null : runningInfo.getAddress()));
         parseThread.start();
     }
 
