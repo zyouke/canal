@@ -25,9 +25,9 @@ import com.alibaba.otter.canal.sink.exception.CanalSinkException;
 public class MysqlDumpTest {
 
     @Test
-    public void testSimple() {
+    public void testSimple(){
         final MysqlEventParser controller = new MysqlEventParser();
-        final EntryPosition startPosition = new EntryPosition("mysql-bin.000001", 104606L);
+        final EntryPosition startPosition = new EntryPosition();
 
         controller.setConnectionCharset(Charset.forName("UTF-8"));
         controller.setSlaveId(3344L);
@@ -40,40 +40,30 @@ public class MysqlDumpTest {
         controller.setEventFilter(new AviaterRegexFilter("zyouke\\..*"));
         controller.setEventBlackFilter(new AviaterRegexFilter(""));
         controller.setEventSink(new AbstractCanalEventSinkTest<List<Entry>>() {
-
-            public boolean sink(List<Entry> entrys, InetSocketAddress remoteAddress, String destination)throws CanalSinkException, InterruptedException {
-                for (Entry entry : entrys) {
-                    if (entry.getEntryType() == EntryType.TRANSACTIONBEGIN
-                            || entry.getEntryType() == EntryType.TRANSACTIONEND
-                            || entry.getEntryType() == EntryType.HEARTBEAT) {
+            public boolean sink(List<Entry> entrys, InetSocketAddress remoteAddress, String destination) throws CanalSinkException, InterruptedException{
+                for(Entry entry : entrys){
+                    if(entry.getEntryType() == EntryType.TRANSACTIONBEGIN || entry.getEntryType() == EntryType.TRANSACTIONEND || entry.getEntryType() == EntryType.HEARTBEAT){
                         continue;
                     }
-
                     RowChange rowChage = null;
-                    try {
+                    try{
                         rowChage = RowChange.parseFrom(entry.getStoreValue());
-                    } catch (Exception e) {
+                    }catch(Exception e){
                         throw new RuntimeException("ERROR ## parser of eromanga-event has an error , data:" + entry.toString(), e);
                     }
-
                     EventType eventType = rowChage.getEventType();
                     System.out.println(String.format("================> binlog[%s:%s] , name[%s,%s] , eventType : %s",
-                            entry.getHeader().getLogfileName(),
-                            entry.getHeader().getLogfileOffset(),
-                            entry.getHeader().getSchemaName(),
-                            entry.getHeader().getTableName(),
-                            eventType));
-
-                    if (eventType == EventType.QUERY || rowChage.getIsDdl()) {
+                                                                        entry.getHeader().getLogfileName(), entry.getHeader().getLogfileOffset(),
+                                                                        entry.getHeader().getSchemaName(), entry.getHeader().getTableName(), eventType));
+                    if(eventType == EventType.QUERY || rowChage.getIsDdl()){
                         System.out.println(" sql ----> " + rowChage.getSql());
                     }
-
-                    for (RowData rowData : rowChage.getRowDatasList()) {
-                        if (eventType == EventType.DELETE) {
+                    for(RowData rowData : rowChage.getRowDatasList()){
+                        if(eventType == EventType.DELETE){
                             print(rowData.getBeforeColumnsList());
-                        } else if (eventType == EventType.INSERT) {
+                        }else if(eventType == EventType.INSERT){
                             print(rowData.getAfterColumnsList());
-                        } else {
+                        }else{
                             System.out.println("-------> before");
                             print(rowData.getBeforeColumnsList());
                             System.out.println("-------> after");
@@ -87,30 +77,26 @@ public class MysqlDumpTest {
 
         });
         controller.setLogPositionManager(new AbstractLogPositionManager() {
-
             @Override
-            public LogPosition getLatestIndexBy(String destination) {
+            public LogPosition getLatestIndexBy(String destination){
                 return null;
             }
-
             @Override
-            public void persistLogPosition(String destination, LogPosition logPosition) throws CanalParseException {
+            public void persistLogPosition(String destination, LogPosition logPosition) throws CanalParseException{
                 System.out.println(logPosition);
             }
         });
-
         controller.start();
-
-        try {
+        try{
             Thread.sleep(100 * 1000 * 1000L);
-        } catch (InterruptedException e) {
+        }catch(InterruptedException e){
             Assert.fail(e.getMessage());
         }
         controller.stop();
     }
 
-    private void print(List<Column> columns) {
-        for (Column column : columns) {
+    private void print(List<Column> columns){
+        for(Column column : columns){
             System.out.println(column.getName() + " : " + column.getValue() + "    update=" + column.getUpdated());
         }
     }

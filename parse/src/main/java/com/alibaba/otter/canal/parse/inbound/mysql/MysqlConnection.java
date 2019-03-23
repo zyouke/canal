@@ -3,6 +3,7 @@ package com.alibaba.otter.canal.parse.inbound.mysql;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -120,7 +121,6 @@ public class MysqlConnection implements ErosaConnection {
             if (event == null) {
                 throw new CanalParseException("parse failed");
             }
-
             if (!func.sink(event)) {
                 break;
             }
