@@ -27,8 +27,7 @@ public interface CanalEventSink<T> extends CanalLifeCycle {
      * @throws CanalSinkException
      * @throws InterruptedException
      */
-    boolean sink(T event, InetSocketAddress remoteAddress, String destination) throws CanalSinkException,
-                                                                              InterruptedException;
+    boolean sink(T event, InetSocketAddress remoteAddress, String destination) throws CanalSinkException,InterruptedException;
 
     /**
      * 中断消费，比如解析模块发生了切换，想临时中断当前的merge请求，清理对应的上下文状态，可见{@linkplain GroupEventSink}

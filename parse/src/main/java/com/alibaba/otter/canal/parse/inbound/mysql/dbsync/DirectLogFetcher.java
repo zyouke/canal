@@ -145,11 +145,6 @@ public class DirectLogFetcher extends LogFetcher {
     private final boolean fetch0(final int off, final int len) throws IOException {
         ensureCapacity(off + len);
         byte[] read = channel.read(len);
-        // 多加的逻辑打印监听的数据 -------开始------
-        RowDataPacket rowDataPacket = new RowDataPacket();
-        rowDataPacket.fromBytes(read);
-        logger.info("从channel 中获取的数据：{}",rowDataPacket);
-        // 多加的逻辑打印监听的数据 -------开始------
         System.arraycopy(read, 0, this.buffer, off, len);
 
         if (limit < off + len) limit = off + len;

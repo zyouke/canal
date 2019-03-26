@@ -3,6 +3,7 @@ package com.alibaba.otter.canal.parse.inbound.mysql;
 import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,18 +24,17 @@ import com.alibaba.otter.canal.protocol.position.LogPosition;
 import com.alibaba.otter.canal.sink.exception.CanalSinkException;
 
 public class MysqlDumpTest {
-
     @Test
     public void testSimple(){
         final MysqlEventParser controller = new MysqlEventParser();
         final EntryPosition startPosition = new EntryPosition();
-
         controller.setConnectionCharset(Charset.forName("UTF-8"));
         controller.setSlaveId(3344L);
         controller.setDetectingEnable(false);
         controller.setMasterInfo(new AuthenticationInfo(new InetSocketAddress("122.114.90.68", 3306), "canal", "123456"));
         controller.setMasterPosition(startPosition);
         controller.setEnableTsdb(false);
+        controller.setDetectingSQL("show master status");
         controller.setDestination("zyouke");
         controller.setTsdbSpringXml("");
         controller.setEventFilter(new AviaterRegexFilter("zyouke\\..*"));
@@ -71,7 +71,6 @@ public class MysqlDumpTest {
                         }
                     }
                 }
-
                 return true;
             }
 
@@ -87,6 +86,7 @@ public class MysqlDumpTest {
             }
         });
         controller.start();
+        controller.buildHeartBeatTimeTask(controller.buildErosaConnection());
         try{
             Thread.sleep(100 * 1000 * 1000L);
         }catch(InterruptedException e){
