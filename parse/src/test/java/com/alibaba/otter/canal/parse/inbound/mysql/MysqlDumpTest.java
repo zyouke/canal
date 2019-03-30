@@ -1,10 +1,16 @@
 package com.alibaba.otter.canal.parse.inbound.mysql;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
+import java.util.BitSet;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import com.alibaba.otter.canal.parse.inbound.SinkFunction;
+import com.taobao.tddl.dbsync.binlog.LogEvent;
+import com.taobao.tddl.dbsync.binlog.event.RowsLogEvent;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -94,6 +100,28 @@ public class MysqlDumpTest {
         }
         controller.stop();
     }
+
+    @Test
+    public void dumpTest() throws IOException{
+        MysqlConnection mysqlConnection = new MysqlConnection(new InetSocketAddress("122.114.90.68", 3306),"canal","123456");
+        mysqlConnection.setSlaveId(1);
+        mysqlConnection.connect();
+        mysqlConnection.dump("mysql-bin.000015", 101557093L, new SinkFunction() {
+            @Override
+            public boolean sink(Object event){
+                if(event instanceof RowsLogEvent){
+                    RowsLogEvent rowsLogEvent = (RowsLogEvent) event;
+                    System.out.println("--------------" + rowsLogEvent.getHeader().getType());
+                    System.out.println("---------------" + rowsLogEvent.getTable().getTableName());
+                }
+                return true;
+            }
+        });
+    }
+
+
+
+
 
     private void print(List<Column> columns){
         for(Column column : columns){

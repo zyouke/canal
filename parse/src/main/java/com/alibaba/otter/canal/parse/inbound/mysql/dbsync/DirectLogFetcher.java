@@ -14,29 +14,37 @@ import java.nio.channels.ClosedByInterruptException;
 
 /**
  * 基于socket的logEvent实现
- * 
+ *
  * @author jianghang 2013-1-14 下午07:39:30
  * @version 1.0.0
  */
 public class DirectLogFetcher extends LogFetcher {
 
-    protected static final Logger logger            = LoggerFactory.getLogger(DirectLogFetcher.class);
+    protected static final Logger logger = LoggerFactory.getLogger(DirectLogFetcher.class);
 
-    /** Command to dump binlog */
-    public static final byte      COM_BINLOG_DUMP   = 18;
+    /**
+     * Command to dump binlog
+     */
+    public static final byte COM_BINLOG_DUMP = 18;
 
-    /** Packet header sizes */
-    public static final int       NET_HEADER_SIZE   = 4;
-    public static final int       SQLSTATE_LENGTH   = 5;
+    /**
+     * Packet header sizes
+     */
+    public static final int NET_HEADER_SIZE = 4;
+    public static final int SQLSTATE_LENGTH = 5;
 
-    /** Packet offsets */
-    public static final int       PACKET_LEN_OFFSET = 0;
-    public static final int       PACKET_SEQ_OFFSET = 3;
+    /**
+     * Packet offsets
+     */
+    public static final int PACKET_LEN_OFFSET = 0;
+    public static final int PACKET_SEQ_OFFSET = 3;
 
-    /** Maximum packet length */
-    public static final int       MAX_PACKET_LENGTH = (256 * 256 * 256 - 1);
+    /**
+     * Maximum packet length
+     */
+    public static final int MAX_PACKET_LENGTH = (256 * 256 * 256 - 1);
 
-    private SocketChannel         channel;
+    private SocketChannel channel;
 
     // private BufferedInputStream input;
 
@@ -52,7 +60,7 @@ public class DirectLogFetcher extends LogFetcher {
         super(initialCapacity, growthFactor);
     }
 
-    public void start(SocketChannel channel) throws IOException {
+    public void start(SocketChannel channel) throws IOException{
         this.channel = channel;
         // 和mysql driver一样，提供buffer机制，提升读取binlog速度
         // this.input = new
@@ -61,29 +69,28 @@ public class DirectLogFetcher extends LogFetcher {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see com.taobao.tddl.dbsync.binlog.LogFetcher#fetch()
      */
-    public boolean fetch() throws IOException {
-        try {
+    public boolean fetch() throws IOException{
+        try{
             // Fetching packet header from input.
-            if (!fetch0(0, NET_HEADER_SIZE)) {
+            if(!fetch0(0, NET_HEADER_SIZE)){
                 logger.warn("Reached end of input stream while fetching header");
                 return false;
             }
             // Fetching the first packet(may a multi-packet).
             int netlen = getUint24(PACKET_LEN_OFFSET);
             int netnum = getUint8(PACKET_SEQ_OFFSET);
-            if (!fetch0(NET_HEADER_SIZE, netlen)) {
+            if(!fetch0(NET_HEADER_SIZE, netlen)){
                 logger.warn("Reached end of input stream: packet #" + netnum + ", len = " + netlen);
                 return false;
             }
 
             // Detecting error code.
             final int mark = getUint8(NET_HEADER_SIZE);
-            if (mark != 0) {
-                if (mark == 255) // error from master
-                {
+            if(mark != 0){
+                if(mark == 255){// error from master
                     // Indicates an error, for example trying to fetch from
                     // wrong
                     // binlog position.
@@ -92,27 +99,27 @@ public class DirectLogFetcher extends LogFetcher {
                     String sqlstate = forward(1).getFixString(SQLSTATE_LENGTH);
                     String errmsg = getFixString(limit - position);
                     throw new IOException("Received error packet:" + " errno = " + errno + ", sqlstate = " + sqlstate + " errmsg = " + errmsg);
-                } else if (mark == 254) {
+                }else if(mark == 254){
                     // Indicates end of stream. It's not clear when this would
                     // be sent.
                     logger.warn("Received EOF packet from server, apparent" + " master disconnected. It's may be duplicate slaveId , check instance config");
                     return false;
-                } else {
+                }else{
                     // Should not happen.
                     throw new IOException("Unexpected response " + mark + " while fetching binlog: packet #" + netnum + ", len = " + netlen);
                 }
             }
 
             // The first packet is a multi-packet, concatenate the packets.
-            while (netlen == MAX_PACKET_LENGTH) {
-                if (!fetch0(0, NET_HEADER_SIZE)) {
+            while(netlen == MAX_PACKET_LENGTH){
+                if(!fetch0(0, NET_HEADER_SIZE)){
                     logger.warn("Reached end of input stream while fetching header");
                     return false;
                 }
 
                 netlen = getUint24(PACKET_LEN_OFFSET);
                 netnum = getUint8(PACKET_SEQ_OFFSET);
-                if (!fetch0(limit, netlen)) {
+                if(!fetch0(limit, netlen)){
                     logger.warn("Reached end of input stream: packet #" + netnum + ", len = " + netlen);
                     return false;
                 }
@@ -123,40 +130,42 @@ public class DirectLogFetcher extends LogFetcher {
             position = origin;
             limit -= origin;
             return true;
-        } catch (SocketTimeoutException e) {
+        }catch(SocketTimeoutException e){
             close(); /* Do cleanup */
             logger.error("Socket timeout expired, closing connection", e);
             throw e;
-        } catch (InterruptedIOException e) {
+        }catch(InterruptedIOException e){
             close(); /* Do cleanup */
             logger.info("I/O interrupted while reading from client socket", e);
             throw e;
-        } catch (ClosedByInterruptException e) {
+        }catch(ClosedByInterruptException e){
             close(); /* Do cleanup */
             logger.info("I/O interrupted while reading from client socket", e);
             throw e;
-        } catch (IOException e) {
+        }catch(IOException e){
             close(); /* Do cleanup */
             logger.error("I/O error while reading from client socket", e);
             throw e;
         }
     }
 
-    private final boolean fetch0(final int off, final int len) throws IOException {
+    private final boolean fetch0(final int off, final int len) throws IOException{
         ensureCapacity(off + len);
         byte[] read = channel.read(len);
         System.arraycopy(read, 0, this.buffer, off, len);
 
-        if (limit < off + len) limit = off + len;
+        if(limit < off + len){
+            limit = off + len;
+        }
         return true;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see com.taobao.tddl.dbsync.binlog.LogFetcher#close()
      */
-    public void close() throws IOException {
+    public void close() throws IOException{
         // do nothing
     }
 
