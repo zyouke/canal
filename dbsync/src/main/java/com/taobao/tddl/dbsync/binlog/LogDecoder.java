@@ -105,8 +105,7 @@ public final class LogDecoder {
                         /* Decoding binary-log to event */
                         event = decode(buffer, header, context);
                     } catch (IOException e) {
-                        if (logger.isWarnEnabled()) logger.warn("Decoding " + LogEvent.getTypeName(header.getType())
-                                                                + " failed from: " + context.getLogPosition(), e);
+                        if (logger.isWarnEnabled()) logger.warn("Decoding " + LogEvent.getTypeName(header.getType()) + " failed from: " + context.getLogPosition(), e);
                         throw e;
                     } finally {
                         buffer.limit(limit); /* Restore limit */
