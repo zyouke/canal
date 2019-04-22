@@ -97,7 +97,6 @@ public class LogEventConvert extends AbstractCanalLifeCycle implements BinlogPar
         if(logEvent == null || logEvent instanceof UnknownLogEvent){
             return null;
         }
-
         int eventType = logEvent.getHeader().getType();
         switch(eventType){
             case LogEvent.ROTATE_EVENT:

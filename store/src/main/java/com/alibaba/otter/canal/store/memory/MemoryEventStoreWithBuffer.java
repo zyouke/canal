@@ -173,6 +173,7 @@ public class MemoryEventStoreWithBuffer extends AbstractCanalStoreScavenge imple
      * 执行具体的put操作
      */
     private void doPut(List<Event> data) {
+        System.out.println(this.toString() + "entries的大小 ：" + entries.length);
         long current = putSequence.get();
         long end = current + data.size();
 

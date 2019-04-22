@@ -134,6 +134,7 @@ public class MysqlConnection implements ErosaConnection {
         LogDecoder decoder = new LogDecoder(LogEvent.UNKNOWN_EVENT, LogEvent.ENUM_END_EVENT);
         LogContext context = new LogContext();
         while(fetcher.fetch()){
+            System.out.println("新一轮循环。。。。。。");
             LogEvent event = null;
             event = decoder.decode(fetcher, context);
 

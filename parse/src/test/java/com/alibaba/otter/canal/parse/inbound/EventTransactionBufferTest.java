@@ -21,7 +21,7 @@ public class EventTransactionBufferTest {
 
     @Test
     public void transactionFlushTest() {
-        final int bufferSize = 128<<2;
+        final int bufferSize = 2<<2;
         System.out.println(bufferSize);
         final int transactionSize = 2;
         EventTransactionBuffer buffer = new EventTransactionBuffer();
