@@ -87,7 +87,6 @@ public class MemoryEventStoreWithBuffer extends AbstractCanalStoreScavenge imple
         if (data == null || data.isEmpty()) {
             return;
         }
-
         final ReentrantLock lock = this.lock;
         lock.lockInterruptibly();
         try {
@@ -173,27 +172,22 @@ public class MemoryEventStoreWithBuffer extends AbstractCanalStoreScavenge imple
      * 执行具体的put操作
      */
     private void doPut(List<Event> data) {
-        System.out.println(this.toString() + "entries的大小 ：" + entries.length);
         long current = putSequence.get();
+        System.out.println("尝试put成功,当前put 的位置 ：" + current);
         long end = current + data.size();
-
         // 先写数据，再更新对应的cursor,并发度高的情况，putSequence会被get请求可见，拿出了ringbuffer中的老的Entry值
         for (long next = current + 1; next <= end; next++) {
             entries[getIndex(next)] = data.get((int) (next - current - 1));
         }
-
         putSequence.set(end);
-
         // 记录一下gets memsize信息，方便快速检索
         if (batchMode.isMemSize()) {
             long size = 0;
             for (Event event : data) {
                 size += calculateSize(event);
             }
-
             putMemSize.getAndAdd(size);
         }
-
         // tell other threads that store is not empty
         notEmpty.signal();
     }

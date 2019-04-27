@@ -18,7 +18,6 @@ import com.alibaba.otter.canal.store.model.Event;
 import com.alibaba.otter.canal.store.model.Events;
 
 public class MemoryEventStoreMemBatchTest extends MemoryEventStoreBase {
-
     @Test
     public void testOnePut() {
         MemoryEventStoreWithBuffer eventStore = new MemoryEventStoreWithBuffer();
@@ -26,22 +25,21 @@ public class MemoryEventStoreMemBatchTest extends MemoryEventStoreBase {
         eventStore.start();
         // 尝试阻塞
         try {
-            eventStore.put(buildEvent("1", 1L, 1L, 1024));
+            eventStore.put(buildEvent());
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }
         // 尝试阻塞+超时
         boolean result = false;
         try {
-            result = eventStore.put(buildEvent("1", 1L, 1L), 1000L, TimeUnit.MILLISECONDS);
+            result = eventStore.put(buildEvent(), 1000L, TimeUnit.MILLISECONDS);
             Assert.assertTrue(result);
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }
         // 尝试
-        result = eventStore.tryPut(buildEvent("1", 1L, 1L));
+        result = eventStore.tryPut(buildEvent());
         Assert.assertTrue(result);
-
         eventStore.stop();
     }
 
@@ -53,7 +51,7 @@ public class MemoryEventStoreMemBatchTest extends MemoryEventStoreBase {
         eventStore.start();
         // 尝试阻塞
         try {
-            boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L, 1025));// 只有一条记录，第一条超过也允许放入
+            boolean result = eventStore.tryPut(buildEvent());// 只有一条记录，第一条超过也允许放入
             Assert.assertTrue(result);
         } catch (Exception e) {
             Assert.fail(e.getMessage());
@@ -71,15 +69,15 @@ public class MemoryEventStoreMemBatchTest extends MemoryEventStoreBase {
         eventStore.start();
 
         for (int i = 0; i < bufferSize; i++) {
-            boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L + i));
+            boolean result = eventStore.tryPut(buildEvent());
             Assert.assertTrue(result);
         }
 
-        boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L + bufferSize));
+        boolean result = eventStore.tryPut(buildEvent());
         Assert.assertFalse(result);
 
         try {
-            result = eventStore.put(buildEvent("1", 1L, 1L + bufferSize), 1000L, TimeUnit.MILLISECONDS);
+            result = eventStore.put(buildEvent(), 5000L, TimeUnit.MILLISECONDS);
         } catch (CanalStoreException e) {
             Assert.fail(e.getMessage());
         } catch (InterruptedException e) {
@@ -97,11 +95,12 @@ public class MemoryEventStoreMemBatchTest extends MemoryEventStoreBase {
         eventStore.setBatchMode(BatchMode.MEMSIZE);
         eventStore.start();
 
-        boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L));
+        boolean result = eventStore.tryPut(buildEvent());
         Assert.assertTrue(result);
 
         Position position = eventStore.getFirstPosition();
         Events<Event> entrys = eventStore.tryGet(position, 1);
+        System.out.println(entrys);
         Assert.assertTrue(entrys.getEvents().size() == 1);
         Assert.assertEquals(position, entrys.getPositionRange().getStart());
         Assert.assertEquals(position, entrys.getPositionRange().getEnd());
@@ -118,15 +117,15 @@ public class MemoryEventStoreMemBatchTest extends MemoryEventStoreBase {
         eventStore.start();
 
         for (int i = 0; i < bufferSize; i++) {
-            boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L + i));
+            boolean result = eventStore.tryPut(buildEvent());
             sleep(100L);
             Assert.assertTrue(result);
         }
 
         Position first = eventStore.getFirstPosition();
         Position lastest = eventStore.getLatestPosition();
-        Assert.assertEquals(first, CanalEventUtils.createPosition(buildEvent("1", 1L, 1L)));
-        Assert.assertEquals(lastest, CanalEventUtils.createPosition(buildEvent("1", 1L, 1L + bufferSize - 1)));
+        Assert.assertEquals(first, CanalEventUtils.createPosition(buildEvent()));
+        Assert.assertEquals(lastest, CanalEventUtils.createPosition(buildEvent()));
 
         System.out.println("start get");
         Events<Event> entrys1 = eventStore.tryGet(first, bufferSize);
@@ -150,7 +149,7 @@ public class MemoryEventStoreMemBatchTest extends MemoryEventStoreBase {
 
         final int batchSize = 10;
         for (int i = 0; i < batchSize; i++) {
-            boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L));
+            boolean result = eventStore.tryPut(buildEvent());
             Assert.assertTrue(result);
         }
 
@@ -204,7 +203,7 @@ public class MemoryEventStoreMemBatchTest extends MemoryEventStoreBase {
         eventStore.start();
 
         for (int i = 0; i < bufferSize / 2; i++) {
-            boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L + i));
+            boolean result = eventStore.tryPut(buildEvent());
             sleep(100L);
             Assert.assertTrue(result);
         }
@@ -212,8 +211,8 @@ public class MemoryEventStoreMemBatchTest extends MemoryEventStoreBase {
         sleep(50L);
         Position first = eventStore.getFirstPosition();
         Position lastest = eventStore.getLatestPosition();
-        Assert.assertEquals(first, CanalEventUtils.createPosition(buildEvent("1", 1L, 1L)));
-        Assert.assertEquals(lastest, CanalEventUtils.createPosition(buildEvent("1", 1L, 1L + bufferSize / 2 - 1)));
+        Assert.assertEquals(first, CanalEventUtils.createPosition(buildEvent()));
+        Assert.assertEquals(lastest, CanalEventUtils.createPosition(buildEvent()));
 
         System.out.println("start get");
         Events<Event> entrys1 = eventStore.tryGet(first, bufferSize);
@@ -227,7 +226,7 @@ public class MemoryEventStoreMemBatchTest extends MemoryEventStoreBase {
 
         // 继续造数据
         for (int i = bufferSize / 2; i < bufferSize; i++) {
-            boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L + i));
+            boolean result = eventStore.tryPut(buildEvent());
             sleep(100L);
             Assert.assertTrue(result);
         }
@@ -262,7 +261,7 @@ public class MemoryEventStoreMemBatchTest extends MemoryEventStoreBase {
         eventStore.start();
 
         for (int i = 0; i < bufferSize / 2; i++) {
-            boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L + i));
+            boolean result = eventStore.tryPut(buildEvent());
             sleep(100L);
             Assert.assertTrue(result);
         }
@@ -270,8 +269,8 @@ public class MemoryEventStoreMemBatchTest extends MemoryEventStoreBase {
         sleep(50L);
         Position first = eventStore.getFirstPosition();
         Position lastest = eventStore.getLatestPosition();
-        Assert.assertEquals(first, CanalEventUtils.createPosition(buildEvent("1", 1L, 1L)));
-        Assert.assertEquals(lastest, CanalEventUtils.createPosition(buildEvent("1", 1L, 1L + bufferSize / 2 - 1)));
+        Assert.assertEquals(first, CanalEventUtils.createPosition(buildEvent()));
+        Assert.assertEquals(lastest, CanalEventUtils.createPosition(buildEvent()));
 
         System.out.println("start get");
         Events<Event> entrys1 = eventStore.tryGet(first, bufferSize);
@@ -282,7 +281,7 @@ public class MemoryEventStoreMemBatchTest extends MemoryEventStoreBase {
 
         // 继续造数据
         for (int i = bufferSize / 2; i < bufferSize; i++) {
-            boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L + i));
+            boolean result = eventStore.tryPut(buildEvent());
             sleep(100L);
             Assert.assertTrue(result);
         }

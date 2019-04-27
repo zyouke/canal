@@ -91,7 +91,6 @@ public class EventTransactionBuffer extends AbstractCanalLifeCycle {
     }
 
     private void put(CanalEntry.Entry data) throws InterruptedException {
-        System.out.println(this.toString() + "-------entries大小" + entries.length);
         // 首先检查是否有空位
         if (checkFreeSlotAt(putSequence.get() + 1)) {
             long current = putSequence.get();

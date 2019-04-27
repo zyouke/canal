@@ -149,6 +149,7 @@ public class EntryEventSink extends AbstractCanalEventSink<List<CanalEntry.Entry
                 return true;
             }else{
                 applyWait(++fullTimes);
+                System.out.println("尝试put失败，开始空循环。。。。。。。。。。" + events.get(events.size() -1).getEntry().getHeader().getLogfileOffset());
             }
 
             for(CanalEventDownStreamHandler<List<Event>> handler : getHandlers()){

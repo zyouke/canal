@@ -46,7 +46,7 @@ public class EventTransactionBufferTest {
         });
         buffer.start();
         try{
-            for(int i = 0; i < transactionSize * 10; i++){
+            for(int i = 0; i < transactionSize * 100000; i++){
                 if(i % transactionSize == 0){
                     buffer.add(buildEntry("1", 1L + i, 40L + i, EntryType.TRANSACTIONBEGIN));
                 }else if((i + 1) % transactionSize == 0){

@@ -30,7 +30,7 @@ import com.alibaba.otter.canal.store.model.Events;
  */
 public class MemoryEventStoreMultiThreadTest extends MemoryEventStoreBase {
 
-    private ExecutorService            executor = Executors.newFixedThreadPool(2); // 1
+    private ExecutorService  executor = Executors.newFixedThreadPool(2); // 1
                                                                                    // producer
                                                                                    // ,1
                                                                                    // cousmer
@@ -99,7 +99,7 @@ public class MemoryEventStoreMultiThreadTest extends MemoryEventStoreBase {
                 } catch (InterruptedException e) {
                     return;
                 }
-                Event event = buildEvent("1", offest++, 1L);
+                Event event = buildEvent();
 
                 try {
                     Thread.sleep(RandomUtils.nextInt(freq));

@@ -4,6 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import com.alibaba.otter.canal.store.model.BatchMode;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -28,20 +29,20 @@ public class MemoryEventStorePutAndGetTest extends MemoryEventStoreBase {
         eventStore.start();
         // 尝试阻塞
         try {
-            eventStore.put(buildEvent("1", 1L, 1L));
+            eventStore.put(buildEvent());
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }
         // 尝试阻塞+超时
         boolean result = false;
         try {
-            result = eventStore.put(buildEvent("1", 1L, 1L), 1000L, TimeUnit.MILLISECONDS);
+            result = eventStore.put(buildEvent(), 1000L, TimeUnit.MILLISECONDS);
             Assert.assertTrue(result);
         } catch (Exception e) {
             Assert.fail(e.getMessage());
         }
         // 尝试
-        result = eventStore.tryPut(buildEvent("1", 1L, 1L));
+        result = eventStore.tryPut(buildEvent());
         Assert.assertTrue(result);
 
         eventStore.stop();
@@ -49,38 +50,36 @@ public class MemoryEventStorePutAndGetTest extends MemoryEventStoreBase {
 
     @Test
     public void testFullPut() {
-        int bufferSize = 16;
+        int bufferSize = 8;
         MemoryEventStoreWithBuffer eventStore = new MemoryEventStoreWithBuffer();
         eventStore.setBufferSize(bufferSize);
         eventStore.start();
 
         for (int i = 0; i < bufferSize; i++) {
-            boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L + i));
+            boolean result = eventStore.tryPut(buildEvent());
             Assert.assertTrue(result);
         }
 
-        boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L + bufferSize));
+        boolean result = eventStore.tryPut(buildEvent());
         Assert.assertFalse(result);
 
         try {
-            result = eventStore.put(buildEvent("1", 1L, 1L + bufferSize), 1000L, TimeUnit.MILLISECONDS);
+            result = eventStore.put(buildEvent(), 1000L, TimeUnit.MILLISECONDS);
         } catch (CanalStoreException e) {
             Assert.fail(e.getMessage());
         } catch (InterruptedException e) {
             Assert.fail(e.getMessage());
         }
-
         Assert.assertFalse(result);
-
         eventStore.stop();
     }
 
     @Test
     public void testOnePutOneGet() {
         MemoryEventStoreWithBuffer eventStore = new MemoryEventStoreWithBuffer();
+        eventStore.setBatchMode(BatchMode.MEMSIZE);
         eventStore.start();
-
-        boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L));
+        boolean result = eventStore.tryPut(buildEvent());
         Assert.assertTrue(result);
 
         Position position = eventStore.getFirstPosition();
@@ -100,15 +99,15 @@ public class MemoryEventStorePutAndGetTest extends MemoryEventStoreBase {
         eventStore.start();
 
         for (int i = 0; i < bufferSize; i++) {
-            boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L + i));
+            boolean result = eventStore.tryPut(buildEvent());
             sleep(100L);
             Assert.assertTrue(result);
         }
 
         Position first = eventStore.getFirstPosition();
         Position lastest = eventStore.getLatestPosition();
-        Assert.assertEquals(first, CanalEventUtils.createPosition(buildEvent("1", 1L, 1L)));
-        Assert.assertEquals(lastest, CanalEventUtils.createPosition(buildEvent("1", 1L, 1L + bufferSize - 1)));
+        Assert.assertEquals(first, CanalEventUtils.createPosition(buildEvent()));
+        Assert.assertEquals(lastest, CanalEventUtils.createPosition(buildEvent()));
 
         System.out.println("start get");
         Events<Event> entrys1 = eventStore.tryGet(first, bufferSize);
@@ -130,7 +129,7 @@ public class MemoryEventStorePutAndGetTest extends MemoryEventStoreBase {
 
         final int batchSize = 10;
         for (int i = 0; i < batchSize; i++) {
-            boolean result = eventStore.tryPut(buildEvent("1", 1L, 1L));
+            boolean result = eventStore.tryPut(buildEvent());
             Assert.assertTrue(result);
         }
 
