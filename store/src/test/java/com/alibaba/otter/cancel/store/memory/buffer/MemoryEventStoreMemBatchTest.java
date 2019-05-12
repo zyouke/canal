@@ -75,7 +75,6 @@ public class MemoryEventStoreMemBatchTest extends MemoryEventStoreBase {
 
         boolean result = eventStore.tryPut(buildEvent());
         Assert.assertFalse(result);
-
         try {
             result = eventStore.put(buildEvent(), 5000L, TimeUnit.MILLISECONDS);
         } catch (CanalStoreException e) {

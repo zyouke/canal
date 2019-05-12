@@ -99,7 +99,6 @@
         <module>parse</module>
         <module>sink</module>
         <module>store</module>
-        <module>parse</module>
         <module>protocol</module>
         <module>instance</module>
         <module>server</module>

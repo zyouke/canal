@@ -26,8 +26,7 @@ public class CanalConnectors {
      * @param password
      * @return
      */
-    public static CanalConnector newSingleConnector(SocketAddress address, String destination, String username,
-                                                    String password) {
+    public static CanalConnector newSingleConnector(SocketAddress address, String destination, String username, String password){
         SimpleCanalConnector canalConnector = new SimpleCanalConnector(address, username, password, destination);
         canalConnector.setSoTimeout(30 * 1000);
         return canalConnector;
@@ -42,12 +41,8 @@ public class CanalConnectors {
      * @param password
      * @return
      */
-    public static CanalConnector newClusterConnector(List<? extends SocketAddress> addresses, String destination,
-                                                     String username, String password) {
-        ClusterCanalConnector canalConnector = new ClusterCanalConnector(username,
-                password,
-                destination,
-                new SimpleNodeAccessStrategy(addresses));
+    public static CanalConnector newClusterConnector(List<? extends SocketAddress> addresses, String destination, String username, String password){
+        ClusterCanalConnector canalConnector = new ClusterCanalConnector(username, password, destination, new SimpleNodeAccessStrategy(addresses));
         canalConnector.setSoTimeout(30 * 1000);
         return canalConnector;
     }
@@ -61,12 +56,8 @@ public class CanalConnectors {
      * @param password
      * @return
      */
-    public static CanalConnector newClusterConnector(String zkServers, String destination, String username,
-                                                     String password) {
-        ClusterCanalConnector canalConnector = new ClusterCanalConnector(username,
-                password,
-                destination,
-                new ClusterNodeAccessStrategy(destination, ZkClientx.getZkClient(zkServers)));
+    public static CanalConnector newClusterConnector(String zkServers, String destination, String username, String password){
+        ClusterCanalConnector canalConnector = new ClusterCanalConnector(username, password, destination, new ClusterNodeAccessStrategy(destination, ZkClientx.getZkClient(zkServers)));
         canalConnector.setSoTimeout(30 * 1000);
         return canalConnector;
     }
