@@ -44,24 +44,23 @@ public class CanalServerWithNetty extends AbstractCanalLifeCycle implements Cana
         private static final CanalServerWithNetty CANAL_SERVER_WITH_NETTY = new CanalServerWithNetty();
     }
 
-    private CanalServerWithNetty() {
+    private CanalServerWithNetty(){
         this.embeddedServer = CanalServerWithEmbedded.instance();
         this.childGroups = new DefaultChannelGroup();
     }
 
-    public static CanalServerWithNetty instance() {
+    public static CanalServerWithNetty instance(){
         return SingletonHolder.CANAL_SERVER_WITH_NETTY;
     }
 
-    public void start() {
+    public void start(){
         super.start();
 
-        if (!embeddedServer.isStart()) {
+        if(!embeddedServer.isStart()){
             embeddedServer.start();
         }
 
-        this.bootstrap = new ServerBootstrap(new NioServerSocketChannelFactory(Executors.newCachedThreadPool(),
-                Executors.newCachedThreadPool()));
+        this.bootstrap = new ServerBootstrap(new NioServerSocketChannelFactory(Executors.newCachedThreadPool(), Executors.newCachedThreadPool()));
         /*
          * enable keep-alive mechanism, handle abnormal network connection
          * scenarios on OS level. the threshold parameters are depended on OS.
@@ -77,14 +76,12 @@ public class CanalServerWithNetty extends AbstractCanalLifeCycle implements Cana
         // 构造对应的pipeline
         bootstrap.setPipelineFactory(new ChannelPipelineFactory() {
 
-            public ChannelPipeline getPipeline() throws Exception {
+            public ChannelPipeline getPipeline() throws Exception{
                 ChannelPipeline pipelines = Channels.pipeline();
                 pipelines.addLast(FixedHeaderFrameDecoder.class.getName(), new FixedHeaderFrameDecoder());
                 // support to maintain child socket channel.
-                pipelines.addLast(HandshakeInitializationHandler.class.getName(),
-                        new HandshakeInitializationHandler(childGroups));
-                pipelines.addLast(ClientAuthenticationHandler.class.getName(),
-                        new ClientAuthenticationHandler(embeddedServer));
+                pipelines.addLast(HandshakeInitializationHandler.class.getName(), new HandshakeInitializationHandler(childGroups));
+                pipelines.addLast(ClientAuthenticationHandler.class.getName(), new ClientAuthenticationHandler(embeddedServer));
                 SessionHandler sessionHandler = new SessionHandler(embeddedServer);
                 pipelines.addLast(SessionHandler.class.getName(), sessionHandler);
                 return pipelines;
@@ -92,44 +89,44 @@ public class CanalServerWithNetty extends AbstractCanalLifeCycle implements Cana
         });
 
         // 启动
-        if (StringUtils.isNotEmpty(ip)) {
+        if(StringUtils.isNotEmpty(ip)){
             this.serverChannel = bootstrap.bind(new InetSocketAddress(this.ip, this.port));
-        } else {
+        }else{
             this.serverChannel = bootstrap.bind(new InetSocketAddress(this.port));
         }
     }
 
-    public void stop() {
+    public void stop(){
         super.stop();
 
-        if (this.serverChannel != null) {
+        if(this.serverChannel != null){
             this.serverChannel.close().awaitUninterruptibly(1000);
         }
 
         // close sockets explicitly to reduce socket channel hung in complicated
         // network environment.
-        if (this.childGroups != null) {
+        if(this.childGroups != null){
             this.childGroups.close().awaitUninterruptibly(5000);
         }
 
-        if (this.bootstrap != null) {
+        if(this.bootstrap != null){
             this.bootstrap.releaseExternalResources();
         }
 
-        if (embeddedServer.isStart()) {
+        if(embeddedServer.isStart()){
             embeddedServer.stop();
         }
     }
 
-    public void setIp(String ip) {
+    public void setIp(String ip){
         this.ip = ip;
     }
 
-    public void setPort(int port) {
+    public void setPort(int port){
         this.port = port;
     }
 
-    public void setEmbeddedServer(CanalServerWithEmbedded embeddedServer) {
+    public void setEmbeddedServer(CanalServerWithEmbedded embeddedServer){
         this.embeddedServer = embeddedServer;
     }
 
