@@ -18,42 +18,29 @@ import com.alibaba.otter.canal.protocol.CanalPacket.Packet;
 
 public class NettyUtils {
 
-    private static final Logger logger           = LoggerFactory.getLogger(NettyUtils.class);
-    private static int          HEADER_LENGTH    = 4;
-    public static Timer         hashedWheelTimer = new HashedWheelTimer();
+    private static final Logger logger = LoggerFactory.getLogger(NettyUtils.class);
+    private static int HEADER_LENGTH = 4;
+    public static Timer hashedWheelTimer = new HashedWheelTimer();
 
-    public static void write(Channel channel, byte[] body, ChannelFutureListener channelFutureListner) {
+    public static void write(Channel channel, byte[] body, ChannelFutureListener channelFutureListner){
         byte[] header = ByteBuffer.allocate(HEADER_LENGTH).order(ByteOrder.BIG_ENDIAN).putInt(body.length).array();
-        if (channelFutureListner == null) {
+        if(channelFutureListner == null){
             Channels.write(channel, ChannelBuffers.wrappedBuffer(header, body));
-        } else {
+        }else{
             Channels.write(channel, ChannelBuffers.wrappedBuffer(header, body)).addListener(channelFutureListner);
         }
     }
 
-    public static void ack(Channel channel, ChannelFutureListener channelFutureListner) {
-        write(channel,
-            Packet.newBuilder()
-                .setType(CanalPacket.PacketType.ACK)
-                .setBody(Ack.newBuilder().build().toByteString())
-                .build()
-                .toByteArray(),
-            channelFutureListner);
+    public static void ack(Channel channel, ChannelFutureListener channelFutureListner){
+        write(channel, Packet.newBuilder().setType(CanalPacket.PacketType.ACK).setBody(Ack.newBuilder().build().toByteString()).build().toByteArray(), channelFutureListner);
     }
 
-    public static void error(int errorCode, String errorMessage, Channel channel,
-                             ChannelFutureListener channelFutureListener) {
-        if (channelFutureListener == null) {
+    public static void error(int errorCode, String errorMessage, Channel channel, ChannelFutureListener channelFutureListener){
+        if(channelFutureListener == null){
             channelFutureListener = ChannelFutureListener.CLOSE;
         }
 
         logger.error("ErrotCode:{} , Caused by : \n{}", errorCode, errorMessage);
-        write(channel,
-            Packet.newBuilder()
-                .setType(CanalPacket.PacketType.ACK)
-                .setBody(Ack.newBuilder().setErrorCode(errorCode).setErrorMessage(errorMessage).build().toByteString())
-                .build()
-                .toByteArray(),
-            channelFutureListener);
+        write(channel, Packet.newBuilder().setType(CanalPacket.PacketType.ACK).setBody(Ack.newBuilder().setErrorCode(errorCode).setErrorMessage(errorMessage).build().toByteString()).build().toByteArray(), channelFutureListener);
     }
 }

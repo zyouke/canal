@@ -1,4 +1,4 @@
-package com.zyouke.netty.simple;
+package com.zyouke.simple;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;

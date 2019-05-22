@@ -1,11 +1,7 @@
-package com.zyouke.netty.simple;
+package com.zyouke.simple;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.util.AttributeKey;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class HelloWorldClientHandler extends SimpleChannelInboundHandler<String> {
     @Override

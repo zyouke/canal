@@ -1,4 +1,4 @@
-package com.zyouke.netty.protobuf;
+package com.zyouke.simple;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -6,9 +6,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
-import java.util.ArrayList;
-
-public class NettyProtobufService {
+public class HelloWorldService {
 
     public static void main(String[] args) {
         EventLoopGroup boss = new NioEventLoopGroup();
@@ -16,7 +14,7 @@ public class NettyProtobufService {
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap.group(boss,worker);
         bootstrap.channel(NioServerSocketChannel.class).
-        childHandler(new NettyProtobufServerInitializer());
+        childHandler(new HelloWorldServerInitializer());
         try {
             Channel channel = bootstrap.bind(8080).sync().channel();
             System.out.println("端口 8080 服务启动");

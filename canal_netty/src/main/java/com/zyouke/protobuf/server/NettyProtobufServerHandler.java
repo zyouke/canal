@@ -1,11 +1,13 @@
-package com.zyouke.netty.protobuf;
+package com.zyouke.protobuf.server;
 
 import com.alibaba.otter.canal.protocol.CanalPacket;
-import com.google.protobuf.ByteString;
-import com.google.protobuf.Message;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.util.Attribute;
+import io.netty.util.AttributeKey;
+import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.GenericFutureListener;
 
 import java.net.SocketAddress;
 
@@ -13,10 +15,18 @@ public class NettyProtobufServerHandler extends SimpleChannelInboundHandler<Cana
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, CanalPacket.Handshake handshake) throws Exception {
-        System.out.println("接受客户端" + ctx.channel().remoteAddress() + "的请求：" + handshake);
+        System.out.println("NettyProtobufServerHandler 当前传递上下文的对象 " + ctx.toString());
+        Channel channel = ctx.channel();
+        System.out.println("接受客户端" + channel.remoteAddress() + "的请求：" + handshake);
         CanalPacket.Handshake.Builder builder = CanalPacket.Handshake.newBuilder();
         builder.addSupportedCompressions(CanalPacket.Compression.LZF);
-        ctx.channel().writeAndFlush(builder);
+        System.out.println("获取att的数据 ：" + channel.attr(AttributeKey.valueOf("chanal")).get());
+        channel.writeAndFlush(builder).addListener(new GenericFutureListener<Future<? super Void>>() {
+            @Override
+            public void operationComplete(Future<? super Void> future) throws Exception{
+                System.out.println("写数据成功后回调。。。。。。。。。");
+            }
+        });
     }
 
     @Override

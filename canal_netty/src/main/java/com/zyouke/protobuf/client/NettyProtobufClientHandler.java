@@ -1,4 +1,4 @@
-package com.zyouke.netty.protobuf;
+package com.zyouke.protobuf.client;
 
 import com.alibaba.otter.canal.protocol.CanalPacket;
 import com.google.protobuf.ByteString;
@@ -11,7 +11,7 @@ public class NettyProtobufClientHandler extends SimpleChannelInboundHandler<Cana
         System.out.println("服务端响应数据 ： " + handshake);
         CanalPacket.Handshake.Builder builder = CanalPacket.Handshake.newBuilder();
         builder.setSeeds(ByteString.copyFromUtf8("200"));
-        ctx.channel().writeAndFlush(builder);
+        //ctx.channel().writeAndFlush(builder);
     }
 
     @Override

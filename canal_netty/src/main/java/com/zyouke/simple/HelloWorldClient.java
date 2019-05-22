@@ -1,4 +1,4 @@
-package com.zyouke.netty.protobuf;
+package com.zyouke.simple;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -8,7 +8,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
-public class NettyProtobufClient {
+public class HelloWorldClient {
 
     public static void main(String[] args) {
         EventLoopGroup group = new NioEventLoopGroup();
@@ -16,7 +16,7 @@ public class NettyProtobufClient {
         bootstrap.group(group).
         channel(NioSocketChannel.class).
         handler(new LoggingHandler(LogLevel.INFO)).
-        handler(new NettyProtobufClientInitializer());
+        handler(new HelloWorldClientInitializer());
         try {
             ChannelFuture channelFuture = bootstrap.connect("127.0.0.1", 8080).sync();
             channelFuture.channel().closeFuture().sync();
