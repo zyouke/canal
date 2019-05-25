@@ -3,9 +3,11 @@ package com.zyouke.canal;
 import com.alibaba.otter.canal.common.AbstractCanalLifeCycle;
 import com.alibaba.otter.canal.server.CanalServer;
 import com.alibaba.otter.canal.server.embedded.CanalServerWithEmbedded;
+import com.zyouke.canal.handler.HandshakeInitializationHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -52,13 +54,13 @@ public class CanalServerWithNetty4 extends AbstractCanalLifeCycle implements Can
         serverBootstrap.channel(NioServerSocketChannel.class).
         childHandler(new ChannelInitializer<SocketChannel>() {
             @Override
-            protected void initChannel(SocketChannel ch){/*
+            protected void initChannel(SocketChannel ch){
                 ChannelPipeline pipelines = ch.pipeline();
-                pipelines.addLast(HandshakeInitializationHandler.class.getName(), new HandshakeInitializationHandler(childGroups));
-                pipelines.addLast(ClientAuthenticationHandler.class.getName(), new ClientAuthenticationHandler(embeddedServer));
+                pipelines.addLast(HandshakeInitializationHandler.class.getName(), new HandshakeInitializationHandler());
+                /*pipelines.addLast(ClientAuthenticationHandler.class.getName(), new ClientAuthenticationHandler(embeddedServer));
                 SessionHandler sessionHandler = new SessionHandler(embeddedServer);
-                pipelines.addLast(SessionHandler.class.getName(), sessionHandler);
-            */}
+                pipelines.addLast(SessionHandler.class.getName(), sessionHandler);*/
+            }
         });
         // 启动
         if(StringUtils.isNotEmpty(ip)){

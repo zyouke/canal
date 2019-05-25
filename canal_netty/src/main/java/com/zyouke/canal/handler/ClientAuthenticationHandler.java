@@ -1,22 +1,26 @@
 package com.zyouke.canal.handler;
 
 import com.alibaba.otter.canal.protocol.CanalPacket;
+import com.alibaba.otter.canal.protocol.ClientIdentity;
 import com.alibaba.otter.canal.server.embedded.CanalServerWithEmbedded;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.SimpleChannelInboundHandler;
 /*import org.jboss.netty.handler.timeout.IdleStateAwareChannelHandler;
 import org.jboss.netty.handler.timeout.IdleStateEvent;
 import org.jboss.netty.handler.timeout.IdleStateHandler;*/
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 /**
- * 客户端身份认证处理
+ * 客户端发送身份认证请求的处理器
  *
  * @author jianghang 2012-10-24 上午11:12:45
  * @version 1.0.0
  */
-public class ClientAuthenticationHandler extends SimpleChannelInboundHandler<CanalPacket.ClientAuth> {
+public class ClientAuthenticationHandler extends ChannelInboundHandlerAdapter {
 
     private static final Logger logger = LoggerFactory.getLogger(ClientAuthenticationHandler.class);
     private final int defaultSubscriptorDisconnectIdleTimeout = 5 * 60 * 1000;
@@ -25,8 +29,8 @@ public class ClientAuthenticationHandler extends SimpleChannelInboundHandler<Can
     public ClientAuthenticationHandler(CanalServerWithEmbedded embeddedServer) {
         this.embeddedServer = embeddedServer;
     }
-    @Override
-    protected void channelRead0(ChannelHandlerContext ctx, CanalPacket.ClientAuth clientAuth) throws Exception{/*
+
+    public void channelRead(ChannelHandlerContext ctx) throws Exception{
         // 如果存在订阅信息
         if(StringUtils.isNotEmpty(clientAuth.getDestination()) && StringUtils.isNotEmpty(clientAuth.getClientId())){
             ClientIdentity clientIdentity = new ClientIdentity(clientAuth.getDestination(), Short.valueOf(clientAuth.getClientId()), clientAuth.getFilter());
@@ -78,5 +82,5 @@ public class ClientAuthenticationHandler extends SimpleChannelInboundHandler<Can
             }
 
         });
-    */}
+    }
 }
