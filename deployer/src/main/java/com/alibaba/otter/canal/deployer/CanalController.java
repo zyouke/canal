@@ -3,6 +3,7 @@ package com.alibaba.otter.canal.deployer;
 import java.util.Map;
 import java.util.Properties;
 
+import com.alibaba.otter.canal.server.netty4.CanalServerWithNetty4;
 import org.I0Itec.zkclient.IZkStateListener;
 import org.I0Itec.zkclient.exception.ZkNoNodeException;
 import org.I0Itec.zkclient.exception.ZkNodeExistsException;
@@ -62,7 +63,7 @@ public class CanalController {
     private InstanceAction                           defaultAction;
     private Map<InstanceMode, InstanceConfigMonitor> instanceConfigMonitors;
     private CanalServerWithEmbedded                  embededCanalServer;
-    private CanalServerWithNetty                     canalServer;
+    private CanalServerWithNetty4                     canalServer;
 
     private CanalInstanceGenerator                   instanceGenerator;
     private ZkClientx                                zkclientx;
@@ -91,7 +92,7 @@ public class CanalController {
         port = Integer.valueOf(getProperty(properties, CanalConstants.CANAL_PORT));
         embededCanalServer = CanalServerWithEmbedded.instance();
         embededCanalServer.setCanalInstanceGenerator(instanceGenerator);// 设置自定义的instanceGenerator
-        canalServer = CanalServerWithNetty.instance();
+        canalServer = CanalServerWithNetty4.instance();
         canalServer.setIp(ip);
         canalServer.setPort(port);
 

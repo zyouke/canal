@@ -1,9 +1,11 @@
-package com.zyouke.canal;
+package com.alibaba.otter.canal.server.netty4;
 
 import com.alibaba.otter.canal.common.AbstractCanalLifeCycle;
 import com.alibaba.otter.canal.server.CanalServer;
 import com.alibaba.otter.canal.server.embedded.CanalServerWithEmbedded;
-import com.zyouke.canal.handler.HandshakeInitializationHandler;
+import com.alibaba.otter.canal.server.netty4.handler.ClientAuthenticationHandlerNetty4;
+import com.alibaba.otter.canal.server.netty4.handler.HandshakeInitializationHandlerNetty4;
+import com.alibaba.otter.canal.server.netty4.handler.SessionHandlerNetty4;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -14,19 +16,21 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.net.InetSocketAddress;
 
 /**
  * 使用netty4开发服务端
  */
 public class CanalServerWithNetty4 extends AbstractCanalLifeCycle implements CanalServer{
-
-
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(CanalServerWithNetty4.class);
     private CanalServerWithEmbedded embeddedServer;      // 嵌入式server
     private String ip;
     private int port;
     private Channel serverChannel = null;
-    private ServerBootstrap bootstrap = null;
+    private ServerBootstrap serverBootstrap = null;
     private ChannelGroup childGroups = null; // socket channel
     private static class SingletonHolder {
 
@@ -42,31 +46,41 @@ public class CanalServerWithNetty4 extends AbstractCanalLifeCycle implements Can
     }
 
     public void start(){
+        LOGGER.info("。。。。。。。启动netty服务byCanalServerWithNetty4。。。。。。。。。");
         super.start();
 
         if(!embeddedServer.isStart()){
             embeddedServer.start();
         }
-        EventLoopGroup boss = new NioEventLoopGroup();
+        EventLoopGroup boss = new NioEventLoopGroup(1);
         EventLoopGroup worker = new NioEventLoopGroup();
-        ServerBootstrap serverBootstrap = new ServerBootstrap();
+        serverBootstrap = new ServerBootstrap();
         serverBootstrap.group(boss,worker);
         serverBootstrap.channel(NioServerSocketChannel.class).
         childHandler(new ChannelInitializer<SocketChannel>() {
             @Override
             protected void initChannel(SocketChannel ch){
                 ChannelPipeline pipelines = ch.pipeline();
-                pipelines.addLast(HandshakeInitializationHandler.class.getName(), new HandshakeInitializationHandler());
-                /*pipelines.addLast(ClientAuthenticationHandler.class.getName(), new ClientAuthenticationHandler(embeddedServer));
-                SessionHandler sessionHandler = new SessionHandler(embeddedServer);
-                pipelines.addLast(SessionHandler.class.getName(), sessionHandler);*/
+                pipelines.addLast(HandshakeInitializationHandlerNetty4.class.getName(), new HandshakeInitializationHandlerNetty4());
+                pipelines.addLast(ClientAuthenticationHandlerNetty4.class.getName(), new ClientAuthenticationHandlerNetty4(embeddedServer));
+                SessionHandlerNetty4 sessionHandler = new SessionHandlerNetty4(embeddedServer);
+                pipelines.addLast(SessionHandlerNetty4.class.getName(), sessionHandler);
             }
         });
         // 启动
-        if(StringUtils.isNotEmpty(ip)){
-            //this.serverChannel = bootstrap.bind(new InetSocketAddress(this.ip, this.port));
-        }else{
-            //this.serverChannel = bootstrap.bind(new InetSocketAddress(this.port));
+        try{
+            if(StringUtils.isNotEmpty(ip)){
+                this.serverChannel = serverBootstrap.bind(new InetSocketAddress(this.ip, this.port)).sync().channel();
+            }else{
+                this.serverChannel = serverBootstrap.bind(new InetSocketAddress(this.port)).sync().channel();
+            }
+            // this.serverChannel.closeFuture() 方法会返回ChannelFuture，异步执行的，main方法会直接结束，所以sync() 方法必须要调用来阻塞程
+            this.serverChannel.closeFuture().sync();
+        }catch(InterruptedException e){
+            LOGGER.error(e.getMessage(),e);
+        }finally{
+            boss.shutdownGracefully();
+            worker.shutdownGracefully();
         }
     }
 
@@ -81,7 +95,7 @@ public class CanalServerWithNetty4 extends AbstractCanalLifeCycle implements Can
             this.childGroups.close().awaitUninterruptibly(5000);
         }
 
-        if(this.bootstrap != null){
+        if(this.serverBootstrap != null){
             //this.bootstrap.releaseExternalResources();
         }
 

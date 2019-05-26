@@ -1,53 +1,48 @@
-/*
-package com.zyouke.canal.handler;
+package com.alibaba.otter.canal.server.netty4.handler;
 
 import com.alibaba.otter.canal.common.zookeeper.running.ServerRunningMonitor;
 import com.alibaba.otter.canal.common.zookeeper.running.ServerRunningMonitors;
 import com.alibaba.otter.canal.protocol.CanalEntry.Entry;
+import com.alibaba.otter.canal.protocol.CanalPacket;
 import com.alibaba.otter.canal.protocol.CanalPacket.*;
 import com.alibaba.otter.canal.protocol.ClientIdentity;
 import com.alibaba.otter.canal.protocol.Message;
 import com.alibaba.otter.canal.server.embedded.CanalServerWithEmbedded;
-import com.alibaba.otter.canal.server.netty.NettyUtils;
+import com.alibaba.otter.canal.server.netty4.Netty4Utils;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.util.AttributeKey;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
-import org.jboss.netty.buffer.ChannelBuffer;
-import org.jboss.netty.channel.ChannelHandlerContext;
-import org.jboss.netty.channel.MessageEvent;
-import org.jboss.netty.channel.SimpleChannelHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.slf4j.helpers.MessageFormatter;
-import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-*/
-/**
+/*
  * 处理具体的客户端请求
  *
  * @author jianghang 2012-10-24 下午02:21:13
  * @version 1.0.0
- *//*
+*/
 
-public class SessionHandler extends SimpleChannelHandler{
+public class SessionHandlerNetty4 extends SimpleChannelInboundHandler<CanalPacket.Packet>{
 
-    private static final Logger logger = LoggerFactory.getLogger(SessionHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(SessionHandlerNetty4.class);
     private CanalServerWithEmbedded embeddedServer;
 
-    public SessionHandler(){
-    }
-
-    public SessionHandler(CanalServerWithEmbedded embeddedServer){
+    public SessionHandlerNetty4(CanalServerWithEmbedded embeddedServer){
         this.embeddedServer = embeddedServer;
     }
 
-    public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception{
-        //logger.info("message receives in session handler...");
-        ChannelBuffer buffer = (ChannelBuffer) e.getMessage();
-        Packet packet = Packet.parseFrom(buffer.readBytes(buffer.readableBytes()).array());
+    @Override
+    protected void channelRead0(ChannelHandlerContext ctx, CanalPacket.Packet packet) throws Exception{
+        Channel channel = ctx.channel();
+        logger.info("message receives in session handler...");
         ClientIdentity clientIdentity = null;
         try{
             switch(packet.getType()){
@@ -56,7 +51,6 @@ public class SessionHandler extends SimpleChannelHandler{
                     if(StringUtils.isNotEmpty(sub.getDestination()) && StringUtils.isNotEmpty(sub.getClientId())){
                         clientIdentity = new ClientIdentity(sub.getDestination(), Short.valueOf(sub.getClientId()), sub.getFilter());
                         MDC.put("destination", clientIdentity.getDestination());
-
                         // 尝试启动，如果已经启动，忽略
                         if(!embeddedServer.isStart(clientIdentity.getDestination())){
                             ServerRunningMonitor runningMonitor = ServerRunningMonitors.getRunningMonitor(clientIdentity.getDestination());
@@ -66,10 +60,10 @@ public class SessionHandler extends SimpleChannelHandler{
                         }
 
                         embeddedServer.subscribe(clientIdentity);
-                        ctx.setAttachment(clientIdentity);// 设置状态数据
-                        NettyUtils.ack(ctx.getChannel(), null);
+                        channel.attr(AttributeKey.valueOf("clientIdentity")).set(clientIdentity);// 设置状态数据
+                        Netty4Utils.ack(ctx.channel(), null);
                     }else{
-                        NettyUtils.error(401, MessageFormatter.format("destination or clientId is null", sub.toString()).getMessage(), ctx.getChannel(), null);
+                        Netty4Utils.error(401, MessageFormatter.format("destination or clientId is null", sub.toString()).getMessage(), channel, null);
                     }
                     break;
                 case UNSUBSCRIPTION:
@@ -79,9 +73,9 @@ public class SessionHandler extends SimpleChannelHandler{
                         MDC.put("destination", clientIdentity.getDestination());
                         embeddedServer.unsubscribe(clientIdentity);
                         stopCanalInstanceIfNecessary(clientIdentity);// 尝试关闭
-                        NettyUtils.ack(ctx.getChannel(), null);
+                        Netty4Utils.ack(ctx.channel(), null);
                     }else{
-                        NettyUtils.error(401, MessageFormatter.format("destination or clientId is null", unsub.toString()).getMessage(), ctx.getChannel(), null);
+                        Netty4Utils.error(401, MessageFormatter.format("destination or clientId is null", unsub.toString()).getMessage(), channel, null);
                     }
                     break;
                 case GET:
@@ -101,15 +95,17 @@ public class SessionHandler extends SimpleChannelHandler{
 
                         Messages.Builder messageBuilder = Messages.newBuilder();
                         messageBuilder.setBatchId(message.getId());
-                        if(message.getId() != -1 && !CollectionUtils.isEmpty(message.getEntries())){
-                            for(Entry entry : message.getEntries()){
+                        List<Entry> entries = message.getEntries();
+                        if(message.getId() != -1 && entries != null && entries.size() > 0){
+                            for(Entry entry : entries){
                                 messageBuilder.addMessages(entry.toByteString());
                             }
                         }
                         packetBuilder.setBody(messageBuilder.build().toByteString());
-                        NettyUtils.write(ctx.getChannel(), packetBuilder.build().toByteArray(), null);// 输出数据
+                        Netty4Utils.write(ctx.channel(), packetBuilder.build().toByteArray(), null);// 输出数据
                     }else{
-                        NettyUtils.error(401, MessageFormatter.format("destination or clientId is null", get.toString()).getMessage(), ctx.getChannel(), null);
+                        Netty4Utils.error(401,
+                                MessageFormatter.format("destination or clientId is null", get.toString()).getMessage(), channel, null);
                     }
                     break;
                 case CLIENTACK:
@@ -117,15 +113,17 @@ public class SessionHandler extends SimpleChannelHandler{
                     MDC.put("destination", ack.getDestination());
                     if(StringUtils.isNotEmpty(ack.getDestination()) && StringUtils.isNotEmpty(ack.getClientId())){
                         if(ack.getBatchId() == 0L){
-                            NettyUtils.error(402, MessageFormatter.format("batchId should assign value", ack.toString()).getMessage(), ctx.getChannel(), null);
+                            Netty4Utils.error(402,
+                                    MessageFormatter.format("batchId should assign value", ack.toString()).getMessage(), channel, null);
                         }else if(ack.getBatchId() == -1L){ // -1代表上一次get没有数据，直接忽略之
-                            // donothing
+                           logger.info("上一次get没有数据，直接忽略之,打印日志。。。。。");
                         }else{
                             clientIdentity = new ClientIdentity(ack.getDestination(), Short.valueOf(ack.getClientId()));
                             embeddedServer.ack(clientIdentity, ack.getBatchId());
                         }
                     }else{
-                        NettyUtils.error(401, MessageFormatter.format("destination or clientId is null", ack.toString()).getMessage(), ctx.getChannel(), null);
+                        Netty4Utils.error(401,
+                                MessageFormatter.format("destination or clientId is null", ack.toString()).getMessage(), channel, null);
                     }
                     break;
                 case CLIENTROLLBACK:
@@ -139,15 +137,18 @@ public class SessionHandler extends SimpleChannelHandler{
                             embeddedServer.rollback(clientIdentity, rollback.getBatchId()); // 只回滚单个批次
                         }
                     }else{
-                        NettyUtils.error(401, MessageFormatter.format("destination or clientId is null", rollback.toString()).getMessage(), ctx.getChannel(), null);
+                        Netty4Utils.error(401,
+                                MessageFormatter.format("destination or clientId is null", rollback.toString()).getMessage(), channel, null);
                     }
                     break;
                 default:
-                    NettyUtils.error(400, MessageFormatter.format("packet type={} is NOT supported!", packet.getType()).getMessage(), ctx.getChannel(), null);
+                    Netty4Utils.error(400,
+                            MessageFormatter.format("packet type={} is NOT supported!", packet.getType()).getMessage(), channel, null);
                     break;
             }
         }catch(Throwable exception){
-            NettyUtils.error(400, MessageFormatter.format("something goes wrong with channel:{}, exception={}", ctx.getChannel(), ExceptionUtils.getStackTrace(exception)).getMessage(), ctx.getChannel(), null);
+            Netty4Utils.error(400,
+                    MessageFormatter.format("something goes wrong with channel:{}, exception={}", channel, ExceptionUtils.getStackTrace(exception)).getMessage(), channel, null);
         }finally{
             MDC.remove("destination");
         }
@@ -155,8 +156,8 @@ public class SessionHandler extends SimpleChannelHandler{
     }
 
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception{
-        logger.error("something goes wrong with channel:{}, exception={}", ctx.getChannel(), ExceptionUtils.getStackTrace(cause.getCause()));
-        ctx.getChannel().close();
+        logger.error("something goes wrong with channel:{}, exception={}", ctx.channel(), ExceptionUtils.getStackTrace(cause.getCause()));
+        ctx.channel().close();
     }
 
 
@@ -196,4 +197,3 @@ public class SessionHandler extends SimpleChannelHandler{
     }
 
 }
-*/
