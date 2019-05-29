@@ -18,7 +18,6 @@ public class Netty4Utils {
 
     private static final Logger logger = LoggerFactory.getLogger(Netty4Utils.class);
     private static int HEADER_LENGTH = 4;
-    public static Timer hashedWheelTimer = new HashedWheelTimer();
 
     public static void write(Channel channel, byte[] body, ChannelFutureListener channelFutureListner){
         byte[] header = ByteBuffer.allocate(HEADER_LENGTH).order(ByteOrder.BIG_ENDIAN).putInt(body.length).array();

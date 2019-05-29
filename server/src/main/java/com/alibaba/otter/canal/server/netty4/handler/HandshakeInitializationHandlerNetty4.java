@@ -3,6 +3,7 @@ package com.alibaba.otter.canal.server.netty4.handler;
 import com.alibaba.otter.canal.protocol.CanalPacket;
 import com.alibaba.otter.canal.protocol.CanalPacket.Handshake;
 import com.alibaba.otter.canal.protocol.CanalPacket.Packet;
+import com.alibaba.otter.canal.server.netty4.Netty4Utils;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -31,7 +32,7 @@ public class HandshakeInitializationHandlerNetty4 extends ChannelInboundHandlerA
                 .setBody(Handshake.newBuilder().build().toByteString())
                 .build()
                 .toByteArray();
-        channel.writeAndFlush(body);
+        Netty4Utils.write(channel,body,null);
         logger.info("send handshake initialization packet to : {}", ctx.channel());
     }
 }

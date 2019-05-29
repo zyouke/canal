@@ -34,7 +34,7 @@ public class ClientAuthenticationHandlerNetty4 extends SimpleChannelInboundHandl
 
     @Override
     public void channelRead0(final ChannelHandlerContext ctx, final CanalPacket.ClientAuth clientAuth) throws Exception{
-        // 如果存在订阅信息
+        logger.info("进入身份认证的Handler [username {}]----[password {}] ",clientAuth.getUsername(),clientAuth.getPassword().toStringUtf8());
         Channel channel = ctx.channel();
         if(StringUtils.isNotEmpty(clientAuth.getDestination()) && StringUtils.isNotEmpty(clientAuth.getClientId())){
             ClientIdentity clientIdentity = new ClientIdentity(clientAuth.getDestination(), Short.valueOf(clientAuth.getClientId()), clientAuth.getFilter());

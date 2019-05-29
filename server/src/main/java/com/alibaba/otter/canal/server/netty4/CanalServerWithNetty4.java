@@ -1,9 +1,11 @@
 package com.alibaba.otter.canal.server.netty4;
 
 import com.alibaba.otter.canal.common.AbstractCanalLifeCycle;
+import com.alibaba.otter.canal.protocol.CanalPacket;
 import com.alibaba.otter.canal.server.CanalServer;
 import com.alibaba.otter.canal.server.embedded.CanalServerWithEmbedded;
 import com.alibaba.otter.canal.server.netty4.handler.ClientAuthenticationHandlerNetty4;
+import com.alibaba.otter.canal.server.netty4.handler.FixedHeaderFrameDecoderNetty4;
 import com.alibaba.otter.canal.server.netty4.handler.HandshakeInitializationHandlerNetty4;
 import com.alibaba.otter.canal.server.netty4.handler.SessionHandlerNetty4;
 import io.netty.bootstrap.ServerBootstrap;
@@ -15,6 +17,9 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.protobuf.ProtobufDecoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,6 +66,8 @@ public class CanalServerWithNetty4 extends AbstractCanalLifeCycle implements Can
             @Override
             protected void initChannel(SocketChannel ch){
                 ChannelPipeline pipelines = ch.pipeline();
+                pipelines.addLast(new FixedHeaderFrameDecoderNetty4());
+                pipelines.addLast(new ProtobufDecoder(CanalPacket.ClientAuth.getDefaultInstance()));
                 pipelines.addLast(HandshakeInitializationHandlerNetty4.class.getName(), new HandshakeInitializationHandlerNetty4());
                 pipelines.addLast(ClientAuthenticationHandlerNetty4.class.getName(), new ClientAuthenticationHandlerNetty4(embeddedServer));
                 SessionHandlerNetty4 sessionHandler = new SessionHandlerNetty4(embeddedServer);
