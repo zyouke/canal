@@ -155,6 +155,7 @@ public class SessionHandlerNetty4 extends SimpleChannelInboundHandler<CanalPacke
 
     }
 
+    @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception{
         logger.error("something goes wrong with channel:{}, exception={}", ctx.channel(), ExceptionUtils.getStackTrace(cause.getCause()));
         ctx.channel().close();
@@ -192,8 +193,5 @@ public class SessionHandlerNetty4 extends SimpleChannelInboundHandler<CanalPacke
         }
     }
 
-    public void setEmbeddedServer(CanalServerWithEmbedded embeddedServer){
-        this.embeddedServer = embeddedServer;
-    }
 
 }

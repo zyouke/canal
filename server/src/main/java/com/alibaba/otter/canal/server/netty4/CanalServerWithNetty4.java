@@ -51,7 +51,7 @@ public class CanalServerWithNetty4 extends AbstractCanalLifeCycle implements Can
     }
 
     public void start(){
-        LOGGER.info("。。。。。。。启动netty服务byCanalServerWithNetty4。。。。。。。。。");
+        LOGGER.info("。。。。。。。启动netty服务by CanalServerWithNetty4。。。。。。。。。");
         super.start();
 
         if(!embeddedServer.isStart()){
@@ -70,8 +70,7 @@ public class CanalServerWithNetty4 extends AbstractCanalLifeCycle implements Can
                 pipelines.addLast(new ProtobufDecoder(CanalPacket.ClientAuth.getDefaultInstance()));
                 pipelines.addLast(HandshakeInitializationHandlerNetty4.class.getName(), new HandshakeInitializationHandlerNetty4());
                 pipelines.addLast(ClientAuthenticationHandlerNetty4.class.getName(), new ClientAuthenticationHandlerNetty4(embeddedServer));
-                SessionHandlerNetty4 sessionHandler = new SessionHandlerNetty4(embeddedServer);
-                pipelines.addLast(SessionHandlerNetty4.class.getName(), sessionHandler);
+                pipelines.addLast(SessionHandlerNetty4.class.getName(), new SessionHandlerNetty4(embeddedServer));
             }
         });
         // 启动
