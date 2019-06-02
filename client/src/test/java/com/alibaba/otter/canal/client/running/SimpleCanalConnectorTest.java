@@ -62,7 +62,8 @@ public class SimpleCanalConnectorTest{
                             setType(CanalPacket.PacketType.CLIENTAUTHENTICATION).
                             setBody(clientAuth.toByteString()).build().toByteArray());
             CanalPacket.Packet packet = CanalPacket.Packet.parseFrom(readNextPacket());
-        }catch(IOException e){
+            System.out.println("packet : " + packet.getBody().toStringUtf8());
+        }catch(Exception e){
             e.printStackTrace();
         }
     }
