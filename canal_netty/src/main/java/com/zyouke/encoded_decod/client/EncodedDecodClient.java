@@ -1,12 +1,15 @@
 package com.zyouke.encoded_decod.client;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+
+import java.util.UUID;
 
 public class EncodedDecodClient {
 
@@ -19,7 +22,8 @@ public class EncodedDecodClient {
         handler(new EncodedDecodClientInitializer());
         try {
             ChannelFuture channelFuture = bootstrap.connect("127.0.0.1", 8080).sync();
-            channelFuture.channel().closeFuture().sync();
+            channelFuture.channel().writeAndFlush(UUID.randomUUID().toString().getBytes());
+            channelFuture.channel().closeFuture();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
