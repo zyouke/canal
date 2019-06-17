@@ -1,4 +1,4 @@
-package com.zyouke.replayingdecoder.server;
+package com.zyouke.replayingdecoder.protocol;
 
 import com.zyouke.replayingdecoder.protocol.UserProtocol;
 import io.netty.buffer.ByteBuf;

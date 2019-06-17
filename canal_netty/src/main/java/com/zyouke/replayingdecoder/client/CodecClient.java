@@ -24,10 +24,7 @@ public class CodecClient {
         handler(new CodecClientInitializer());
         try {
             ChannelFuture channelFuture = bootstrap.connect("127.0.0.1", 8080).sync();
-            Channel channel = channelFuture.channel();
-            channel.writeAndFlush(UUID.randomUUID().toString());
-            channel.writeAndFlush("\r\n");
-            channel.closeFuture();
+            channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {

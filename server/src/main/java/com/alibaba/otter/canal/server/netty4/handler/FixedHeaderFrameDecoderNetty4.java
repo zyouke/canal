@@ -17,6 +17,6 @@ public class FixedHeaderFrameDecoderNetty4 extends ReplayingDecoder<Void> {
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf byteBuf, List<Object> out)throws Exception {
-        out.add(byteBuf.readInt());
+        byteBuf.readBytes(byteBuf.readInt());
     }
 }
