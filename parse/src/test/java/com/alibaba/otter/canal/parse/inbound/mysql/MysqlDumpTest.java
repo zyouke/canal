@@ -41,9 +41,9 @@ public class MysqlDumpTest {
         controller.setMasterPosition(startPosition);
         controller.setEnableTsdb(false);
         controller.setDetectingSQL("show master status");
-        controller.setDestination("zyouke");
+        controller.setDestination("canal");
         controller.setTsdbSpringXml("");
-        controller.setEventFilter(new AviaterRegexFilter("zyouke\\..*"));
+        controller.setEventFilter(new AviaterRegexFilter("canal\\..*"));
         controller.setEventBlackFilter(new AviaterRegexFilter(""));
         controller.setEventSink(new AbstractCanalEventSinkTest<List<Entry>>() {
             public boolean sink(List<Entry> entrys, InetSocketAddress remoteAddress, String destination) throws CanalSinkException, InterruptedException{
