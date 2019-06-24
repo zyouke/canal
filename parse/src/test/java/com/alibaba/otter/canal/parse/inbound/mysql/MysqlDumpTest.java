@@ -39,10 +39,8 @@ public class MysqlDumpTest {
         controller.setDetectingEnable(false);
         controller.setMasterInfo(new AuthenticationInfo(new InetSocketAddress("122.114.90.68", 3306), "canal", "123456"));
         controller.setMasterPosition(startPosition);
-        controller.setEnableTsdb(false);
         controller.setDetectingSQL("show master status");
         controller.setDestination("canal");
-        controller.setTsdbSpringXml("");
         controller.setEventFilter(new AviaterRegexFilter("canal\\..*"));
         controller.setEventBlackFilter(new AviaterRegexFilter(""));
         controller.setEventSink(new AbstractCanalEventSinkTest<List<Entry>>() {

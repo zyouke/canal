@@ -1,19 +1,5 @@
 package com.alibaba.otter.canal.parse.inbound.mysql;
 
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicLong;
-
-import org.apache.commons.lang.StringUtils;
-import org.springframework.util.CollectionUtils;
-
 import com.alibaba.otter.canal.common.utils.JsonUtils;
 import com.alibaba.otter.canal.parse.CanalEventParser;
 import com.alibaba.otter.canal.parse.CanalHASwitchable;
@@ -28,12 +14,24 @@ import com.alibaba.otter.canal.parse.inbound.mysql.MysqlConnection.BinlogFormat;
 import com.alibaba.otter.canal.parse.inbound.mysql.MysqlConnection.BinlogImage;
 import com.alibaba.otter.canal.parse.inbound.mysql.dbsync.LogEventConvert;
 import com.alibaba.otter.canal.parse.inbound.mysql.dbsync.TableMetaCache;
-import com.alibaba.otter.canal.parse.inbound.mysql.tsdb.DatabaseTableMeta;
 import com.alibaba.otter.canal.parse.support.AuthenticationInfo;
 import com.alibaba.otter.canal.protocol.CanalEntry;
 import com.alibaba.otter.canal.protocol.position.EntryPosition;
 import com.alibaba.otter.canal.protocol.position.LogPosition;
 import com.taobao.tddl.dbsync.binlog.LogEvent;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.util.CollectionUtils;
+
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * 基于向mysql server复制binlog实现
@@ -120,12 +118,6 @@ public class MysqlEventParser extends AbstractMysqlEventParser implements CanalE
                 if(!found){
                     throw new CanalParseException("Unsupported BinlogImage " + image);
                 }
-            }
-
-            if(tableMetaTSDB != null && tableMetaTSDB instanceof DatabaseTableMeta){
-                ((DatabaseTableMeta) tableMetaTSDB).setConnection(metaConnection);
-                ((DatabaseTableMeta) tableMetaTSDB).setFilter(eventFilter);
-                ((DatabaseTableMeta) tableMetaTSDB).setBlackFilter(eventBlackFilter);
             }
 
             tableMetaCache = new TableMetaCache(metaConnection, tableMetaTSDB);

@@ -1,19 +1,17 @@
 package com.alibaba.otter.canal.parse.inbound.mysql;
 
-import java.io.IOException;
-
-import org.apache.commons.lang.StringUtils;
-
 import com.alibaba.otter.canal.parse.CanalEventParser;
 import com.alibaba.otter.canal.parse.exception.CanalParseException;
 import com.alibaba.otter.canal.parse.inbound.ErosaConnection;
 import com.alibaba.otter.canal.parse.inbound.mysql.dbsync.LogEventConvert;
 import com.alibaba.otter.canal.parse.inbound.mysql.dbsync.TableMetaCache;
-import com.alibaba.otter.canal.parse.inbound.mysql.tsdb.DatabaseTableMeta;
 import com.alibaba.otter.canal.parse.index.CanalLogPositionManager;
 import com.alibaba.otter.canal.parse.support.AuthenticationInfo;
 import com.alibaba.otter.canal.protocol.position.EntryPosition;
 import com.alibaba.otter.canal.protocol.position.LogPosition;
+import org.apache.commons.lang.StringUtils;
+
+import java.io.IOException;
 
 /**
  * 基于本地binlog文件的复制
@@ -49,12 +47,6 @@ public class LocalBinlogEventParser extends AbstractMysqlEventParser implements 
             metaConnection.connect();
         } catch (IOException e) {
             throw new CanalParseException(e);
-        }
-
-        if (tableMetaTSDB != null && tableMetaTSDB instanceof DatabaseTableMeta) {
-            ((DatabaseTableMeta) tableMetaTSDB).setConnection(metaConnection);
-            ((DatabaseTableMeta) tableMetaTSDB).setFilter(eventFilter);
-            ((DatabaseTableMeta) tableMetaTSDB).setBlackFilter(eventBlackFilter);
         }
 
         tableMetaCache = new TableMetaCache(metaConnection, tableMetaTSDB);

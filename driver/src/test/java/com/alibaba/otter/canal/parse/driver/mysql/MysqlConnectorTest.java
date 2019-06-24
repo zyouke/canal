@@ -37,18 +37,20 @@ public class MysqlConnectorTest {
     }
 
     @Test
-    public void testUpdate() {
-        try {
-            MysqlUpdateExecutor executor = new MysqlUpdateExecutor(connector);
-            String randomName = RandomStringUtils.randomAlphabetic(20);
-            executor.update("insert into canal.canal_test(name) values('"+randomName+"')");
-        } catch (IOException e) {
-            Assert.fail(e.getMessage());
-        } finally {
+    public void insertTest() throws Exception{
+        MysqlUpdateExecutor executor = new MysqlUpdateExecutor(connector);
+        for (int i = 0; i < 10100; i++) {
             try {
-                connector.disconnect();
+                String randomName = RandomStringUtils.randomAlphabetic(20);
+                executor.update("insert into canal.canal(name) values('"+randomName+"')");
             } catch (IOException e) {
                 Assert.fail(e.getMessage());
+            } finally {
+                try {
+                    connector.disconnect();
+                } catch (IOException e) {
+                    Assert.fail(e.getMessage());
+                }
             }
         }
     }

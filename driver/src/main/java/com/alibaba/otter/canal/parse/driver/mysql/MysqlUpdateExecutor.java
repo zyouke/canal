@@ -20,9 +20,9 @@ public class MysqlUpdateExecutor {
 
     private static final Logger logger = LoggerFactory.getLogger(MysqlUpdateExecutor.class);
 
-    private MysqlConnector      connector;
+    private MysqlConnector connector;
 
-    public MysqlUpdateExecutor(MysqlConnector connector) throws IOException{
+    public MysqlUpdateExecutor(MysqlConnector connector) throws IOException {
         if (!connector.isConnected()) {
             throw new IOException("should execute connector.connect() first");
         }
@@ -41,7 +41,7 @@ public class MysqlUpdateExecutor {
         PacketManager.writeBody(connector.getChannel(), bodyBytes);
 
         logger.debug("read update result...");
-        byte[] body = PacketManager.readBytes(connector.getChannel(),PacketManager.readHeader(connector.getChannel(), 4).getPacketBodyLength());
+        byte[] body = PacketManager.readBytes(connector.getChannel(), PacketManager.readHeader(connector.getChannel(), 4).getPacketBodyLength());
         if (body[0] < 0) {
             ErrorPacket packet = new ErrorPacket();
             packet.fromBytes(body);

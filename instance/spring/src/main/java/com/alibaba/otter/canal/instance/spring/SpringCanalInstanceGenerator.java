@@ -1,11 +1,10 @@
 package com.alibaba.otter.canal.instance.spring;
 
+import com.alibaba.otter.canal.instance.core.CanalInstance;
+import com.alibaba.otter.canal.instance.core.CanalInstanceGenerator;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
-
-import com.alibaba.otter.canal.instance.core.CanalInstance;
-import com.alibaba.otter.canal.instance.core.CanalInstanceGenerator;
 
 /**
  * @author zebin.xuzb @ 2012-7-12
@@ -13,7 +12,7 @@ import com.alibaba.otter.canal.instance.core.CanalInstanceGenerator;
  */
 public class SpringCanalInstanceGenerator implements CanalInstanceGenerator, BeanFactoryAware {
 
-    private String      defaultName = "instance";
+    private String defaultName = "instance";
     private BeanFactory beanFactory;
 
     public CanalInstance generate(String destination) {
