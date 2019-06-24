@@ -2,6 +2,8 @@ package com.alibaba.otter.canal.parse.driver.mysql;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Assert;
@@ -39,19 +41,20 @@ public class MysqlConnectorTest {
     @Test
     public void insertTest() throws Exception{
         MysqlUpdateExecutor executor = new MysqlUpdateExecutor(connector);
+        ExecutorService executorService = Executors.newCachedThreadPool();
         for (int i = 0; i < 10100; i++) {
-            try {
-                String randomName = RandomStringUtils.randomAlphabetic(20);
-                executor.update("insert into canal.canal(name) values('"+randomName+"')");
-            } catch (IOException e) {
-                Assert.fail(e.getMessage());
-            } finally {
-                try {
-                    connector.disconnect();
-                } catch (IOException e) {
-                    Assert.fail(e.getMessage());
+            executorService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        String randomName = RandomStringUtils.randomAlphabetic(20);
+                        executor.update("insert into canal.canal(name) values('"+randomName+"')");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
+            });
         }
+        executorService.shutdown();
     }
 }
