@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Assert;
@@ -41,15 +42,29 @@ public class MysqlConnectorTest {
     @Test
     public void insertTest() throws Exception{
         MysqlUpdateExecutor executor = new MysqlUpdateExecutor(connector);
+        for (int i = 0; i < 3; i++) {
+            String randomName = RandomStringUtils.randomAlphabetic(20);
+            executor.update("insert into canal.canal(name) values('"+randomName+"')");
+        }
+    }
+
+
+
+    @Test
+    public void manyThreadInsertTest() throws Exception{
+        MysqlUpdateExecutor executor = new MysqlUpdateExecutor(connector);
         ExecutorService executorService = Executors.newCachedThreadPool();
+        Semaphore semphore = new Semaphore(50);
         for (int i = 0; i < 10100; i++) {
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {
                     try {
+                        semphore.acquire();
                         String randomName = RandomStringUtils.randomAlphabetic(20);
                         executor.update("insert into canal.canal(name) values('"+randomName+"')");
-                    } catch (IOException e) {
+                        semphore.release();
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }

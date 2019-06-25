@@ -20,15 +20,15 @@ import com.googlecode.aviator.Expression;
  */
 public class AviaterSimpleFilter implements CanalEventFilter<String> {
 
-    private static final String SPLIT             = ",";
+    private static final String SPLIT = ",";
 
     private static final String FILTER_EXPRESSION = "include(list,target)";
 
-    private final Expression    exp               = AviatorEvaluator.compile(FILTER_EXPRESSION, true);
+    private final Expression exp = AviatorEvaluator.compile(FILTER_EXPRESSION, true);
 
-    private final List<String>  list;
+    private final List<String> list;
 
-    public AviaterSimpleFilter(String filterExpression){
+    public AviaterSimpleFilter(String filterExpression) {
         if (StringUtils.isEmpty(filterExpression)) {
             list = new ArrayList<String>();
         } else {
