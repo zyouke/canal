@@ -1,19 +1,20 @@
 package com.alibaba.otter.canal.parse.driver.mysql;
 
+import com.alibaba.otter.canal.parse.driver.mysql.packets.server.ResultSetPacket;
+import org.apache.commons.lang.RandomStringUtils;
+import org.junit.Assert;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
-import org.apache.commons.lang.RandomStringUtils;
-import org.junit.Assert;
-import org.junit.Test;
-
-import com.alibaba.otter.canal.parse.driver.mysql.packets.server.ResultSetPacket;
-
 public class MysqlConnectorTest {
-
+    private static final Logger logger = LoggerFactory.getLogger(MysqlConnectorTest.class);
     MysqlConnector connector = new MysqlConnector(new InetSocketAddress("122.114.90.68", 3306), "canal", "canal");
     {
         try {
@@ -54,7 +55,7 @@ public class MysqlConnectorTest {
     public void manyThreadInsertTest() throws Exception{
         MysqlUpdateExecutor executor = new MysqlUpdateExecutor(connector);
         ExecutorService executorService = Executors.newCachedThreadPool();
-        Semaphore semphore = new Semaphore(50);
+        Semaphore semphore = new Semaphore(55);
         for (int i = 0; i < 10100; i++) {
             executorService.execute(new Runnable() {
                 @Override
@@ -65,7 +66,7 @@ public class MysqlConnectorTest {
                         executor.update("insert into canal.canal(name) values('"+randomName+"')");
                         semphore.release();
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        logger.error(e.getMessage(),e);
                     }
                 }
             });

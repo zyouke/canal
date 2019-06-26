@@ -17,7 +17,7 @@ public class SocketChannel {
 
     private Channel channel = null;
     private Object  lock    = new Object();
-    private ByteBuf cache   = PooledByteBufAllocator.DEFAULT.directBuffer(1024 * 1024); // 缓存大小
+    private  ByteBuf cache   = PooledByteBufAllocator.DEFAULT.directBuffer(1024 * 1024); // 缓存大小
 
     public Channel getChannel() {
         return channel;
