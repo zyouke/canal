@@ -1,34 +1,27 @@
 package com.alibaba.otter.canal.parse.driver.mysql.socket;
 
+import com.alibaba.otter.canal.common.utils.BooleanMutex;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;
-import io.netty.channel.AdaptiveRecvByteBufAllocator;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.util.ReferenceCountUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.SocketAddress;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.alibaba.otter.canal.common.utils.BooleanMutex;
-
 /**
  * @author luoyaogui 实现channel的管理（监听连接、读数据、回收） 2016-12-28
  */
 @SuppressWarnings({ "rawtypes", "deprecation" })
 public abstract class SocketChannelPool {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(SocketChannelPool.class);
     private static EventLoopGroup group = new NioEventLoopGroup();                        // 非阻塞IO线程组
     private static Bootstrap boot = new Bootstrap();                                // 主
     private static Map<Channel, SocketChannel> chManager = new ConcurrentHashMap<Channel, SocketChannel>();

@@ -7,6 +7,7 @@ import io.netty.channel.Channel;
 
 import java.io.IOException;
 import java.net.SocketAddress;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 封装netty的通信channel和数据接收缓存，实现读、写、连接校验的功能。 2016-12-28
@@ -18,7 +19,6 @@ public class SocketChannel {
     private Channel channel = null;
     private Object  lock    = new Object();
     private  ByteBuf cache   = PooledByteBufAllocator.DEFAULT.directBuffer(1024 * 1024); // 缓存大小
-
     public Channel getChannel() {
         return channel;
     }

@@ -1,12 +1,14 @@
 package com.alibaba.otter.canal.parse.driver.mysql.utils;
 
 import java.io.IOException;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import com.alibaba.otter.canal.parse.driver.mysql.packets.HeaderPacket;
 import com.alibaba.otter.canal.parse.driver.mysql.socket.SocketChannel;
 
 public abstract class PacketManager {
-
+    private final static ReentrantLock lock = new ReentrantLock();
     public static HeaderPacket readHeader(SocketChannel ch, int len) throws IOException {
         HeaderPacket header = new HeaderPacket();
         header.fromBytes(ch.read(len));
@@ -14,7 +16,12 @@ public abstract class PacketManager {
     }
 
     public static byte[] readBytes(SocketChannel ch, int len) throws IOException {
-        return ch.read(len);
+        try {
+            lock.lock();
+            return ch.read(len);
+        } finally {
+            lock.unlock();
+        }
     }
 
     public static void writePkg(SocketChannel ch, byte[]... srcs) throws IOException {

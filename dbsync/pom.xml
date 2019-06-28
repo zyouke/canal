@@ -6,10 +6,8 @@
 		<version>1.0.25</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<groupId>com.alibaba.otter</groupId>
-	<artifactId>canal.parse.dbsync</artifactId>
+	<artifactId>canal.dbsync</artifactId>
 	<packaging>jar</packaging>
-	<name>canal dbsync module for otter ${project.version}</name>
 	<dependencies>
 		<!-- log -->
 		<dependency>
@@ -32,11 +30,6 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

@@ -39,8 +39,6 @@ public class MysqlUpdateExecutor {
         cmd.setQueryString(updateString);
         byte[] bodyBytes = cmd.toBytes();
         PacketManager.writeBody(connector.getChannel(), bodyBytes);
-
-        logger.debug("read update result...");
         byte[] body = PacketManager.readBytes(connector.getChannel(), PacketManager.readHeader(connector.getChannel(), 4).getPacketBodyLength());
         if (body[0] < 0) {
             ErrorPacket packet = new ErrorPacket();
@@ -50,6 +48,7 @@ public class MysqlUpdateExecutor {
 
         OKPacket packet = new OKPacket();
         packet.fromBytes(body);
+        logger.info("read update result...{}",packet);
         return packet;
     }
 }
