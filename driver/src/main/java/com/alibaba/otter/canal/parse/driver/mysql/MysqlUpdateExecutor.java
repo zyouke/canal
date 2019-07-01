@@ -2,6 +2,7 @@ package com.alibaba.otter.canal.parse.driver.mysql;
 
 import java.io.IOException;
 
+import com.alibaba.otter.canal.parse.driver.mysql.socket.SocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,8 +39,9 @@ public class MysqlUpdateExecutor {
         QueryCommandPacket cmd = new QueryCommandPacket();
         cmd.setQueryString(updateString);
         byte[] bodyBytes = cmd.toBytes();
-        PacketManager.writeBody(connector.getChannel(), bodyBytes);
-        byte[] body = PacketManager.readBytes(connector.getChannel(), PacketManager.readHeader(connector.getChannel(), 4).getPacketBodyLength());
+        SocketChannel channel = connector.getChannel();
+        PacketManager.writeBody(channel, bodyBytes);
+        byte[] body = PacketManager.readBytes(channel, PacketManager.readHeader(channel, 4).getPacketBodyLength());
         if (body[0] < 0) {
             ErrorPacket packet = new ErrorPacket();
             packet.fromBytes(body);
@@ -48,7 +50,7 @@ public class MysqlUpdateExecutor {
 
         OKPacket packet = new OKPacket();
         packet.fromBytes(body);
-        logger.info("read update result...{}",packet);
+        logger.info("read update result...{}",packet.toStringByFormat());
         return packet;
     }
 }

@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import com.alibaba.otter.canal.parse.driver.mysql.packets.PacketWithHeaderPacket;
 import com.alibaba.otter.canal.parse.driver.mysql.utils.ByteHelper;
+import com.alibaba.otter.canal.parse.driver.mysql.utils.LengthCodedStringReader;
 
 /**
  * Aka. OK packet
@@ -113,6 +114,18 @@ public class OKPacket extends PacketWithHeaderPacket {
         return "OKPacket [affectedRows=" + Arrays.toString(affectedRows) + ", fieldCount=" + fieldCount + ", insertId="
                + Arrays.toString(insertId) + ", message=" + message + ", serverStatus=" + serverStatus
                + ", warningCount=" + warningCount + "]";
+    }
+    public String toStringByFormat() {
+        try {
+            long formatInsertId = ByteHelper.readLengthCodedBinary(this.insertId, 0);
+            long formatAffectedRows = ByteHelper.readLengthCodedBinary(this.affectedRows, 0);
+            return "OKPacket [affectedRows=" + formatAffectedRows + ", fieldCount=" + fieldCount + ", insertId="
+                    + formatInsertId + ", message=" + message + ", serverStatus=" + serverStatus
+                    + ", warningCount=" + warningCount + "]";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
 }

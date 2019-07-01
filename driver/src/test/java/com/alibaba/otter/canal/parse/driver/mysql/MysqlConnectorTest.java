@@ -28,7 +28,7 @@ public class MysqlConnectorTest {
     public void testQuery() {
         try {
             MysqlQueryExecutor executor = new MysqlQueryExecutor(connector);
-            ResultSetPacket result =  executor.query("select * from canal.canal where id = 30");
+            ResultSetPacket result =  executor.query("select * from canal.canal where id = 51509");
             System.out.println(result);
         } catch (IOException e) {
             Assert.fail(e.getMessage());
@@ -44,7 +44,7 @@ public class MysqlConnectorTest {
     @Test
     public void insertTest() throws Exception{
         MysqlUpdateExecutor executor = new MysqlUpdateExecutor(connector);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 1; i++) {
             String randomName = RandomStringUtils.randomAlphabetic(20);
             executor.update("insert into canal.canal(name) values('"+randomName+"')");
         }

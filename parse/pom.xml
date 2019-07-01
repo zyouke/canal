@@ -31,7 +31,7 @@
         </dependency>
         <dependency>
             <groupId>com.alibaba.otter</groupId>
-            <artifactId>canal.parse.dbsync</artifactId>
+            <artifactId>canal.dbsync</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -41,7 +41,7 @@
         </dependency>
         <dependency>
             <groupId>com.alibaba.otter</groupId>
-            <artifactId>canal.parse.driver</artifactId>
+            <artifactId>canal.driver</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
