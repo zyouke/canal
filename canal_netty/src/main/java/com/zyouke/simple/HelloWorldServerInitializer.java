@@ -12,9 +12,6 @@ import io.netty.handler.codec.string.StringEncoder;
 public class HelloWorldServerInitializer extends ChannelInitializer<SocketChannel>{
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        pipeline.addLast(new DelimiterBasedFrameDecoder(1000,Delimiters.lineDelimiter()));
-        pipeline.addLast(new StringEncoder());
-        pipeline.addLast(new StringDecoder());
         pipeline.addLast(new HelloWorldServerHandler());
     }
 }

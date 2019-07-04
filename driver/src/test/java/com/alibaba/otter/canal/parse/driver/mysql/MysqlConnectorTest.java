@@ -28,8 +28,22 @@ public class MysqlConnectorTest {
     public void testQuery() {
         try {
             MysqlQueryExecutor executor = new MysqlQueryExecutor(connector);
-            ResultSetPacket result =  executor.query("select * from canal.canal where id = 51509");
-            System.out.println(result);
+            ExecutorService executorService = Executors.newCachedThreadPool();
+            for (int i = 0; i < 1000; i++) {
+                executorService.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            ResultSetPacket result =  executor.query("select * from canal.canal where id = 51509");
+                            System.out.println(result);
+                        } catch (IOException e) {
+
+                        }
+                    }
+                });
+            }
+            executorService.shutdown();
+            while (!executorService.isTerminated());
         } catch (IOException e) {
             Assert.fail(e.getMessage());
         } finally {
@@ -56,7 +70,7 @@ public class MysqlConnectorTest {
     public void manyThreadInsertTest() throws Exception{
         MysqlUpdateExecutor executor = new MysqlUpdateExecutor(connector);
         ExecutorService executorService = Executors.newCachedThreadPool();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {

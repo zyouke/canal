@@ -40,8 +40,8 @@ public abstract class SocketChannelPool {
                 .handler(new ChannelInitializer() {
 
                     @Override
-                    protected void initChannel(Channel arg0) throws Exception {
-                        arg0.pipeline().addLast(new BusinessHandler());// 命令过滤和handler添加管理
+                    protected void initChannel(Channel channel) throws Exception {
+                        channel.pipeline().addLast(new BusinessHandler());// 命令过滤和handler添加管理
                     }
                 });
     }

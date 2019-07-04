@@ -13,9 +13,9 @@ public class HelloWorldClientInitializer extends ChannelInitializer<SocketChanne
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        pipeline.addLast(new DelimiterBasedFrameDecoder(1000, Delimiters.lineDelimiter()));
+        /*pipeline.addLast(new DelimiterBasedFrameDecoder(1000, Delimiters.lineDelimiter()));
         pipeline.addLast(new StringDecoder());
-        pipeline.addLast(new StringEncoder());
+        pipeline.addLast(new StringEncoder());*/
         pipeline.addLast(new HelloWorldClientHandler());
     }
 }

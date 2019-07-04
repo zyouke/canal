@@ -120,7 +120,7 @@ public class OKPacket extends PacketWithHeaderPacket {
             long formatInsertId = ByteHelper.readLengthCodedBinary(this.insertId, 0);
             long formatAffectedRows = ByteHelper.readLengthCodedBinary(this.affectedRows, 0);
             return "OKPacket [affectedRows=" + formatAffectedRows + ", fieldCount=" + fieldCount + ", insertId="
-                    + formatInsertId + ", message=" + message + ", serverStatus=" + serverStatus
+                    + formatInsertId + ", serverStatus=" + serverStatus
                     + ", warningCount=" + warningCount + "]";
         } catch (IOException e) {
             e.printStackTrace();

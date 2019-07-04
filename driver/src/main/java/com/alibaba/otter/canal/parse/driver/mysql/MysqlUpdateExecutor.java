@@ -1,6 +1,7 @@
 package com.alibaba.otter.canal.parse.driver.mysql;
 
 import java.io.IOException;
+import java.util.concurrent.locks.ReentrantLock;
 
 import com.alibaba.otter.canal.parse.driver.mysql.socket.SocketChannel;
 import org.slf4j.Logger;
@@ -18,7 +19,7 @@ import com.alibaba.otter.canal.parse.driver.mysql.utils.PacketManager;
  * @since 1.0.0
  */
 public class MysqlUpdateExecutor {
-
+    private final static ReentrantLock lock = new ReentrantLock();
     private static final Logger logger = LoggerFactory.getLogger(MysqlUpdateExecutor.class);
 
     private MysqlConnector connector;
@@ -41,7 +42,9 @@ public class MysqlUpdateExecutor {
         byte[] bodyBytes = cmd.toBytes();
         SocketChannel channel = connector.getChannel();
         PacketManager.writeBody(channel, bodyBytes);
+        lock.lock();
         byte[] body = PacketManager.readBytes(channel, PacketManager.readHeader(channel, 4).getPacketBodyLength());
+        lock.unlock();
         if (body[0] < 0) {
             ErrorPacket packet = new ErrorPacket();
             packet.fromBytes(body);

@@ -1,13 +1,15 @@
 package com.zyouke.simple;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.SimpleChannelInboundHandler;
 
-public class HelloWorldClientHandler extends SimpleChannelInboundHandler<String> {
+public class HelloWorldClientHandler extends ChannelInboundHandlerAdapter {
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println("服务端响应数据 ： " + msg);
-        Thread.sleep(1000);
         ctx.channel().writeAndFlush("HelloWorld \r\n");
     }
 
@@ -19,6 +21,8 @@ public class HelloWorldClientHandler extends SimpleChannelInboundHandler<String>
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("与远程服务 ：" + ctx.channel().remoteAddress() + "连接处于活跃");
-        ctx.channel().writeAndFlush("HelloWorld\r\n");
+        ByteBuf buffer = Unpooled.buffer();
+        System.out.println(buffer.toString());
+        ctx.channel().writeAndFlush(buffer);
     }
 }

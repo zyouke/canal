@@ -2,16 +2,17 @@ package com.zyouke.simple;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.SimpleChannelInboundHandler;
 
 import java.net.SocketAddress;
 
-public class HelloWorldServerHandler extends SimpleChannelInboundHandler<String> {
+public class HelloWorldServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String message) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object message){
         System.out.println("接受客户端" + ctx.channel().remoteAddress() + "的请求：" + message);
-        ctx.channel().writeAndFlush("200 \r\n");
+        ctx.channel().writeAndFlush(message);
     }
 
     @Override

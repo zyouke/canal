@@ -18,7 +18,7 @@ public class SocketChannel {
 
     private Channel channel = null;
     private Object  lock    = new Object();
-    private  ByteBuf cache   = PooledByteBufAllocator.DEFAULT.directBuffer(1024 * 1024); // 缓存大小
+    private  volatile ByteBuf cache   = PooledByteBufAllocator.DEFAULT.directBuffer(1024 * 1024); // 缓存大小
     public Channel getChannel() {
         return channel;
     }
@@ -36,7 +36,8 @@ public class SocketChannel {
 
     public void writeChannel(byte[]... buf) throws IOException {
         if (channel != null && channel.isWritable()) {
-            channel.writeAndFlush(Unpooled.copiedBuffer(buf));
+            ByteBuf byteBuf = Unpooled.copiedBuffer(buf);
+            channel.writeAndFlush(byteBuf);
         } else {
             throw new IOException("write  failed  !  please checking !");
         }
