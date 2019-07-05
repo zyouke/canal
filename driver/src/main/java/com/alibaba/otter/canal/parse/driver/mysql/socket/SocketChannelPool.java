@@ -83,7 +83,8 @@ public abstract class SocketChannelPool {
         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
             if (null == socket) socket = chManager.get(ctx.channel());
             if (socket != null) {
-                socket.writeCache((ByteBuf) msg);
+                ByteBuf byteBuf = (ByteBuf) msg;
+                socket.writeCache(byteBuf);
             }
             ReferenceCountUtil.release(msg);// 添加防止内存泄漏的
         }

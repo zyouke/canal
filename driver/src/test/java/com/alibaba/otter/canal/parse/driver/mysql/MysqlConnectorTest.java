@@ -70,7 +70,7 @@ public class MysqlConnectorTest {
     public void manyThreadInsertTest() throws Exception{
         MysqlUpdateExecutor executor = new MysqlUpdateExecutor(connector);
         ExecutorService executorService = Executors.newCachedThreadPool();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10; i++) {
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {
