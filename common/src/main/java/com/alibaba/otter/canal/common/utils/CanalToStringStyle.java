@@ -1,9 +1,9 @@
 package com.alibaba.otter.canal.common.utils;
 
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import org.apache.commons.lang.builder.ToStringStyle;
 
 /**
  * Otter项目内部使用的ToStringStyle

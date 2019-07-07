@@ -1,12 +1,12 @@
 package com.alibaba.otter.canal.protocol.exception;
 
-import org.apache.commons.lang.exception.NestableRuntimeException;
+import org.apache.commons.lang3.exception.ContextedRuntimeException;
 
 /**
  * @author zebin.xuzb @ 2012-6-20
  * @version 1.0.0
  */
-public class CanalClientException extends NestableRuntimeException {
+public class CanalClientException extends ContextedRuntimeException {
 
     private static final long serialVersionUID = -7545341502620139031L;
 

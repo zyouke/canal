@@ -1,11 +1,11 @@
 package com.alibaba.otter.canal.protocol;
 
+import com.alibaba.otter.canal.common.utils.CanalToStringStyle;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.io.Serializable;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import com.alibaba.otter.canal.common.utils.CanalToStringStyle;
 
 /**
  * @author zebin.xuzb @ 2012-6-20

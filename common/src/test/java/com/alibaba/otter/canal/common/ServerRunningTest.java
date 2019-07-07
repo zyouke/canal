@@ -1,20 +1,19 @@
 package com.alibaba.otter.canal.common;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import org.apache.commons.lang.math.RandomUtils;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 import com.alibaba.otter.canal.common.zookeeper.ZkClientx;
 import com.alibaba.otter.canal.common.zookeeper.ZookeeperPathUtils;
 import com.alibaba.otter.canal.common.zookeeper.running.ServerRunningData;
 import com.alibaba.otter.canal.common.zookeeper.running.ServerRunningListener;
 import com.alibaba.otter.canal.common.zookeeper.running.ServerRunningMonitor;
+import org.apache.commons.lang3.RandomUtils;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ServerRunningTest extends AbstractZkTest {
 
@@ -62,11 +61,11 @@ public class ServerRunningTest extends AbstractZkTest {
                     if (!runningMonitor1.isStart()) {
                         runningMonitor1.start();
                     }
-                    sleep(2000L + RandomUtils.nextInt(500));
+                    sleep(2000L + RandomUtils.nextInt(0,500));
                     if (runningMonitor1.check()) {
                         runningMonitor1.stop();
                     }
-                    sleep(2000L + RandomUtils.nextInt(500));
+                    sleep(2000L + RandomUtils.nextInt(0,500));
                 }
             }
 
@@ -79,11 +78,11 @@ public class ServerRunningTest extends AbstractZkTest {
                     if (!runningMonitor2.isStart()) {
                         runningMonitor2.start();
                     }
-                    sleep(2000L + RandomUtils.nextInt(500));
+                    sleep(2000L + RandomUtils.nextInt(0,500));
                     if (runningMonitor2.check()) {
                         runningMonitor2.stop();
                     }
-                    sleep(2000L + RandomUtils.nextInt(500));
+                    sleep(2000L + RandomUtils.nextInt(0,500));
                 }
             }
 
@@ -96,11 +95,11 @@ public class ServerRunningTest extends AbstractZkTest {
                     if (!runningMonitor3.isStart()) {
                         runningMonitor3.start();
                     }
-                    sleep(2000L + RandomUtils.nextInt(500));
+                    sleep(2000L + RandomUtils.nextInt(0,500));
                     if (runningMonitor3.check()) {
                         runningMonitor3.stop();
                     }
-                    sleep(2000L + RandomUtils.nextInt(500));
+                    sleep(2000L + RandomUtils.nextInt(0,500));
                 }
             }
 

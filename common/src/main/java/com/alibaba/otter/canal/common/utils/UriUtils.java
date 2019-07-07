@@ -1,5 +1,7 @@
 package com.alibaba.otter.canal.common.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -8,8 +10,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
-import org.apache.commons.lang.StringUtils;
 
 /**
  * @author zebin.xuzb 2012-11-15 下午3:53:09

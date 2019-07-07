@@ -1,10 +1,9 @@
 package com.alibaba.otter.canal.common.zookeeper.running;
 
-import java.io.Serializable;
-
-import org.apache.commons.lang.builder.ToStringBuilder;
-
 import com.alibaba.otter.canal.common.utils.CanalToStringStyle;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.io.Serializable;
 
 /**
  * 服务端running状态信息

@@ -1,10 +1,9 @@
 package com.alibaba.otter.canal.protocol.position;
 
-import java.net.InetSocketAddress;
-
-import org.apache.commons.lang.builder.ToStringBuilder;
-
 import com.alibaba.otter.canal.common.utils.CanalToStringStyle;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.net.InetSocketAddress;
 
 /**
  * @author jianghang 2012-6-21 上午10:52:02

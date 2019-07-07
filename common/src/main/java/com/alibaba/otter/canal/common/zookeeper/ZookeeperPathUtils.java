@@ -2,7 +2,7 @@ package com.alibaba.otter.canal.common.zookeeper;
 
 import java.text.MessageFormat;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * 存储结构：
