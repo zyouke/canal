@@ -15,6 +15,7 @@ import java.util.Set;
  */
 public class TimeServer {
     private static final ByteBuffer cacheBuffer = ByteBuffer.allocate(100);
+    private static boolean isCache = false;
     public static void main(String[] args) {
         TimeServer timeServer = new TimeServer();
         TimeServerHandleThread timehandleThread = timeServer.new TimeServerHandleThread(8080);
@@ -85,6 +86,12 @@ public class TimeServer {
                                 ByteBuffer writeBuffer = ByteBuffer.wrap("pong".getBytes());
                                 client.write(writeBuffer);
                             }else {
+                                if (isCache) {
+                                    cacheBuffer.flip();
+                                    readBuffer.put(cacheBuffer);
+                                }
+                                Codec.decoding(cacheBuffer,readBuffer,isCache);
+                                selectionKey.interestOps(SelectionKey.OP_READ);
                                 System.out.println(String.format("接收客户端请求数据 : %s",body));
                                 ByteBuffer writeBuffer = ByteBuffer.wrap(String.valueOf(System.currentTimeMillis()).getBytes());
                                 client.write(writeBuffer);
