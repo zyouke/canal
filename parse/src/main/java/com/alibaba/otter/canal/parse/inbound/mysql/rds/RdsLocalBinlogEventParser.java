@@ -3,7 +3,7 @@ package com.alibaba.otter.canal.parse.inbound.mysql.rds;
 import java.io.File;
 import java.util.Date;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 
 import com.alibaba.otter.canal.parse.CanalEventParser;

@@ -1,7 +1,7 @@
 package com.alibaba.otter.cancel.store.memory.ringBuffer;
 
 import com.alibaba.otter.canal.common.utils.JsonUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 

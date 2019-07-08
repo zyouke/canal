@@ -5,7 +5,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.apache.commons.lang.math.RandomUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -65,9 +65,9 @@ public class ClientRunningTest extends AbstractZkTest {
                     if (!runningMonitor1.isStart()) {
                         runningMonitor1.start();
                     }
-                    sleep(2000L + RandomUtils.nextInt(500));
+                    sleep(2000L + RandomUtils.nextInt(0,500));
                     runningMonitor1.stop();
-                    sleep(2000L + RandomUtils.nextInt(500));
+                    sleep(2000L + RandomUtils.nextInt(0,500));
                 }
             }
 
@@ -80,9 +80,9 @@ public class ClientRunningTest extends AbstractZkTest {
                     if (!runningMonitor2.isStart()) {
                         runningMonitor2.start();
                     }
-                    sleep(2000L + RandomUtils.nextInt(500));
+                    sleep(2000L + RandomUtils.nextInt(0,500));
                     runningMonitor2.stop();
-                    sleep(2000L + RandomUtils.nextInt(500));
+                    sleep(2000L + RandomUtils.nextInt(0,500));
                 }
             }
 
@@ -95,9 +95,9 @@ public class ClientRunningTest extends AbstractZkTest {
                     if (!runningMonitor3.isStart()) {
                         runningMonitor3.start();
                     }
-                    sleep(2000L + RandomUtils.nextInt(500));
+                    sleep(2000L + RandomUtils.nextInt(0,500));
                     runningMonitor3.stop();
-                    sleep(2000L + RandomUtils.nextInt(500));
+                    sleep(2000L + RandomUtils.nextInt(0,500));
                 }
             }
 

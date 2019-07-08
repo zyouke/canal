@@ -3,7 +3,7 @@ package com.alibaba.otter.canal.parse.driver.mysql.packets.client;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import com.alibaba.otter.canal.parse.driver.mysql.packets.CommandPacket;
 import com.alibaba.otter.canal.parse.driver.mysql.utils.ByteHelper;

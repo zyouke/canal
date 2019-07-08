@@ -2,7 +2,7 @@ package com.alibaba.otter.canal.parse.driver.mysql.utils;
 
 import java.io.IOException;
 
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 
 public class LengthCodedStringReader {
 

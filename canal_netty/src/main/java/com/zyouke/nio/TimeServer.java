@@ -1,7 +1,5 @@
 package com.zyouke.nio;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
@@ -9,7 +7,6 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.security.Key;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -17,19 +14,17 @@ import java.util.Set;
  * @Author: zhoujun
  */
 public class TimeServer {
+    private static final ByteBuffer cacheBuffer = ByteBuffer.allocate(100);
     public static void main(String[] args) {
         TimeServer timeServer = new TimeServer();
-        TimehandleThread timehandleThread = timeServer.new TimehandleThread(8080);
+        TimeServerHandleThread timehandleThread = timeServer.new TimeServerHandleThread(8080);
         timehandleThread.start();
     }
 
-
-
-    class  TimehandleThread extends Thread{
-        private StringBuilder builder = new StringBuilder();
+    class  TimeServerHandleThread extends Thread{
         ServerSocketChannel serverSocketChannel;
         Selector selector ;
-        public TimehandleThread(int port){
+        public TimeServerHandleThread(int port){
             try{
                 serverSocketChannel = ServerSocketChannel.open();
                 serverSocketChannel.configureBlocking(false);
@@ -47,9 +42,6 @@ public class TimeServer {
         public void run(){
             while(true){
                 try {
-                    //select()阻塞到至少有一个通道在你注册的事件上就绪了
-                    //如果没有准备好的channel,就在这一直阻塞
-                    //select(long timeout)和select()一样，除了最长会阻塞timeout毫秒(参数)。
                     selector.select(5000);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -80,16 +72,20 @@ public class TimeServer {
                         client.register(selector, SelectionKey.OP_READ);
                     } else if (selectionKey.isReadable()){
                         SocketChannel client = (SocketChannel) selectionKey.channel();
-                        ByteBuffer readBuffer = ByteBuffer.allocate(10);
+                        ByteBuffer readBuffer = ByteBuffer.allocate(100);
                         int readBytes = client.read(readBuffer);
                         if(readBytes > 0){
                             readBuffer.flip();
                             byte[] bytes = new byte[readBuffer.remaining()];
                             readBuffer.get(bytes);
-                            String body = Codec.stringDecoding(builder, bytes);
-                            if(StringUtils.isNoneBlank(body)){
-                                System.out.println(String.format("接受请求数据 ：%s", body));
-                                builder.delete(0,builder.length());
+                            String body = new String(bytes, "UTF-8");
+                            if ("ping".equals(body)){
+                                System.out.println(String.format("客户端 : %s %s",client.getRemoteAddress().toString(),"请求连接"));
+                                Thread.sleep(3000);
+                                ByteBuffer writeBuffer = ByteBuffer.wrap("pong".getBytes());
+                                client.write(writeBuffer);
+                            }else {
+                                System.out.println(String.format("接收客户端请求数据 : %s",body));
                                 ByteBuffer writeBuffer = ByteBuffer.wrap(String.valueOf(System.currentTimeMillis()).getBytes());
                                 client.write(writeBuffer);
                             }

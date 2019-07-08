@@ -1,6 +1,6 @@
 package com.alibaba.otter.canal.parse.inbound.mysql.ddl;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.oro.text.regex.Perl5Matcher;
 
 import com.alibaba.otter.canal.filter.PatternUtils;

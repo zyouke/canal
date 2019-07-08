@@ -3,7 +3,7 @@ package com.alibaba.otter.canal.parse.inbound.mysql;
 import java.io.File;
 import java.util.Date;
 
-import org.apache.commons.lang.time.DateUtils;
+import org.apache.commons.lang3.time.DateUtils;
 
 import com.alibaba.otter.canal.parse.inbound.mysql.rds.RdsBinlogOpenApi;
 

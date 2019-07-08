@@ -2,8 +2,8 @@ package com.alibaba.otter.canal.parse.support;
 
 import java.net.InetSocketAddress;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * 数据库认证信息

@@ -2,7 +2,7 @@ package com.alibaba.otter.canal.parse.driver.mysql;
 
 import com.alibaba.otter.canal.parse.driver.mysql.packets.server.OKPacket;
 import com.alibaba.otter.canal.parse.driver.mysql.packets.server.ResultSetPacket;
-import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;

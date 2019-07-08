@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.taobao.tddl.dbsync.binlog.event.TableMapLogEvent;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * 描述数据meta对象,mysql binlog中对应的{@linkplain TableMapLogEvent}包含的信息不全

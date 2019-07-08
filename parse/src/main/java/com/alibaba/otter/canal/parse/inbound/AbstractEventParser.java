@@ -8,9 +8,9 @@ import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.exception.ExceptionUtils;
-import org.apache.commons.lang.math.RandomUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -219,7 +219,7 @@ public abstract class AbstractEventParser<EVENT> extends AbstractCanalLifeCycle 
                             }
                         }else{
                             logger.error(String.format("dump address %s has an error, retrying. caused by ", runningInfo.getAddress().toString()), e);
-                            sendAlarm(destination, ExceptionUtils.getFullStackTrace(e));
+                            sendAlarm(destination, ExceptionUtils.getStackTrace(e));
                         }
                     }finally{
                         // 重新置为中断状态
@@ -246,7 +246,7 @@ public abstract class AbstractEventParser<EVENT> extends AbstractCanalLifeCycle 
                     if(running){
                         // sleep一段时间再进行重试
                         try{
-                            Thread.sleep(10000 + RandomUtils.nextInt(10000));
+                            Thread.sleep(10000 + RandomUtils.nextInt(0,10000));
                         }catch(InterruptedException e){
                         }
                     }

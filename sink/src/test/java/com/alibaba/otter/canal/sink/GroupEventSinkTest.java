@@ -6,7 +6,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.apache.commons.lang.math.RandomUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.junit.Test;
 
 import com.alibaba.otter.canal.protocol.CanalEntry.Entry;
@@ -34,7 +34,7 @@ public class GroupEventSinkTest {
                 for (int i = 0; i < 50; i++) {
                     try {
                         eventSink.sink(Arrays.asList(buildEntry("1", 1L + i, 1L + i)), address, "ljhtest1");
-                        Thread.sleep(50L + RandomUtils.nextInt(50));
+                        Thread.sleep(50L + RandomUtils.nextInt(0,50));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -43,7 +43,7 @@ public class GroupEventSinkTest {
                 for (int i = 0; i < 50; i++) {
                     try {
                         eventSink.sink(Arrays.asList(buildEntry("1", 1L + i, 30L + i)), address, "ljhtest1");
-                        Thread.sleep(50L + RandomUtils.nextInt(50));
+                        Thread.sleep(50L + RandomUtils.nextInt(0,50));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -60,7 +60,7 @@ public class GroupEventSinkTest {
                 for (int i = 0; i < 50; i++) {
                     try {
                         eventSink.sink(Arrays.asList(buildEntry("1", 1L + i, 10L + i)), address, "ljhtest2");
-                        Thread.sleep(50L + RandomUtils.nextInt(50));
+                        Thread.sleep(50L + RandomUtils.nextInt(0,50));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -69,7 +69,7 @@ public class GroupEventSinkTest {
                 for (int i = 0; i < 50; i++) {
                     try {
                         eventSink.sink(Arrays.asList(buildEntry("1", 1L + i, 40L + i)), address, "ljhtest2");
-                        Thread.sleep(50L + RandomUtils.nextInt(50));
+                        Thread.sleep(50L + RandomUtils.nextInt(0,50));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -85,7 +85,7 @@ public class GroupEventSinkTest {
                 for (int i = 0; i < 100; i++) {
                     try {
                         eventSink.sink(Arrays.asList(buildEntry("1", 1L + i, 30L + i)), address, "ljhtest3");
-                        Thread.sleep(50L + RandomUtils.nextInt(50));
+                        Thread.sleep(50L + RandomUtils.nextInt(0,50));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

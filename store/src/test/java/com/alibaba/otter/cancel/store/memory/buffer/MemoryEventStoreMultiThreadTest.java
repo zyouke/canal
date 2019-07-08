@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.lang.math.RandomUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -95,14 +95,14 @@ public class MemoryEventStoreMultiThreadTest extends MemoryEventStoreBase {
             while (true) {
                 try {
                     mutex.get();
-                    Thread.sleep(RandomUtils.nextInt(freq));
+                    Thread.sleep(RandomUtils.nextInt(0,freq));
                 } catch (InterruptedException e) {
                     return;
                 }
                 Event event = buildEvent();
 
                 try {
-                    Thread.sleep(RandomUtils.nextInt(freq));
+                    Thread.sleep(RandomUtils.nextInt(0,freq));
                 } catch (InterruptedException e) {
                     return;
                 }
@@ -132,7 +132,7 @@ public class MemoryEventStoreMultiThreadTest extends MemoryEventStoreBase {
             Position first = eventStore.getFirstPosition();
             while (first == null) {
                 try {
-                    Thread.sleep(RandomUtils.nextInt(freq));
+                    Thread.sleep(RandomUtils.nextInt(0,freq));
                 } catch (InterruptedException e) {
                     latch.countDown();
                     return;
@@ -145,7 +145,7 @@ public class MemoryEventStoreMultiThreadTest extends MemoryEventStoreBase {
             int emptyCount = 0;
             while (emptyCount < 10) {
                 try {
-                    Thread.sleep(RandomUtils.nextInt(freq));
+                    Thread.sleep(RandomUtils.nextInt(0,freq));
                 } catch (InterruptedException e) {
                 }
 

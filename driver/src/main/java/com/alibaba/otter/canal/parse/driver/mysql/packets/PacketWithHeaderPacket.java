@@ -1,6 +1,6 @@
 package com.alibaba.otter.canal.parse.driver.mysql.packets;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.alibaba.otter.canal.common.utils.CanalToStringStyle;
 import com.google.common.base.Preconditions;

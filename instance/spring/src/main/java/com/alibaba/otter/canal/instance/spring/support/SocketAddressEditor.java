@@ -3,7 +3,7 @@ package com.alibaba.otter.canal.instance.spring.support;
 import java.beans.PropertyEditorSupport;
 import java.net.InetSocketAddress;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.beans.PropertyEditorRegistry;
 
