@@ -14,9 +14,6 @@ import java.util.Set;
  * @Author: zhoujun
  */
 public class TimeServer {
-    private static final ByteBuffer cacheBuffer = ByteBuffer.allocate(100);
-    private static boolean isCache = false;
-
     public static void main(String[] args) {
         try {
             ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
@@ -54,9 +51,6 @@ public class TimeServer {
                 } else if (selectionKey.isReadable()) {
                     read(selectionKey);
                 }
-                else if (selectionKey.isWritable()) {
-                    reply(selectionKey);
-                }
             } catch (IOException e) {
                 e.printStackTrace();
                 selectionKey.cancel();
@@ -69,11 +63,11 @@ public class TimeServer {
         }
     }
 
-    private static void reply(SelectionKey selectionKey) {
-        SocketChannel channel = (SocketChannel) selectionKey.channel();
+    private static void reply(SocketChannel channel) {
         ByteBuffer byteBuffer = ByteBuffer.allocate(100);
         byte[] bytes = "pingaaaaaaaaaa".getBytes();
         byteBuffer.put(bytes);
+        byteBuffer.flip();
         try {
             channel.write(byteBuffer);
         } catch (IOException e) {
@@ -84,47 +78,12 @@ public class TimeServer {
     // 一个client的write事件不一定唯一对应server的read事件，所以需要缓存不完整的包，以便拼接成完整的包
     //包协议：包=包头(4byte)+包体，包头内容为包体的数据长度
     private static void read(SelectionKey selectionKey) {
-        int head_length = 4;//数据包长度
-        byte[] headByte = new byte[4];
         try {
             SocketChannel channel = (SocketChannel) selectionKey.channel();
-            ByteBuffer byteBuffer = ByteBuffer.allocate(100);
-            int bodyLen = -1;
-            if (isCache) {
-                cacheBuffer.flip();
-                byteBuffer.put(cacheBuffer);
-            }
+            ByteBuffer byteBuffer = ByteBuffer.allocate(50);
             channel.read(byteBuffer);// 当前read事件
-            byteBuffer.flip();// write mode to read mode
-            while (byteBuffer.remaining() > 0) {
-                if (bodyLen == -1) {// 还没有读出包头，先读出包头
-                    if (byteBuffer.remaining() >= head_length) {// 可以读出包头，否则缓存
-                        byteBuffer.mark();
-                        byteBuffer.get(headByte);
-                        bodyLen = Codec.byteArrayToInt(headByte);
-                    } else {
-                        byteBuffer.reset();
-                        isCache = true;
-                        cacheBuffer.clear();
-                        cacheBuffer.put(byteBuffer);
-                        break;
-                    }
-                } else {// 已经读出包头
-                    if (byteBuffer.remaining() >= bodyLen) {// 大于等于一个包，否则缓存
-                        byte[] bodyByte = new byte[bodyLen];
-                        byteBuffer.get(bodyByte, 0, bodyLen);
-                        bodyLen = -1;
-                        System.out.println("receive from clien content is:" + new String(bodyByte));
-                        selectionKey.interestOps(SelectionKey.OP_WRITE);
-                    } else {
-                        byteBuffer.reset();
-                        cacheBuffer.clear();
-                        cacheBuffer.put(byteBuffer);
-                        isCache = true;
-                        break;
-                    }
-                }
-            }
+            Codec.decode(byteBuffer);
+            reply(channel);
             selectionKey.interestOps(SelectionKey.OP_READ);
         } catch (IOException e) {
             try {

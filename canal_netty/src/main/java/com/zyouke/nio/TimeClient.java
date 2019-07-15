@@ -84,14 +84,13 @@ public class TimeClient {
     private static void send(SelectionKey key,Selector selector) {
         SocketChannel channel = (SocketChannel) key.channel();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             String ss = i + "Server ,how are you? this is package message from NioSocketClient!";
             int head = (ss).getBytes().length;
             ByteBuffer byteBuffer = ByteBuffer.allocate(4 + head);
             byteBuffer.put(intToBytes(head));
             byteBuffer.put(ss.getBytes());
             byteBuffer.flip();
-            System.out.println("[client] send:" + i + "-- " + head + ss);
             while (byteBuffer.hasRemaining()) {
                 try {
                     channel.write(byteBuffer);
