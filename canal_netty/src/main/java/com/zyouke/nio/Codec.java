@@ -1,8 +1,6 @@
 package com.zyouke.nio;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
-import java.nio.channels.SelectionKey;
 
 /**
  * 编解码
@@ -20,12 +18,14 @@ public class Codec {
             cacheBuffer.flip();
             int cacheBufferLength = cacheBuffer.remaining();
             byteBuffer.flip();
-            byte[] array = byteBuffer.array();
-            int byteTotal = cacheBufferLength + array.length;
+            ByteBuffer tempBuffer = ByteBuffer.allocate(byteBuffer.remaining());
+            tempBuffer.put(byteBuffer);
+            tempBuffer.flip();
+            int byteTotal = cacheBufferLength + tempBuffer.remaining();
             if (byteTotal > byteBuffer.capacity()){
                 byteBuffer = ByteBuffer.allocate(byteTotal);
             }
-            byteBuffer.put(cacheBuffer).put(array);
+            byteBuffer.put(cacheBuffer).put(tempBuffer);
         }
         byteBuffer.flip();
         while (byteBuffer.remaining() > 0) {
