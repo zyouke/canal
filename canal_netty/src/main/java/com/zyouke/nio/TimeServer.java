@@ -64,8 +64,8 @@ public class TimeServer {
     }
 
     private static void reply(SocketChannel channel) {
-        ByteBuffer byteBuffer = ByteBuffer.allocate(100);
-        byte[] bytes = "pingaaaaaaaaaa".getBytes();
+        byte[] bytes = "ping".getBytes();
+        ByteBuffer byteBuffer = ByteBuffer.allocate(bytes.length);
         byteBuffer.put(bytes);
         byteBuffer.flip();
         try {
@@ -83,7 +83,6 @@ public class TimeServer {
             ByteBuffer byteBuffer = ByteBuffer.allocate(50);
             channel.read(byteBuffer);// 当前read事件
             Codec.decode(byteBuffer);
-            reply(channel);
             selectionKey.interestOps(SelectionKey.OP_READ);
         } catch (IOException e) {
             try {

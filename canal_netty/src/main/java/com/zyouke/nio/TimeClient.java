@@ -83,16 +83,13 @@ public class TimeClient {
 
     private static void send(SelectionKey key,Selector selector) {
         SocketChannel channel = (SocketChannel) key.channel();
-
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             String request = String.format("request--------%d",i);
             ByteBuffer byteBuffer = Codec.encoded(request);
-            while (byteBuffer.hasRemaining()) {
-                try {
-                    channel.write(byteBuffer);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            try {
+                channel.write(byteBuffer);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         try {
