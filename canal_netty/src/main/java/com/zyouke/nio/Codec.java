@@ -10,6 +10,10 @@ public class Codec {
     private static final ByteBuffer cacheBuffer = ByteBuffer.allocate(100);
     private static boolean isCache = false;
 
+    /**
+     * 解码
+     * @param byteBuffer
+     */
     public static void decode(ByteBuffer byteBuffer){
         int bodyLen = -1;
         int head_length = 4;//数据包长度
@@ -58,6 +62,19 @@ public class Codec {
         }
     }
 
+    /**
+     * 编码
+     * @param request
+     */
+    public static ByteBuffer encoded(String request){
+        byte[] bytes = request.getBytes();
+        int head = bytes.length;
+        ByteBuffer byteBuffer = ByteBuffer.allocate(4 + head);
+        byteBuffer.put(intToBytes(head));
+        byteBuffer.put(bytes);
+        byteBuffer.flip();
+        return byteBuffer;
+    }
 
 
 
@@ -69,7 +86,7 @@ public class Codec {
      * @param bytes
      * @return
      */
-    public static int byteArrayToInt(byte[] bytes) {
+    private static int byteArrayToInt(byte[] bytes) {
         int value = 0;
         // 由高位到低位
         for (int i = 0; i < 4; i++) {
@@ -79,4 +96,19 @@ public class Codec {
         return value;
     }
 
+    /**
+     * int到byte[]
+     *
+     * @param value
+     * @return
+     */
+    private static byte[] intToBytes(int value) {
+        byte[] result = new byte[4];
+        // 由高位到低位
+        result[0] = (byte) ((value >> 24) & 0xFF);
+        result[1] = (byte) ((value >> 16) & 0xFF);
+        result[2] = (byte) ((value >> 8) & 0xFF);
+        result[3] = (byte) (value & 0xFF);
+        return result;
+    }
 }

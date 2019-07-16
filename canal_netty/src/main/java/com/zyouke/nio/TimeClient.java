@@ -85,12 +85,8 @@ public class TimeClient {
         SocketChannel channel = (SocketChannel) key.channel();
 
         for (int i = 0; i < 3; i++) {
-            String ss = i + "Server ,how are you? this is package message from NioSocketClient!";
-            int head = (ss).getBytes().length;
-            ByteBuffer byteBuffer = ByteBuffer.allocate(4 + head);
-            byteBuffer.put(intToBytes(head));
-            byteBuffer.put(ss.getBytes());
-            byteBuffer.flip();
+            String request = String.format("request--------%d",i);
+            ByteBuffer byteBuffer = Codec.encoded(request);
             while (byteBuffer.hasRemaining()) {
                 try {
                     channel.write(byteBuffer);
@@ -104,21 +100,5 @@ public class TimeClient {
         } catch (ClosedChannelException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * int到byte[]
-     *
-     * @param value
-     * @return
-     */
-    private static byte[] intToBytes(int value) {
-        byte[] result = new byte[4];
-        // 由高位到低位
-        result[0] = (byte) ((value >> 24) & 0xFF);
-        result[1] = (byte) ((value >> 16) & 0xFF);
-        result[2] = (byte) ((value >> 8) & 0xFF);
-        result[3] = (byte) (value & 0xFF);
-        return result;
     }
 }
