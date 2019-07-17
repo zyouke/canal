@@ -3,6 +3,7 @@ package com.zyouke.promise;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.util.concurrent.DefaultPromise;
 import io.netty.util.concurrent.Promise;
+import org.apache.commons.lang3.RandomUtils;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -25,9 +26,9 @@ public class NettyFuture4Promise {
                 @Override
                 public void run() {
                     try {
-                        Promise<String> promise = nettyFuture4Promise.search("Netty In Action");
+                        Promise<String> promise = nettyFuture4Promise.search(Thread.currentThread().getName());
                         String result = promise.get();
-                        System.out.println("price is " + result);
+                        System.out.println(Thread.currentThread().getName() + "------->" + result);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -46,9 +47,9 @@ public class NettyFuture4Promise {
             @Override
             public void run() {
                 try {
-                    System.out.println(String.format("	>>search price of %s from internet!",prod));
-                    Thread.sleep(1000);
-                    promise.setSuccess("$99.99");// 等待5S后设置future为成功，
+                    System.out.println(String.format("%s ------>search",prod));
+                    Thread.sleep(RandomUtils.nextInt(500,1000));
+                    promise.setSuccess(prod);// 等待5S后设置future为成功，
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
